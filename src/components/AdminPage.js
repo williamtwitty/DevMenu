@@ -5,6 +5,7 @@ class Admin extends Component {
         return (
             <div>
                 haley
+                <a href='http://localhost:3030/auth/logout'><button>LOGOUT</button></a>
             </div>
         );
     }
