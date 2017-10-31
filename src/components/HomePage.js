@@ -4,7 +4,9 @@ class HomePage extends Component {
     render() {
         return (
             <div className='HomePage-container'>
-                     <button className='Login'>Log-in</button>
+                    <div>
+                        <a href={process.env.REACT_APP_LOGIN}><button className='Login'>Log-in</button></a>
+                        </div>
                 <div className='HomePage'>
                 <div className='menu-access'>
                     <div className='home-title'>DevMENU</div>
