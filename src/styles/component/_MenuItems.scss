@@ -1,0 +1,29 @@
+.title {
+    width: 100%;
+    height: 100px;
+    @include flexSetUp(flex-end, center, column);
+    font-size: 40px;
+    letter-spacing: 5px;
+}
+
+.Nav {
+    width: 100%;
+    height: 100px;
+    @include flexSetUp(center, center, column);
+}
+
+.nav-container {
+    width: 70%;
+    height: 40%;
+    border: 1px solid rgb(14, 13, 13);
+    border-radius: 70px;
+    @include flexSetUp(center, center, row);
+
+    .drinks {
+        width: 20%;
+        height: 100%;
+        border: 1px solid rgb(111, 111, 112);
+        border-radius: 70px;
+        @include flexSetUp(center, center);
+    }
+}
