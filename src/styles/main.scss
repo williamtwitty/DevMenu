@@ -1,0 +1,11 @@
+@import 'mixins';
+@import 'reset';
+@import 'variables';
+@import 'global';
+
+@import './component/_AdminPage.scss';
+@import './component/_CheckoutPage.scss';
+@import './component/_Footer.scss';
+@import './component/_HomePage.scss';
+@import './component/_Menu.scss';
+@import './component/_Nav.scss';
