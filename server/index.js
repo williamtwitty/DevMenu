@@ -10,6 +10,8 @@ const express = require('express'),
     ctrl = require('./controller/controller')
 
 const app = express();
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
 app.use(cors());
 
 app.use(session({
@@ -76,6 +78,15 @@ app.get('/auth/logout', (req, res) => {
 
 
 app.get('/api/:type', ctrl.getMenuType)
+
 const PORT = 3030;
 
-app.listen(PORT, ()=> console.log('Listening on port:' , PORT))
+server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
+
+    io.on('connection', function(socket) {
+        console.log('we are connected');
+    socket.on('disconnect', function(socket){
+        console.log('we disconnected');
+    })
+
+    })

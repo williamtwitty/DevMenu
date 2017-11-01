@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 class HomePage extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            
+        }
+    }
 
 
 
@@ -34,4 +41,10 @@ class HomePage extends Component {
     }
 }
 
-export default HomePage;
+function mapStateToProps(state){
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps)(HomePage);

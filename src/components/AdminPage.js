@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 class Admin extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+
+        }
+    }
+
+
     render() {
         return (
             <div>
@@ -10,5 +19,10 @@ class Admin extends Component {
         );
     }
 }
+function mapStateToProps(state){
+    return {
 
-export default Admin;
+    }
+}
+
+export default connect(mapStateToProps)(Admin);
