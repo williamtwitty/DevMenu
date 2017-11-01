@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 class MenuItems extends Component {
     constructor(){
@@ -17,8 +18,12 @@ class MenuItems extends Component {
            })
        })
    } 
-
     render() {
+        const menu = this.state.menu.map((type)=>{
+            return(
+                <div>{type.name}</div>
+            )
+        })
         return (
             <div>
                 <div className='title'>DevMENU</div>
@@ -31,6 +36,7 @@ class MenuItems extends Component {
                         <div className='drinks'>Desserts</div>
                     </div>
                 </div>
+                {menu}
             </div>
         );
     }

@@ -11,6 +11,6 @@ export default (
         <Route exact path='/' component={ HomePage }/>
         <Route exact path='/menu' component={ Menu} />
         <Route exact path='/admin' component={ AdminPage } />
-        <Route exact path='/item' component={ MenuItems } />
+        <Route exact path='/:type' component={ MenuItems } />
     </Switch>
 )
