@@ -9,5 +9,7 @@ eggs int,
 lettuce int,
 croutons int,
 tomatoes int, 
-cucumbers int
+cucumbers int,
+image text,
+details varchar(355)
 )

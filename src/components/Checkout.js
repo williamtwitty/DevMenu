@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 class Checkout extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+
+        }
+    }
+
+
+
     render() {
         return (
             <div>
@@ -9,5 +19,10 @@ class Checkout extends Component {
         );
     }
 }
+function mapStateToProps(state){
+    return {
 
-export default Checkout;
+    }
+}
+
+export default connect(mapStateToProps)(Checkout);

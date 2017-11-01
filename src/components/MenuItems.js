@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import axios from 'axios'
+import { getMenuType } from '../ducks/reducer'
 
 class MenuItems extends Component {
     constructor(){
@@ -10,15 +12,10 @@ class MenuItems extends Component {
     }
    
     componentDidMount(){
-       axios.get(`/api/${this.props.match.params.type}`).then( response => {
-           console.log(response)
-           this.setState({
-               menu: response.data
-           })
-       })
+        this.props.getMenuType(this.props.match.params.type)
    } 
     render() {
-        const menu = this.state.menu.map((type)=>{
+        const item = this.props.menu.map((type)=>{
             return(
                 <div>{type.name}</div>
             )
@@ -35,10 +32,15 @@ class MenuItems extends Component {
                         <div className='drinks'>Desserts</div>
                     </div>
                 </div>
-                {menu}
+                {item}
             </div>
         );
     }
 }
+function mapStateToProps(state){
+    return {
+        menu: state.menu
+    }
+}
 
-export default MenuItems;
+export default connect(mapStateToProps, {getMenuType})(MenuItems);
