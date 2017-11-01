@@ -1,0 +1,139 @@
+body {
+  margin: 0; }
+
+.HomePage-container {
+  width: 100%;
+  height: 100vh;
+  background-image: url("https://i.imgur.com/gmaqcSX.jpg");
+  background-size: cover; }
+
+.Login {
+  float: right; }
+
+.HomePage {
+  width: 100%;
+  height: auto; }
+
+.menu-access {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; }
+
+.home-title {
+  font-size: 100px;
+  color: white;
+  letter-spacing: 7px; }
+
+.chooseTable {
+  color: white;
+  font-size: 24px;
+  line-height: 40px;
+  margin-top: 50px; }
+
+.tableInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row; }
+
+.home-input {
+  margin: 10px; }
+
+.Wrap-Menu {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 1em;
+  justify-content: stretch;
+  align-items: stretch;
+  width: 100%;
+  height: 100vh; }
+
+.dessert111 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-rows: minmax(100px, auto);
+  justify-content: stretch;
+  align-items: stretch;
+  width: 100%;
+  height: 100vh;
+  font-size: 55px; }
+  .dessert111 .dessert1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-image: url("https://i.imgur.com/s2fvVxc.jpg");
+    background-size: cover;
+    margin: 10px; }
+  .dessert111 .dessert2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-image: url("https://imgur.com/ksN47Xd.jpg");
+    background-size: cover;
+    margin: 10px; }
+  .dessert111 .dessert3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-image: url("https://i.imgur.com/d7wVdrD.jpg?1");
+    background-size: cover;
+    margin: 10px; }
+  .dessert111 .dessert4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-image: url("https://imgur.com/ujnuFvf.jpg");
+    background-size: cover;
+    margin: 10px; }
+  .dessert111 .dessert5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-image: url("https://imgur.com/QPKquke.jpg");
+    background-size: cover;
+    margin: 10px; }
+
+.title {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  font-size: 40px;
+  letter-spacing: 5px; }
+
+.Nav {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+.nav-container {
+  width: 70%;
+  height: 40%;
+  border: 1px solid #0e0d0d;
+  border-radius: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row; }
+  .nav-container .drinks {
+    width: 20%;
+    height: 100%;
+    border: 1px solid #6f6f70;
+    border-radius: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; }
