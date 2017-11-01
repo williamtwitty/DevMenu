@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 class MenuItems extends Component {
+    constructor(){
+        super()
+       this.state={
+           menu: []
+       }
+    }
+   
+    componentDidMount(){
+       axios.get(`/api/${this.props.match.params.type}`).then( response => {
+           console.log(response)
+           this.setState({
+               menu: response.data
+           })
+       })
+   } 
+
     render() {
         return (
             <div>
@@ -18,5 +35,10 @@ class MenuItems extends Component {
         );
     }
 }
+function mapStateToProps(state){
+    return {
 
-export default MenuItems;
+    }
+}
+
+export default connect(mapStateToProps)(MenuItems);

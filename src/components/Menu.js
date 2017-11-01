@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 class Menu extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            
+        }
+    }
+
+
+
     render() {
         return (
             <div className='Wrap-Menu'>
@@ -17,4 +27,10 @@ class Menu extends Component {
     }
 }
 
-export default Menu;
+function mapStateToProps(state){
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps)(Menu);

@@ -1,6 +1,7 @@
 {
   "name": "devmenu",
   "version": "0.1.0",
+  "main": "./server/index.js",
   "private": true,
   "dependencies": {
     "body-parser": "^1.18.2",
