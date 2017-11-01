@@ -74,7 +74,7 @@ app.get('/auth/user', passport.authenticate('auth0'), (req, res) => {
 app.get('/auth/logout', (req, res) => {
     req.logOut()
     res.redirect(302, 'https://dev-menu.auth0.com/v2/logout?returnTo=http%3A%2F%2Flocalhost%3A3000%2F&client_id=RO5VKD0VU0JRf2br77hOxEmyWokY6D2N')
-    })
+})
 
 
 app.get('/api/:type', ctrl.getMenuType)
@@ -88,5 +88,4 @@ server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
     socket.on('disconnect', function(socket){
         console.log('we disconnected');
     })
-
-    })
+})
