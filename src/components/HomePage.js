@@ -9,7 +9,7 @@ class HomePage extends Component {
             
         }
     }
-// need to install redux-promise-middleware redux react-redux axios
+
 
 
     render() {
