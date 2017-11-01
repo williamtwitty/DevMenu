@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FoodItems from './FoodItems';
 
 class MenuItems extends Component {
     render() {
@@ -14,6 +15,11 @@ class MenuItems extends Component {
                         <div className='drinks'>Desserts</div>
                     </div>
                 </div>
+
+                <div>
+                    <FoodItems/>
+                </div>
+
             </div>
         );
     }
