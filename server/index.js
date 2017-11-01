@@ -76,6 +76,7 @@ app.get('/auth/logout', (req, res) => {
 
 
 app.get('/api/:type', ctrl.getMenuType)
+
 const PORT = 3030;
 
 app.listen(PORT, ()=> console.log('Listening on port:' , PORT))
