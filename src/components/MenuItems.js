@@ -32,15 +32,7 @@ class MenuItems extends Component {
                         <div className='drinks'>Desserts</div>
                     </div>
                 </div>
-<<<<<<< HEAD
-
-                <div>
-                    <FoodItems/>
-                </div>
-
-=======
                 {item}
->>>>>>> master
             </div>
         );
     }

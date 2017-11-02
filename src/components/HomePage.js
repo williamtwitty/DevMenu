@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
+import { selectTableNumber } from '../ducks/reducer'
 
 class HomePage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            
+            table: 0
         }
+        this.handleOnChange = this.handleOnChange.bind(this)
+    }
+
+    handleOnChange(e) {
+        this.props.selectTableNumber(e)
     }
 
 
 
     render() {
+
+
         return (
             <div className='HomePage-container'>
                     <div>
@@ -23,7 +31,7 @@ class HomePage extends Component {
                     <div className='home-title'>DevMENU</div>
                     <div className='chooseTable'>Choose Your Table</div>
                     <div className='tableInput'>
-                    <select className='home-input'>
+                    <select className='home-input' defaultValue="0" onChange={(e)=>{this.handleOnChange(e.target.value)}} >
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>
@@ -47,4 +55,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps, {selectTableNumber})(HomePage);
