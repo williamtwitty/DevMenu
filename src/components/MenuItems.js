@@ -41,8 +41,14 @@ class MenuItems extends Component {
                         <div className='drinks'>Desserts</div>
                     </div>
                 </div>
-                {item}
-            </div>
+
+                <div className='space'>
+                <div className='foods'>
+                    {item}
+                </div>
+                    </div>
+                    </div>
+
         );
     }
 }
