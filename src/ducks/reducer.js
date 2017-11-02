@@ -4,10 +4,7 @@ const initialState = {
     menu: [],
     checkByTable: [],
     tableNumber: 0,
-<<<<<<< HEAD
     adminOrders: []
-=======
->>>>>>> master
 }
 
 const GET_MENU_TYPE = 'GET_MENU_TYPE'
