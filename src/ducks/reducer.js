@@ -3,7 +3,7 @@ import axios from 'axios'
 const initialState = {
     menu: [],
     checkByTable: [],
-    tableNumber: 0
+    tableNumber: 0,
 }
 
 const GET_MENU_TYPE = 'GET_MENU_TYPE'
@@ -40,7 +40,8 @@ export function getCheckByTable(table) {
 }
 
 export function newOrder(id, tableNumber) {
-    const newOrder = axios.post(`/api/neworder/`, id, tableNumber).then( response => {
+    const newOrder = axios.post(`/api/neworder/`, {id, tableNumber}).then( response => {
+        return response.data
      })
      return {
          type: NEW_ORDER,
@@ -57,6 +58,8 @@ export default function reducer(state=initialState, action) {
             return Object.assign({}, state, {checkByTable: action.payload})
         case SELECT_TABLE_NUMBER:
             return Object.assign({}, state, { tableNumber: action.payload})
+        case NEW_ORDER + '_FULFILLED':
+            return Object.assign({}, state, { newOrder: action.payload})
         default:
             return state;
     }

@@ -1,23 +1,34 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {newOrder} from '../ducks/reducer';
 
-export default class FoodItems extends Component {
+class FoodItems extends Component {
   render() {
+    const {type} = this.props
+    
     return (
-      <div>
-        <div className="food-container">
-          <div className="food-together">
-            <div className="food-img">
+      <div className="food-container">
+                <div className="food-together">
+                  <div className="food-img">
+                  <img src={type.image} alt="" width='400px' height='300px' />
+                  </div>
+                  <div className="food-info">
+                    <div className="food-title">{type.name}</div>
+                    <div className="food-desc">{type.details}</div>
+                    <div className="food-to-cart">
+                      <button className="btn-cart" onClick={()=>this.props.newOrder(type.id, this.props.tableNumber)}>ORDER </button> &nbsp; &nbsp; {type.price}
+                    </div>
+                  </div>
+                </div>
               </div>
-            <div className="food-info">
-              <div className="food-title">Ancient Grain & Arugula Salad with Chicken</div>
-              <div className="food-desc">Chicken raised without antibiotics, arugula, ancient grain blend, red grapes and fresh apple and cabbage slaw tossed with white sweet balsamic vinaigrette and topped with roasted and salted pumpkin seeds.</div>
-              <div className="food-to-cart">
-                <button className="btn-cart">Add to cart </button> &nbsp; &nbsp; $7
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     )
   }
 }
+
+function mapStateToProps(state){
+  return {
+      tableNumber: state.tableNumber
+  }
+}
+
+export default connect(mapStateToProps,{ newOrder})(FoodItems);
