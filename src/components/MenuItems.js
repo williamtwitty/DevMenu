@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+import FoodItems from './FoodItems'
 import { getMenuType } from '../ducks/reducer';
+import {newOrder} from '../ducks/reducer'
 
 
 class MenuItems extends Component {
@@ -16,27 +17,16 @@ class MenuItems extends Component {
         this.props.getMenuType(this.props.match.params.type)
    } 
     render() {
+        console.log("menu bladgfoSIJD",this.props.tableNumber);
         const item = this.props.menu.map((type)=>{
-
+                    console.log(type);
             //this.props.newOrder(item.id, this.props.tableNumber)
             return(
                 //<div>{type.name}</div>
-                <div className='contain'>
-                <div className="food-container">
-                <div className="food-together">
-                  <div className="food-img">
-                  <img src={type.image} width='400px' height='300px' />
-                  </div>
-                  <div className="food-info">
-                    <div className="food-title">{type.name}</div>
-                    <div className="food-desc">{type.details}</div>
-                    <div className="food-to-cart">
-                      <button className="btn-cart">ORDER </button> &nbsp; &nbsp; {type.price}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </div>
+               
+                <FoodItems key={type.name} type={type}/>
+                
+             
             )
         })
         return (
@@ -58,8 +48,9 @@ class MenuItems extends Component {
 }
 function mapStateToProps(state){
     return {
-        menu: state.menu
+        menu: state.menu,
+        tableNumber: state.tableNumber
     }
 }
 
-export default connect(mapStateToProps, {getMenuType})(MenuItems);
+export default connect(mapStateToProps,{getMenuType, newOrder})(MenuItems);
