@@ -22,5 +22,14 @@ module.exports = {
         console.log('check by table', response)
         res.status(200).send(response)
     }).catch(err => console.log(err))
+    },
+
+    getAdminOrders(req, res) {
+        // console.log('hi');
+        const db = req.app.get('db')
+    db.get_admin_orders().then(response => {
+        // console.log('admin orders')
+        res.status(200).send(response)
+    }).catch((err) => {console.log(err);})
     }
 }

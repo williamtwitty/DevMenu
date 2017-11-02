@@ -4,12 +4,14 @@ const initialState = {
     menu: [],
     checkByTable: [],
     tableNumber: 0,
+    adminOrders: []
 }
 
 const GET_MENU_TYPE = 'GET_MENU_TYPE'
 const GET_CHECK_BY_TABLE = 'GET_CHECK_BY_TABLE'
 const SELECT_TABLE_NUMBER = 'SELECT_TABLE_NUMBER'
 const NEW_ORDER = 'NEW_ORDER'
+const GET_ADMIN_ORDERS = 'GET_ADMIN_ORDERS'
 
 
 export function getMenuType(type) {
@@ -48,6 +50,16 @@ export function newOrder(id, tableNumber) {
          payload: newOrder
      }
  }
+ 
+ export function getAdminOrders() {
+    const adminOrders = axios.get('/allorders').then( response => {
+             return response.data
+     })
+     return {
+         type: GET_ADMIN_ORDERS,
+         payload: adminOrders
+     }
+ }
 
 
 export default function reducer(state=initialState, action) {
@@ -58,6 +70,8 @@ export default function reducer(state=initialState, action) {
             return Object.assign({}, state, {checkByTable: action.payload})
         case SELECT_TABLE_NUMBER:
             return Object.assign({}, state, { tableNumber: action.payload})
+        case GET_ADMIN_ORDERS + '_FULFILLED':
+            return Object.assign({}, state, {adminOrders: action.payload})
         case NEW_ORDER + '_FULFILLED':
             return Object.assign({}, state, { newOrder: action.payload})
         default:
