@@ -20,6 +20,7 @@ class Menu extends Component {
 
 
     render() {
+        console.log( this.state.tableNumber)
         return (
             <div className='Wrap-Menu'>
                <div className='dessert111'>
