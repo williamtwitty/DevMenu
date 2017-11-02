@@ -7,7 +7,6 @@ class HomePage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            table: 0
         }
         this.handleOnChange = this.handleOnChange.bind(this)
     }
@@ -31,7 +30,8 @@ class HomePage extends Component {
                     <div className='home-title'>DevMENU</div>
                     <div className='chooseTable'>Choose Your Table</div>
                     <div className='tableInput'>
-                    <select className='home-input' defaultValue="0" onChange={(e)=>{this.handleOnChange(e.target.value)}} >
+                    <select className='home-input' defaultValue={0} onChange={(e)=>{this.handleOnChange(e.target.value)}} >
+                        <option value='0'>Select your table</option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>
@@ -51,7 +51,7 @@ class HomePage extends Component {
 
 function mapStateToProps(state){
     return {
-
+        tableNumber: state.tableNumber
     }
 }
 
