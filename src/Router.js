@@ -13,6 +13,6 @@ export default (
         <Route exact path='/menu' component={ Menu} />
         <Route exact path='/admin' component={ AdminPage } />
         <Route exact path='/:type' component={ MenuItems } />
-        <Route exact path='/checkout/:table' component={ CheckOut} />
+        <Route exact path='/checkout/:table' component={ Checkout} />
     </Switch>
 )
