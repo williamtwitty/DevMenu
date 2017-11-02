@@ -15,9 +15,6 @@ class Menu extends Component {
 
         socket.emit('customerConnectedId' )
     }
-    
-
-
 
     render() {
         console.log( this.state.tableNumber)

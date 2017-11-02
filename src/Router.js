@@ -5,7 +5,7 @@ import HomePage from './components/HomePage';
 import Menu from './components/Menu';
 import AdminPage from './components/AdminPage';
 import MenuItems from './components/MenuItems';
-import CheckOut from './components/CheckOut'
+import Checkout from './components/Checkout'
 
 export default (
     <Switch>
@@ -13,6 +13,6 @@ export default (
         <Route exact path='/menu' component={ Menu} />
         <Route exact path='/admin' component={ AdminPage } />
         <Route exact path='/:type' component={ MenuItems } />
-        <Route exact path='/checkout/:table' component={ CheckOut} />
+        <Route exact path='/checkout/:table' component={ Checkout} />
     </Switch>
 )
