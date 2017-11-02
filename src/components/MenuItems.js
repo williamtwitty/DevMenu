@@ -17,6 +17,8 @@ class MenuItems extends Component {
    } 
     render() {
         const item = this.props.menu.map((type)=>{
+
+            //this.props.newOrder(item.id, this.props.tableNumber)
             return(
                 //<div>{type.name}</div>
                 <div className='contain'>
@@ -29,7 +31,7 @@ class MenuItems extends Component {
                     <div className="food-title">{type.name}</div>
                     <div className="food-desc">{type.details}</div>
                     <div className="food-to-cart">
-                      <button className="btn-cart">Add to cart </button> &nbsp; &nbsp; {type.price}
+                      <button className="btn-cart">ORDER </button> &nbsp; &nbsp; {type.price}
                     </div>
                   </div>
                 </div>

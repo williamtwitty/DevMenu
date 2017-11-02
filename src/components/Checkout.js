@@ -10,11 +10,12 @@ class CheckOut extends Component {
         }
     }
     componentDidMount() {
-        this.props.getCheckByTable(this.props.match.params.table)
+        this.props.getCheckByTable(this.props.tableNumber)
     }
     
     render() {
-        console.log(this.props.checkByTable);
+        console.log(this.props.tableNumber, 'checkout table number');
+       // console.log(this.props.checkByTable);
         return (
             <div>
                 
@@ -24,6 +25,7 @@ class CheckOut extends Component {
 }
 function mapStateToProps(state){
     return {
+        tableNumber: state.tableNumber,
         checkByTable: state.checkByTable
     }
 }
