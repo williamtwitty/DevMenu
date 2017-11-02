@@ -55,10 +55,10 @@ class MenuItems extends Component {
                 </div>
                 <div className='space'>
                 <div className='foods'>
-{item}
-          </div>
-            </div>
-            </div>
+                    {item}
+                </div>
+                    </div>
+                    </div>
         );
     }
 }
