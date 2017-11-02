@@ -6,16 +6,21 @@ import { Link } from 'react-router-dom';
 
 
 class MenuItems extends Component {
-    constructor(){
-        super()
-       this.state={
+    constructor(props){
+        super(props)
+       this.state = {
            menu: []
        }
     }
    
     componentDidMount(){
-        this.props.getMenuType(this.props.match.params.type)
+        this.props.getMenuType(this.props.match.params.type);
    } 
+
+    componentWillUpdate(){
+        this.props.getMenuType(this.props.match.params.type);
+   } 
+   
     render() {
         const item = this.props.menu.map((type)=>{
 
@@ -36,8 +41,6 @@ class MenuItems extends Component {
                   </div>
                 </div>
               </div>
-
-
             </div>
             )
         })
@@ -53,12 +56,13 @@ class MenuItems extends Component {
                         <div className='drinks'><Link to ='/desserts'>Desserts</Link></div>
                     </div>
                 </div>
+
                 <div className='space'>
-                <div className='foods'>
-{item}
-          </div>
-            </div>
-            </div>
+                    <div className='foods'>
+                        {item}
+                        </div>
+                    </div>
+                </div>
         );
     }
 }
