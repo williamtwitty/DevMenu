@@ -8,7 +8,7 @@ class Menu extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            
+    
         }
     }
     componentDidMount() {
@@ -20,7 +20,7 @@ class Menu extends Component {
 
 
     render() {
-        console.log( this.state.tableNumber)
+        console.log( this.props.tableNumber)
         return (
             <div className='Wrap-Menu'>
                <div className='dessert111'>
@@ -37,7 +37,7 @@ class Menu extends Component {
 
 function mapStateToProps(state){
     return {
-
+        tableNumber: state.tableNumber
     }
 }
 
