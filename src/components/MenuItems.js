@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import axios from 'axios'
-import { getMenuType } from '../ducks/reducer'
+import { connect } from 'react-redux';
+import axios from 'axios';
+import { getMenuType } from '../ducks/reducer';
+
 
 class MenuItems extends Component {
     constructor(){
@@ -17,7 +18,23 @@ class MenuItems extends Component {
     render() {
         const item = this.props.menu.map((type)=>{
             return(
-                <div>{type.name}</div>
+                //<div>{type.name}</div>
+                <div className='contain'>
+                <div className="food-container">
+                <div className="food-together">
+                  <div className="food-img">
+                  <img src={type.image} width='400px' height='300px' />
+                  </div>
+                  <div className="food-info">
+                    <div className="food-title">{type.name}</div>
+                    <div className="food-desc">{type.details}</div>
+                    <div className="food-to-cart">
+                      <button className="btn-cart">Add to cart </button> &nbsp; &nbsp; {type.price}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
             )
         })
         return (
