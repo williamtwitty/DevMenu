@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
-import io from 'socket.io-client'
-const socket = io('http://localhost:3030')
+import { connect } from 'react-redux';
+import { getMenuType } from '../ducks/reducer';
+import io from 'socket.io-client';
+const socket = io('http://localhost:3030');
 
 class Menu extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            
+    
         }
-    }
-    componentDidMount() {
-
-        socket.emit('customerConnectedId' )
     }
 
     render() {
-        console.log( this.state.tableNumber)
+        console.log( this.props.tableNumber)
         return (
             <div className='Wrap-Menu'>
                <div className='dessert111'>
@@ -34,7 +31,7 @@ class Menu extends Component {
 
 function mapStateToProps(state){
     return {
-
+        tableNumber: state.tableNumber
     }
 }
 
