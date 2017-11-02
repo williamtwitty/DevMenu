@@ -9,6 +9,7 @@ module.exports = {
 
     newOrderPlaced(req, res) {
         const db = req.app.get('db')
+        console.log('body',req.body)
         const {id, tableNumber} = req.body
     db.new_order([id, tableNumber]).then(response => {
         console.log('plz work', response);
