@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
-import io from 'socket.io-client'
-const socket = io('http://localhost:3030')
+import { connect } from 'react-redux';
+import { getMenuType } from '../ducks/reducer';
+import io from 'socket.io-client';
+const socket = io('http://localhost:3030');
 
 class Menu extends Component {
     constructor(props) {
@@ -11,13 +12,6 @@ class Menu extends Component {
     
         }
     }
-    componentDidMount() {
-
-        socket.emit('customerConnectedId' )
-    }
-    
-
-
 
     render() {
         console.log( this.props.tableNumber)

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+import FoodItems from './FoodItems'
 import { getMenuType } from '../ducks/reducer';
-import { Link } from 'react-router-dom';
+import {newOrder} from '../ducks/reducer'
 
 
 class MenuItems extends Component {
@@ -17,28 +17,16 @@ class MenuItems extends Component {
         this.props.getMenuType(this.props.match.params.type)
    } 
     render() {
+        console.log("menu bladgfoSIJD",this.props.tableNumber);
         const item = this.props.menu.map((type)=>{
-
+                    console.log(type);
             //this.props.newOrder(item.id, this.props.tableNumber)
             return(
-            <div>
-                <div className="food-container">
-                <div className="food-together">
-                  <div className="food-img">
-                  <img src={type.image} width='380px' height='300px' alt='' />
-                  </div>
-                  <div className="food-info">
-                    <div className="food-title">{type.name}</div>
-                    <div className="food-desc">{type.details}</div>
-                    <div className="food-to-cart">
-                      <button className="btn-cart">ORDER </button> &nbsp; &nbsp; {type.price}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
+                //<div>{type.name}</div>
+               
+                <FoodItems key={type.name} type={type}/>
+                
+             
             )
         })
         return (
@@ -46,26 +34,29 @@ class MenuItems extends Component {
                 <div className='title'>DevMENU</div>
                 <div className='Nav'>
                     <div className='nav-container'>
-                        <div className='drinks'><Link to ='/drinks'>Drinks</Link></div>
-                        <div className='drinks'><Link to ='/appetizers'>Appetizers</Link></div>
-                        <div className='drinks'><Link to ='/salads'>Salads</Link></div>
-                        <div className='drinks'><Link to ='/entrees'>Entrees</Link></div>
-                        <div className='drinks'><Link to ='/desserts'>Desserts</Link></div>
+                        <div className='drinks'>Drinks</div>
+                        <div className='drinks'>Appetizers</div>
+                        <div className='drinks'>Salads</div>
+                        <div className='drinks'>Entrees</div>
+                        <div className='drinks'>Desserts</div>
                     </div>
                 </div>
+
                 <div className='space'>
                 <div className='foods'>
                     {item}
                 </div>
                     </div>
                     </div>
+
         );
     }
 }
 function mapStateToProps(state){
     return {
-        menu: state.menu
+        menu: state.menu,
+        tableNumber: state.tableNumber
     }
 }
 
-export default connect(mapStateToProps, {getMenuType})(MenuItems);
+export default connect(mapStateToProps,{getMenuType, newOrder})(MenuItems);
