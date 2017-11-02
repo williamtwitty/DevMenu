@@ -79,6 +79,8 @@ app.get('/auth/logout', (req, res) => {
 
 app.get('/api/:type', ctrl.getMenuType)
 app.get('/api/:table', ctrl.getCheckByTable)
+app.get('/allorders', ctrl.getAdminOrders)
+
 app.post('/api/neworder', ctrl.newOrderPlaced)
 
 const PORT = 3030;
