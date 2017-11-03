@@ -12,7 +12,6 @@ module.exports = {
         console.log('body',req.body)
         const {id, tableNumber} = req.body
     db.new_order([id, tableNumber]).then(response => {
-        console.log('plz work', response);
     }).catch(err => console.log(err))
     },
 
