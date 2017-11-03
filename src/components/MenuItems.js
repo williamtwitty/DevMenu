@@ -18,9 +18,11 @@ class MenuItems extends Component {
         this.props.getMenuType(this.props.match.params.type)
    } 
 
+
    componentWillUpdate() {
     this.props.getMenuType(this.props.match.params.type)
    }
+
     render() {
         console.log("menu bladgfoSIJD",this.props.tableNumber);
         const item = this.props.menu.map((type)=>{
