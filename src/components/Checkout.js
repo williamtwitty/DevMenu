@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
-import swal from 'sweetalert2';
+// import swal from 'sweetalert2';
 
 class CheckOut extends Component {
     constructor(props) {
@@ -18,7 +18,7 @@ class CheckOut extends Component {
 
     }
     componentDidMount() {
-        this.props.getCheckByTable(this.props.tableNumber)
+        this.props.getCheckByTable(this.props.match.params.table)
     }
 
     onToken(token) {
@@ -27,15 +27,22 @@ class CheckOut extends Component {
             title: 'Custom width, padding, background.'
           })
         console.log('token', this.state);
-        axios.post('/api/payment', { token, amount: 100, options: this.state} ).then(response => {
-            alert('thanks for your purchase!')
-        
+        axios.post('/api/payment', { token, amount: this.props.checkByTable[0], options: this.state} ).then(response => {
+            // alert('thanks for your purchase!')
+            // swal({
+            //     title: null,
+            //     text: 'You order is complete!',
+            //     type: null,
+            //     confirmButtonText: 'Sweeeet!'
+            //   })
         });
       }
     
     render() {
-        console.log(this.props.tableNumber, 'checkout table number');
-       // console.log(this.props.checkByTable);
+        console.log("url", this.props.match.params.table);
+        // console.log('its working',this.props.newOrder);
+        // console.log(this.props.tableNumber, 'checkout table number');
+       console.log('test',this.props.checkByTable);
         return (
             
             <div>
@@ -81,8 +88,7 @@ class CheckOut extends Component {
                                 <StripeCheckout
                                 token={this.onToken}
                                 stripeKey={ process.env.REACT_APP_STRIPE_SECRETKEY }
-                                amount={100}
-                                className='stripe'
+                                amount={+this.props.checkByTable[0] * 100}
                                 />
                             </div>
                         </div>
@@ -97,7 +103,8 @@ class CheckOut extends Component {
 function mapStateToProps(state){
     return {
         tableNumber: state.tableNumber,
-        checkByTable: state.checkByTable
+        checkByTable: state.checkByTable,
+        newOrder: state.newOrder
     }
 }
 

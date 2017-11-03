@@ -4,13 +4,15 @@ const initialState = {
     menu: [],
     checkByTable: [],
     tableNumber: 0,
-    adminOrders: []
+    adminOrders: [],
+    newOrder: []
 }
 
 const GET_MENU_TYPE = 'GET_MENU_TYPE'
 const GET_CHECK_BY_TABLE = 'GET_CHECK_BY_TABLE'
 const SELECT_TABLE_NUMBER = 'SELECT_TABLE_NUMBER'
 const NEW_ORDER = 'NEW_ORDER'
+const COMPLETED_ORDER = 'COMPLETED_ORDER'
 const GET_ADMIN_ORDERS = 'GET_ADMIN_ORDERS'
 
 
@@ -32,7 +34,7 @@ export function selectTableNumber(table) {
 }
 
 export function getCheckByTable(table) {
-   const checkByTable = axios.get(`/api/checkout/${table}`).then( response => {
+   const checkByTable = axios.get(`/checkout/${table}`).then( response => {
             return response.data
     })
     return {
@@ -48,6 +50,16 @@ export function newOrder(id, tableNumber) {
      return {
          type: NEW_ORDER,
          payload: newOrder
+     }
+ }
+
+ export function completedOrder(tableNumber) {
+    const completedOrder = axios.patch(`/api/completed/`, tableNumber).then( response => {
+        return response.data
+     })
+     return {
+         type: COMPLETED_ORDER,
+         payload: completedOrder
      }
  }
  
@@ -70,10 +82,12 @@ export default function reducer(state=initialState, action) {
             return Object.assign({}, state, {checkByTable: action.payload})
         case SELECT_TABLE_NUMBER:
             return Object.assign({}, state, { tableNumber: action.payload})
-        case GET_ADMIN_ORDERS + '_FULFILLED':
+            case GET_ADMIN_ORDERS + '_FULFILLED':
             return Object.assign({}, state, {adminOrders: action.payload})
         case NEW_ORDER + '_FULFILLED':
             return Object.assign({}, state, { newOrder: action.payload})
+        case COMPLETED_ORDER + '_FULFILLED':
+            return Object.assign({}, state, {completedOrder: action.payload})
         default:
             return state;
     }

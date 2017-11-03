@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FoodItems from './FoodItems'
+import FoodItems from './FoodItems';
 import { getMenuType } from '../ducks/reducer';
 import {newOrder} from '../ducks/reducer';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
 class MenuItems extends Component {
-    constructor(){
-        super()
-       this.state={
+    constructor(props){
+        super(props)
+       this.state = {
            menu: []
        }
     }
@@ -24,16 +24,14 @@ class MenuItems extends Component {
    }
 
     render() {
-        console.log("menu bladgfoSIJD",this.props.tableNumber);
+        //console.log("menu bladgfoSIJD",this.props.tableNumber);
         const item = this.props.menu.map((type)=>{
-                    console.log(type);
+                   // console.log(type);
             //this.props.newOrder(item.id, this.props.tableNumber)
             return(
                 //<div>{type.name}</div>
                
-                <FoodItems key={type.name} type={type}/>
-                
-             
+                <FoodItems key={type.name} type={type}/>          
             )
         })
         return (
@@ -47,16 +45,14 @@ class MenuItems extends Component {
                         <div className='drinks'><Link className='Link' to ='/entrees'>Entrees</Link></div>
                         <div className='drinks'><Link className='Link' to ='/desserts'>Desserts</Link></div>
                     </div>
-                </div>
-
-                <div className='space'>
-                <div className='foods'>
-                    {item}
-                </div>
+                        <div><Link to ={`/checkout/${this.props.tableNumber}`}>Checkout</Link></div>
+                    <div className='space'>
+                        <div className='foods'>
+                            {item}
+                        </div>
                     </div>
-                    </div>
-
-        );
+                </div>
+        ); 
     }
 }
 function mapStateToProps(state){
