@@ -16,17 +16,14 @@ class MenuItems extends Component {
     componentDidMount(){
         this.props.getMenuType(this.props.match.params.type)
    } 
+
+
     render() {
-        console.log("menu bladgfoSIJD",this.props.tableNumber);
+        // console.log("menu",this.props.tableNumber);
         const item = this.props.menu.map((type)=>{
                     console.log(type);
-            //this.props.newOrder(item.id, this.props.tableNumber)
             return(
-                //<div>{type.name}</div>
-               
                 <FoodItems key={type.name} type={type}/>
-                
-             
             )
         })
         return (
@@ -41,8 +38,14 @@ class MenuItems extends Component {
                         <div className='drinks'>Desserts</div>
                     </div>
                 </div>
-                {item}
-            </div>
+
+                <div className='space'>
+                <div className='foods'>
+                    {item}
+                </div>
+                    </div>
+                    </div>
+
         );
     }
 }

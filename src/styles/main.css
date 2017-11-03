@@ -1,3 +1,161 @@
+.cart-title {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  font-size: 25px;
+  letter-spacing: 3px; }
+
+.cart-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 18px;
+  letter-spacing: 2px; }
+  .cart-container .cart-titles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border: 1px solid black;
+    height: 50px;
+    width: 90%; }
+    .cart-container .cart-titles .Product {
+      width: 45%;
+      height: 100%; }
+    .cart-container .cart-titles .Price {
+      width: 15%;
+      height: 100%; }
+    .cart-container .cart-titles .Quantity {
+      width: 15%;
+      height: 100%; }
+    .cart-container .cart-titles .Total {
+      width: 15%;
+      height: 100%; }
+  .cart-container .cart-item {
+    width: 90%;
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; }
+    .cart-container .cart-item .cart-delete {
+      width: 2%;
+      height: 100px;
+      border: 1px solid green; }
+    .cart-container .cart-item .cart-img-box {
+      width: 18%;
+      height: 100px;
+      border: 1px solid green; }
+    .cart-container .cart-item .cart-product {
+      width: 31%;
+      height: 100px;
+      border: 1px solid green; }
+    .cart-container .cart-item .cart-price {
+      width: 17%;
+      height: 100px;
+      border: 1px solid green; }
+    .cart-container .cart-item .cart-quantity {
+      width: 17%;
+      height: 100px;
+      border: 1px solid green; }
+    .cart-container .cart-item .cart-total {
+      width: 17%;
+      height: 100px;
+      border: 1px solid green; }
+  .cart-container .cart-coupon {
+    width: 90%;
+    height: 50px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center; }
+    .cart-container .cart-coupon .coupon-code {
+      height: 65%;
+      width: 20%;
+      margin-left: 10px;
+      font-size: 18px;
+      letter-spacing: 1px;
+      outline: none; }
+    .cart-container .cart-coupon .apply-coupon {
+      margin-left: 20px;
+      height: 65%;
+      width: 10%;
+      background-color: white;
+      border: 1px solid #6da196;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: #6da196;
+      outline: none; }
+  .cart-container .Totals-container {
+    width: 90%;
+    height: 400px; }
+    .cart-container .Totals-container .TOTALS {
+      width: 50%;
+      height: 100%;
+      float: right; }
+      .cart-container .Totals-container .TOTALS .cart-total-title {
+        width: 100%;
+        height: 10%;
+        font-size: 24px; }
+      .cart-container .Totals-container .TOTALS .subtotal {
+        width: 100%;
+        height: 10%;
+        border: 1px solid black;
+        border-bottom: none; }
+      .cart-container .Totals-container .TOTALS .receipt {
+        width: 100%;
+        height: 52%;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        align-items: flex-start;
+        align-content: stretch;
+        border-bottom: none; }
+      .cart-container .Totals-container .TOTALS .total {
+        width: 100%;
+        height: 10%;
+        border: 1px solid black;
+        border-bottom: none; }
+      .cart-container .Totals-container .TOTALS .btn-totalbox {
+        width: 100%;
+        height: 15%;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row; }
+        .cart-container .Totals-container .TOTALS .btn-totalbox .stripe-btn {
+          width: 25%;
+          height: 50%; }
+
+.empty-space {
+  width: 100%;
+  height: 50px; }
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-end;
+  align-content: stretch; }
+
+.footer-container {
+  width: 100%;
+  height: 100px;
+  background-color: tan; }
+
 body {
   margin: 0; }
 
