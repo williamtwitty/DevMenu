@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAdminOrders } from '../ducks/reducer';
+import { getAdminOrders, completedOrder } from '../ducks/reducer';
 
 class Admin extends Component {
     constructor(props) {
@@ -20,6 +20,7 @@ class Admin extends Component {
 
         for (var i = 0; i < this.props.adminOrders.length; i++) {
             var groupName = this.props.adminOrders[i].table_number;
+            console.log(groupName, 'groupName');
             if (!groups[groupName]) {
                 groups[groupName] = [];
             }
@@ -34,28 +35,30 @@ class Admin extends Component {
         const orders = myOrders.map((order, i) => {
             console.log('items', order.name)
            return( 
-            <div>
-                <div className='Orders-container'>
-                    <div className='Orders'>
-                        <div className='order-title flex'>Orders</div>
-                        <div className='table flex'>TableNumber: { order.group }</div>
-                        <div className='orders'>
-                            {
-                                order.name.map((item) => {
-                                return (
-                                <div>{item}</div>
-                                )
-                            })}
-                              
-                        </div>
-                        <div className='btn-totalbox'>
-                            <button className='btn'> Delete </button>
+                <div>
+                    <div className='Orders-container'>
+                        <div className='Orders'>
+                            <div className='order-title flex'>Orders</div>
+                            <div className='table flex'>TableNumber: { parseInt(order.group) + 1 }</div>
+                            <div className='orders'>
+                                {
+                                    order.name.map((item) => {
+                                        return (
+                                            <div>{item}</div>
+                                        )
+                                    })
+                                }     
+                            </div>
+
+                            <div className='btn-totalbox'>
+                            <button className='btn'
+                                onClick={() => this.props.completedOrder(order.group)}> 
+                                Delete </button>
+                            </div>
                         </div>
                     </div>
-            </div>
-           
-           </div>
-           )
+                </div>
+            )
         })
         return (
             <div>
@@ -75,4 +78,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {getAdminOrders})(Admin);
+export default connect(mapStateToProps, {getAdminOrders, completedOrder})(Admin);
