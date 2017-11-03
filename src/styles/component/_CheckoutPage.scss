@@ -1,7 +1,12 @@
 .cart-title {
 width: 100%;
 height: 100px;
-@include flexSetUp(center, center);
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;
+justify-content: space-between;
+align-items: center;
+align-content: center;
 font-size: 25px;
 letter-spacing: 3px;
 }
@@ -116,10 +121,10 @@ letter-spacing: 3px;
                 height: 65%;
                 width: 10%;
                 background-color: white;
-                border: 1px solid rgb(109, 161, 150);
+                border: 1px solid #2b2c2f;
                 font-size: 12px;
                 letter-spacing: 2px;
-                color: rgb(109, 161, 150);
+                color: #d1b183;
                 outline: none;
             }
         }
@@ -208,10 +213,139 @@ letter-spacing: 3px;
     @include flexSetUp(center,center);
     letter-spacing: 2px;
     border-radius: 70px;
+    color: #d1b183;
 }
 
 .Link:hover {
-    background-color: rgba(90, 88, 88, 0.747);
-    color: white;
+    background-color: #2b2c2f;
+    color: #d1b183;
     font-weight: bold;
+}
+
+
+
+button.stripe {
+    overflow: hidden;
+    display: inline-block;
+    background: linear-gradient(rgb(40, 160, 229), rgb(1, 94, 148));
+    border: 0px;
+    padding: 1px;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px;
+    cursor: pointer;
+    visibility: visible;
+    user-select: none;
+}
+
+
+.back {
+    width: 9%;
+    height: 25%;
+    border: none;
+    background-color: white;
+    font-size: 16px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #d1b183;
+}
+
+
+
+
+
+
+.a-btn{
+    background: #2b2c2f;
+    padding-left: 20px;
+    padding-right: 80px;
+    height: 25px;
+    display: inline-block;
+    position: relative;
+    // border: 1px solid #5d81ab;
+    // box-shadow: 
+	// 	0px 1px 1px rgba(255,255,255,0.8) inset, 
+	// 	1px 1px 3px rgba(0,0,0,0.2), 
+	// 	0px 0px 0px 4px rgba(188,188,188,0.5);
+    border-radius: 20px;
+    float: left;
+    clear: both;
+    margin: 10px 0px;
+    overflow: hidden;
+    transition: all 0.3s linear;
+}
+.a-btn-text{
+    padding-top: 5px;
+    display: block;
+    font-size: 14px;
+    white-space: nowrap;
+    // text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+    color: white;
+    transition: all 0.2s linear;
+}
+.a-btn-slide-text{
+    position:absolute;
+    height: 100%;
+    top: 0px;
+    right: 52px;
+    width: 0px;
+    background: #63707e;
+    text-shadow: 0px -1px 1px #363f49;
+    color: #fff;
+    font-size: 18px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    text-align: left;
+    text-indent: 10px;
+    overflow: hidden;
+    line-height: 38px;
+    box-shadow: 
+		-1px 0px 1px rgba(255,255,255,0.4), 
+		1px 1px 2px rgba(0,0,0,0.2) inset;
+    transition: width 0.3s linear;
+}
+.a-btn-icon-right{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    width: 52px;
+    border-left: 1px solid #5d81ab;
+    box-shadow: 1px 0px 1px rgba(255,255,255,0.4) inset;
+}
+.a-btn-icon-right span{
+    width: 38px;
+    height: 38px;
+    opacity: 0.7;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -20px 0px 0px -20px;
+    // background: transparent url(../images/arrow_right.png) no-repeat 50% 55%;
+    transition: all 0.3s linear;
+}
+
+.a-btn:hover{
+    padding-right: 180px;
+    box-shadow: 0px 1px 1px rgba(255,255,255,0.8) inset, 1px 1px 3px rgba(0,0,0,0.2);
+}
+.a-btn:hover .a-btn-text{
+    text-shadow: 0px 1px 1px #5d81ab;
+    color: #fff;
+}
+.a-btn:hover .a-btn-slide-text{
+    width: 100px;
+}
+.a-btn:hover .a-btn-icon-right span{
+    opacity: 1;
+}
+
+.a-btn:active {
+    position: relative;
+    top: 1px;
+    background: #5d81ab;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.4) inset;
+    border-color: #80a9da;
 }
