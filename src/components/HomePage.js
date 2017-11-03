@@ -23,7 +23,11 @@ class HomePage extends Component {
         return (
             <div className='HomePage-container'>
                     <div>
-                        <a href={process.env.REACT_APP_LOGIN}><button className='Login'>Log-in</button></a>
+                        <a href={process.env.REACT_APP_LOGIN}><a href="#" class="a-btn">
+                            <span class="a-btn-text">Admin</span> 
+                            <span class="a-btn-slide-text"><Link className='admin-link' to ='/menu'>Log In</Link></span>
+                            <span class="a-btn-icon-right"><span></span></span>
+                        </a></a>
                         </div>
                 <div className='HomePage'>
                 <div className='menu-access'>
