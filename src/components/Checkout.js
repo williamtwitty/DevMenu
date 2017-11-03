@@ -20,9 +20,14 @@ class CheckOut extends Component {
     componentDidMount() {
         this.props.getCheckByTable(this.props.match.params.table)
     }
+ 
+
 
     onToken(token) {
         token.card = void 0;
+        swal({
+            title: 'Custom width, padding, background.'
+          })
         console.log('token', this.state);
         axios.post('/api/payment', { token, amount: this.props.checkByTable[0], options: this.state} ).then(response => {
             // alert('thanks for your purchase!')
@@ -36,24 +41,43 @@ class CheckOut extends Component {
       }
     
     render() {
+        let orderList = []
+        if (this.props.checkByTable[1]) {
+             orderList = this.props.checkByTable[1].map((item, i)=>{
+                return  (
+                      
+                      <div className='cart-item' key={i}>
+                      <div className='cart-delete'> X </div>
+                      <div className='cart-img-box'><img src={item.image}/> </div>
+                      <div className='cart-product'> 
+                          <h1> {item.name} </h1>
+                          <button className='edit-options'> Edit Options</button>
+                      </div>
+                      <div className='cart-price'>{item.price} </div>
+                      <div className='cart-quantity'> <input></input> </div>
+                      <div className='cart-total'> </div>
+                  </div>
+                 ) 
+              })
+        } else{
+             orderList = []
+        }
         console.log("url", this.props.match.params.table);
-        // console.log('its working',this.props.newOrder);
-        // console.log(this.props.tableNumber, 'checkout table number');
-       console.log('test',this.props.checkByTable);
+        console.log("checkbytable", this.props.checkByTable)
+      
         return (
             
             <div>
-                     <div className='title'>DevMENU</div>
-                <div className='Nav'>
-                    <div className='nav-container'>
-                        <div className='drinks'><Link className='Link' to ='/drinks'>Drinks</Link></div>
-                        <div className='drinks'><Link  className='Link' to ='/appetizers'>Appetizers</Link></div>
-                        <div className='drinks'><Link className='Link' to ='/salads'>Salads</Link></div>
-                        <div className='drinks'><Link className='Link' to ='/entrees'>Entrees</Link></div>
-                        <div className='drinks'><Link className='Link' to ='/desserts'>Desserts</Link></div>
-                    </div>
-                </div>
-                <div className='cart-title'> Cart </div>
+
+<a href="#" class="a-btn">
+	<span class="a-btn-text"><Link className='back-link' to ='/menu'>DevMENU</Link></span> 
+	<span class="a-btn-slide-text">Go Back</span>
+	<span class="a-btn-icon-right"><span></span></span>
+</a>
+
+
+
+                <div className='cart-title'> <button className='back'><Link className='back-link' to ='/menu'>Back to menu</Link></button> Cart <div></div></div>
                 <div className='cart-container'>
                     <div className='cart-titles'>
                         <div className='Product'>Product</div>
@@ -61,18 +85,9 @@ class CheckOut extends Component {
                         <div className='Quantity'>Quantity</div>
                         <div className='Total'>Total</div>
                     </div>
-                    <div className='cart-item'>
-                        <div className='cart-delete'> X </div>
-                        <div className='cart-img-box'> img </div>
-                        <div className='cart-product'> 
-                            <h1> food item </h1>
-                            <button className='edit-options'> Edit Options</button>
-                        </div>
-                        <div className='cart-price'> price </div>
-                        <div className='cart-quantity'> <input></input> </div>
-                        <div className='cart-total'> total</div>
-                    </div>
+                 {orderList}
                     <div className='cart-coupon'>
+                      
                         <input className='coupon-code' placeholder='&nbsp; Coupon code'></input>
                         <button className='apply-coupon'>Apply Coupon</button>
                     </div>
@@ -81,7 +96,9 @@ class CheckOut extends Component {
                             <div className='cart-total-title flex'>Cart Totals</div>
                             <div className='subtotal flex'>Subtotal</div>
                             <div className='receipt'>Receipt</div>
-                            <div className='total flex'>Total</div>
+                            <div className='total flex'>{this.props.checkByTable[0]}
+                          
+                            </div>
                             <div className='btn-totalbox'>
                                 <StripeCheckout
                                 token={this.onToken}
