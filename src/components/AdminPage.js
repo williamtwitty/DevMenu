@@ -37,7 +37,7 @@ class Admin extends Component {
             <div>
                 <div className='Orders-container'>
                     <div className='Orders'>
-                        <div className='order-title flex'>Orders</div>
+                        {/* <div className='order-title flex'>Orders</div> */}
                         <div className='table flex'>TableNumber: { order.group }</div>
                         <div className='orders'>
                             {
@@ -59,7 +59,7 @@ class Admin extends Component {
         })
         return (
             <div>
-                <div className="admin-title"> Admin Page
+                <div className="admin-title"> Orders
                     <div className="top">
                     <a href='http://localhost:3030/auth/logout'><button>LOGOUT</button></a>
                     </div>

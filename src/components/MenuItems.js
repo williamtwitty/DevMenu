@@ -37,13 +37,14 @@ class MenuItems extends Component {
         return (
             <div>
                 <div className='title'>DevMENU</div>
-                <div className='Nav'>
-                    <div className='nav-container'>
-                        <div className='drinks'><Link className='Link' to ='/drinks'>Drinks</Link></div>
-                        <div className='drinks'><Link className='Link' to ='/appetizers'>Appetizers</Link></div>
-                        <div className='drinks'><Link className='Link' to ='/salads'>Salads</Link></div>
-                        <div className='drinks'><Link className='Link' to ='/entrees'>Entrees</Link></div>
-                        <div className='drinks'><Link className='Link' to ='/desserts'>Desserts</Link></div>
+                    <div className='Nav'>
+                        <div className='nav-container'>
+                            <div className='drinks'><Link to ='/drinks'>Drinks</Link></div>
+                            <div className='drinks'><Link to ='/appetizers'>Appetizers</Link></div>
+                            <div className='drinks'><Link to ='/salads'>Salads</Link></div>
+                            <div className='drinks'><Link to ='/entrees'>Entrees</Link></div>
+                            <div className='drinks'><Link to ='/desserts'>Desserts</Link></div>
+                        </div>
                     </div>
                         <div><Link to ={`/checkout/${this.props.tableNumber}`}>Checkout</Link></div>
                     <div className='space'>
