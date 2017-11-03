@@ -12,6 +12,7 @@ const GET_MENU_TYPE = 'GET_MENU_TYPE'
 const GET_CHECK_BY_TABLE = 'GET_CHECK_BY_TABLE'
 const SELECT_TABLE_NUMBER = 'SELECT_TABLE_NUMBER'
 const NEW_ORDER = 'NEW_ORDER'
+const COMPLETED_ORDER = 'COMPLETED_ORDER'
 const GET_ADMIN_ORDERS = 'GET_ADMIN_ORDERS'
 
 
@@ -51,6 +52,16 @@ export function newOrder(id, tableNumber) {
          payload: newOrder
      }
  }
+
+ export function completedOrder(tableNumber) {
+    const completedOrder = axios.patch(`/api/completed/`, tableNumber).then( response => {
+        return response.data
+     })
+     return {
+         type: COMPLETED_ORDER,
+         payload: completedOrder
+     }
+ }
  
  export function getAdminOrders() {
     const adminOrders = axios.get('/allorders').then( response => {
@@ -75,6 +86,8 @@ export default function reducer(state=initialState, action) {
             return Object.assign({}, state, {adminOrders: action.payload})
         case NEW_ORDER + '_FULFILLED':
             return Object.assign({}, state, { newOrder: action.payload})
+        case COMPLETED_ORDER + '_FULFILLED':
+            return Object.assign({}, state, {completedOrder: action.payload})
         default:
             return state;
     }
