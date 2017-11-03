@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAdminOrders } from '../ducks/reducer';
-// import _ from 'lodash';
 
 class Admin extends Component {
     constructor(props) {
@@ -13,31 +12,9 @@ class Admin extends Component {
     componentDidMount() {
         this.props.getAdminOrders()
     }
-    
-
 
     render() {
-        console.log(this.props.adminOrders);
-
-        // const ordersLodash = _.map(this.props.adminOrders, order => {
-            
-
-        //     return( 
-        //         <div>
-        //             <div className='Orders-container'>
-        //                 <div className='Orders'>
-        //                     <div className='order-title flex'>Orders</div>
-        //                     <div className='table flex'>TableNumber: {order.table_number}</div>
-        //                     <div className='orders'>{order.name}</div>
-        //                     <div className='btn-totalbox'>
-        //                         <button className='btn'> Delete </button>
-        //                     </div>
-        //                 </div>
-        //         </div>
-               
-        //        </div>
-        //        )
-        // })
+        console.log('adminOrders', this.props.adminOrders);
 
         var groups = {};
 
@@ -55,14 +32,22 @@ class Admin extends Component {
         console.log('groups', groups);
         console.log('myOrders', myOrders);
         const orders = myOrders.map((order, i) => {
-            // if (order.table_menu === 1)
+            console.log('items', order.name)
            return( 
             <div>
                 <div className='Orders-container'>
                     <div className='Orders'>
                         <div className='order-title flex'>Orders</div>
                         <div className='table flex'>TableNumber: { order.group }</div>
-                        <div className='orders'>{ order.name }</div>
+                        <div className='orders'>
+                            {
+                                order.name.map((item) => {
+                                return (
+                                <div>{item}</div>
+                                )
+                            })}
+                              
+                        </div>
                         <div className='btn-totalbox'>
                             <button className='btn'> Delete </button>
                         </div>
@@ -75,13 +60,11 @@ class Admin extends Component {
         return (
             <div>
                 <div className="admin-title"> Admin Page
-                <div className="top">
-                <a href='http://localhost:3030/auth/logout'><button>LOGOUT</button></a>
+                    <div className="top">
+                    <a href='http://localhost:3030/auth/logout'><button>LOGOUT</button></a>
+                    </div>
                 </div>
-                </div>
-                <div> {orders}</div>
-
-                {/* <div> {ordersLodash}</div> */}
+                <div className='newOrders'> {orders} </div>
             </div>
         );
     }
