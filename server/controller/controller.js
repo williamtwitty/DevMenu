@@ -18,9 +18,13 @@ module.exports = {
 
     getCheckByTable(req, res) {
         const db = req.app.get('db')
-    db.get_check_by_table([req.params.table]).then(response => {
-        console.log('check by table', response)
-        res.status(200).send(response)
+        Promise.all([
+            db.get_table_total([req.params.table]),
+            db.get_table_receipt([req.params.table])]).then(response => {   
+                const tableReceipt = [response[0][0].sum,
+                                    response[1]]
+                    console.log('check by table', response[1])
+                    res.status(200).send(tableReceipt)
     }).catch(err => console.log(err))
     },
 
@@ -33,3 +37,4 @@ module.exports = {
     }).catch((err) => {console.log(err);})
     }
 }
+

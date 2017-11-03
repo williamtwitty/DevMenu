@@ -4,7 +4,8 @@ const initialState = {
     menu: [],
     checkByTable: [],
     tableNumber: 0,
-    adminOrders: []
+    adminOrders: [],
+    newOrder: []
 }
 
 const GET_MENU_TYPE = 'GET_MENU_TYPE'
@@ -32,7 +33,7 @@ export function selectTableNumber(table) {
 }
 
 export function getCheckByTable(table) {
-   const checkByTable = axios.get(`/api/checkout/${table}`).then( response => {
+   const checkByTable = axios.get(`/checkout/${table}`).then( response => {
             return response.data
     })
     return {

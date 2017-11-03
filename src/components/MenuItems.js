@@ -24,9 +24,9 @@ class MenuItems extends Component {
    }
 
     render() {
-        // console.log("menu tableNumber",this.props.tableNumber);
+        //console.log("menu bladgfoSIJD",this.props.tableNumber);
         const item = this.props.menu.map((type)=>{
-                    // console.log(type);
+                   // console.log(type);
             //this.props.newOrder(item.id, this.props.tableNumber)
             return(
                 //<div>{type.name}</div>
@@ -46,14 +46,14 @@ class MenuItems extends Component {
                             <div className='drinks'><Link to ='/desserts'>Desserts</Link></div>
                         </div>
                     </div>
-                    
+                        <div><Link to ={`/checkout/${this.props.tableNumber}`}>Checkout</Link></div>
                     <div className='space'>
                         <div className='foods'>
                             {item}
                         </div>
                     </div>
                 </div>
-        );
+        ); 
     }
 }
 function mapStateToProps(state){
