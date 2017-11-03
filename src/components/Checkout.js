@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCheckByTable } from '../ducks/reducer';
 import { Link } from 'react-router-dom';
-import Footer from '../components/Footer'
+import Footer from '../components/Footer';
+import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
+// import swal from 'sweetalert2';
 
 class CheckOut extends Component {
     constructor(props) {
@@ -10,24 +13,44 @@ class CheckOut extends Component {
         this.state = {
             checkByTable: []
         }
+
+        this.onToken=this.onToken.bind(this);
+
     }
     componentDidMount() {
-        this.props.getCheckByTable(this.props.tableNumber)
+        this.props.getCheckByTable(this.props.match.params.table)
     }
+
+    onToken(token) {
+        token.card = void 0;
+        console.log('token', this.state);
+        axios.post('/api/payment', { token, amount: this.props.checkByTable[0], options: this.state} ).then(response => {
+            // alert('thanks for your purchase!')
+            // swal({
+            //     title: null,
+            //     text: 'You order is complete!',
+            //     type: null,
+            //     confirmButtonText: 'Sweeeet!'
+            //   })
+        });
+      }
     
     render() {
-        console.log(this.props.tableNumber, 'checkout table number');
-       // console.log(this.props.checkByTable);
+        console.log("url", this.props.match.params.table);
+        // console.log('its working',this.props.newOrder);
+        // console.log(this.props.tableNumber, 'checkout table number');
+       console.log('test',this.props.checkByTable);
         return (
+            
             <div>
                      <div className='title'>DevMENU</div>
                 <div className='Nav'>
                     <div className='nav-container'>
-                        <div className='drinks'><Link to ='/drinks'>Drinks</Link></div>
-                        <div className='drinks'><Link to ='/appetizers'>Appetizers</Link></div>
-                        <div className='drinks'><Link to ='/salads'>Salads</Link></div>
-                        <div className='drinks'><Link to ='/entrees'>Entrees</Link></div>
-                        <div className='drinks'><Link to ='/desserts'>Desserts</Link></div>
+                        <div className='drinks'><Link className='Link' to ='/drinks'>Drinks</Link></div>
+                        <div className='drinks'><Link  className='Link' to ='/appetizers'>Appetizers</Link></div>
+                        <div className='drinks'><Link className='Link' to ='/salads'>Salads</Link></div>
+                        <div className='drinks'><Link className='Link' to ='/entrees'>Entrees</Link></div>
+                        <div className='drinks'><Link className='Link' to ='/desserts'>Desserts</Link></div>
                     </div>
                 </div>
                 <div className='cart-title'> Cart </div>
@@ -60,7 +83,11 @@ class CheckOut extends Component {
                             <div className='receipt'>Receipt</div>
                             <div className='total flex'>Total</div>
                             <div className='btn-totalbox'>
-                                <button className='stripe-btn'> Checkout </button>
+                                <StripeCheckout
+                                token={this.onToken}
+                                stripeKey={ process.env.REACT_APP_STRIPE_SECRETKEY }
+                                amount={+this.props.checkByTable[0] * 100}
+                                />
                             </div>
                         </div>
                     </div>
@@ -74,7 +101,8 @@ class CheckOut extends Component {
 function mapStateToProps(state){
     return {
         tableNumber: state.tableNumber,
-        checkByTable: state.checkByTable
+        checkByTable: state.checkByTable,
+        newOrder: state.newOrder
     }
 }
 

@@ -1,3 +1,53 @@
+.admin-title {
+  font-size: 32px; }
+
+.top {
+  float: right; }
+
+.Orders-container {
+  width: 90%;
+  height: 400px;
+  margin: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row; }
+  .Orders-container .Orders {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center; }
+    .Orders-container .Orders .order-title {
+      width: 100%;
+      height: 10%;
+      font-size: 24px; }
+    .Orders-container .Orders .table {
+      width: 100%;
+      height: 10%;
+      border: 1px solid black;
+      border-bottom: none; }
+    .Orders-container .Orders .orders {
+      width: 100%;
+      height: 42%;
+      overflow: scroll;
+      border: 1px solid black;
+      border-bottom: none;
+      text-align: left; }
+    .Orders-container .Orders .btn-totalbox {
+      width: 100%;
+      height: 15%;
+      border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row; }
+      .Orders-container .Orders .btn-totalbox .btn {
+        width: 25%;
+        height: 50%; }
+
 .cart-title {
   width: 100%;
   height: 100px;
@@ -150,6 +200,22 @@
   justify-content: flex-start;
   align-items: flex-end;
   align-content: stretch; }
+
+.Link {
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  letter-spacing: 2px;
+  border-radius: 70px; }
+
+.Link:hover {
+  background-color: rgba(90, 88, 88, 0.747);
+  color: white;
+  font-weight: bold; }
 
 .footer-container {
   width: 100%;

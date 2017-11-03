@@ -9,17 +9,22 @@ module.exports = {
 
     newOrderPlaced(req, res) {
         const db = req.app.get('db')
-        console.log('body',req.body)
+        // console.log('newOrderPlaced req.body',req.body)
         const {id, tableNumber} = req.body
     db.new_order([id, tableNumber]).then(response => {
+        console.log('new order', response);
     }).catch(err => console.log(err))
     },
 
     getCheckByTable(req, res) {
         const db = req.app.get('db')
-    db.get_check_by_table([req.params.table]).then(response => {
-        console.log('check by table', response)
-        res.status(200).send(response)
+        Promise.all([
+            db.get_table_total([req.params.table]),
+            db.get_table_receipt([req.params.table])]).then(response => {   
+                const tableReceipt = [response[0][0].sum,
+                                    response[1]]
+                    console.log('check by table', response[1])
+                    res.status(200).send(tableReceipt)
     }).catch(err => console.log(err))
     },
 
@@ -30,5 +35,14 @@ module.exports = {
         // console.log('admin orders')
         res.status(200).send(response)
     }).catch((err) => {console.log(err);})
+    },
+
+    patchCompleted(req, res) {
+        const db = req.app.get('db')
+            const {tableNumber } = req.body
+        db.clear_menu(tableNumber).then(response => {
+            res.status(200).send(response)
+        })
     }
 }
+
