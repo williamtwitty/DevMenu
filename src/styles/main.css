@@ -151,6 +151,22 @@
   align-items: flex-end;
   align-content: stretch; }
 
+.Link {
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  letter-spacing: 2px;
+  border-radius: 70px; }
+
+.Link:hover {
+  background-color: rgba(90, 88, 88, 0.747);
+  color: white;
+  font-weight: bold; }
+
 .footer-container {
   width: 100%;
   height: 100px;
