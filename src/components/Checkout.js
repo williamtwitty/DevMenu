@@ -18,27 +18,28 @@ class CheckOut extends Component {
 
     }
     componentDidMount() {
-        this.props.getCheckByTable(this.props.tableNumber)
+        this.props.getCheckByTable(this.props.match.params.table)
     }
 
     onToken(token) {
         token.card = void 0;
         console.log('token', this.state);
-        // axios.post('/api/payment', { token, amount: 100, options: this.state} ).then(response => {
-        //     // alert('thanks for your purchase!')
-        //     swal({
-        //         title: null,
-        //         text: 'You order is complete!',
-        //         type: null,
-        //         confirmButtonText: 'Sweeeet!'
-        //       })
-        // });
+        axios.post('/api/payment', { token, amount: this.props.checkByTable[0], options: this.state} ).then(response => {
+            // alert('thanks for your purchase!')
+            // swal({
+            //     title: null,
+            //     text: 'You order is complete!',
+            //     type: null,
+            //     confirmButtonText: 'Sweeeet!'
+            //   })
+        });
       }
     
     render() {
-        console.log('its working',this.props.newOrder);
-        console.log(this.props.tableNumber, 'checkout table number');
-       // console.log(this.props.checkByTable);
+        console.log("url", this.props.match.params.table);
+        // console.log('its working',this.props.newOrder);
+        // console.log(this.props.tableNumber, 'checkout table number');
+       console.log('test',this.props.checkByTable);
         return (
             
             <div>
@@ -85,7 +86,7 @@ class CheckOut extends Component {
                                 <StripeCheckout
                                 token={this.onToken}
                                 stripeKey={ process.env.REACT_APP_STRIPE_SECRETKEY }
-                                amount={100}
+                                amount={+this.props.checkByTable[0] * 100}
                                 />
                             </div>
                         </div>

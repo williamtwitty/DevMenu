@@ -46,14 +46,14 @@ class MenuItems extends Component {
                             <div className='drinks'><Link to ='/desserts'>Desserts</Link></div>
                         </div>
                     </div>
-                    
+                        <div><Link to ={`/checkout/${this.props.tableNumber}`}>Checkout</Link></div>
                     <div className='space'>
                         <div className='foods'>
                             {item}
                         </div>
                     </div>
                 </div>
-        );
+        ); 
     }
 }
 function mapStateToProps(state){

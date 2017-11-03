@@ -33,7 +33,7 @@ export function selectTableNumber(table) {
 }
 
 export function getCheckByTable(table) {
-   const checkByTable = axios.get(`/api/checkout/${table}`).then( response => {
+   const checkByTable = axios.get(`/checkout/${table}`).then( response => {
             return response.data
     })
     return {
