@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
-import swal from 'sweetalert2';
+// import swal from 'sweetalert2';
 
 class CheckOut extends Component {
     constructor(props) {
@@ -24,15 +24,15 @@ class CheckOut extends Component {
     onToken(token) {
         token.card = void 0;
         console.log('token', this.state);
-        axios.post('/api/payment', { token, amount: 100, options: this.state} ).then(response => {
-            // alert('thanks for your purchase!')
-            swal({
-                title: null,
-                text: 'You order is complete!',
-                type: null,
-                confirmButtonText: 'Sweeeet!'
-              })
-        });
+        // axios.post('/api/payment', { token, amount: 100, options: this.state} ).then(response => {
+        //     // alert('thanks for your purchase!')
+        //     swal({
+        //         title: null,
+        //         text: 'You order is complete!',
+        //         type: null,
+        //         confirmButtonText: 'Sweeeet!'
+        //       })
+        // });
       }
     
     render() {
