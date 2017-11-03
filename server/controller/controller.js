@@ -35,6 +35,14 @@ module.exports = {
         // console.log('admin orders')
         res.status(200).send(response)
     }).catch((err) => {console.log(err);})
+    },
+
+    patchCompleted(req, res) {
+        const db = req.app.get('db')
+            const {tableNumber } = req.body
+        db.clear_menu(tableNumber).then(response => {
+            res.status(200).send(response)
+        })
     }
 }
 
