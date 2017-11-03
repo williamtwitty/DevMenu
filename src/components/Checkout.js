@@ -16,6 +16,7 @@ class CheckOut extends Component {
     }
     
     render() {
+        console.log('its working',this.props.newOrder);
         console.log(this.props.tableNumber, 'checkout table number');
        // console.log(this.props.checkByTable);
         return (
@@ -74,7 +75,8 @@ class CheckOut extends Component {
 function mapStateToProps(state){
     return {
         tableNumber: state.tableNumber,
-        checkByTable: state.checkByTable
+        checkByTable: state.checkByTable,
+        newOrder: state.newOrder
     }
 }
 

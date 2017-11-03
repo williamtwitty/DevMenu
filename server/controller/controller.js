@@ -33,3 +33,12 @@ module.exports = {
     }).catch((err) => {console.log(err);})
     }
 }
+
+// db.get_table_receipt([tableNumber]).then((response) =>{
+//     db.get_table_total([tableNumber]).then((response) => {
+//         //console.log('total',response);
+//         res.status(200).json(response)
+//     })
+//    // console.log('errthang', response);
+//         res.status(200).json(response)
+//     })

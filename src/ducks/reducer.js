@@ -4,7 +4,8 @@ const initialState = {
     menu: [],
     checkByTable: [],
     tableNumber: 0,
-    adminOrders: []
+    adminOrders: [],
+    newOrder: []
 }
 
 const GET_MENU_TYPE = 'GET_MENU_TYPE'
