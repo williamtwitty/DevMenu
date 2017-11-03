@@ -27,7 +27,7 @@ class FoodItems extends Component {
 
 function mapStateToProps(state){
   return {
-      tableNumber: state.tableNumber
+      tableNumber: state.tableNumber,
   }
 }
 

@@ -1,0 +1,58 @@
+.admin-title {
+    font-size: 32px;
+}
+
+.top {
+    float: right;
+}
+
+.Orders-container {
+    width: 90%;
+    height: 400px;
+    margin: 40px;
+    @include flexSetUp(center,center);
+    
+    .Orders {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+
+        .order-title {
+            width: 100%;
+            height: 10%;
+            font-size: 24px;   
+        }
+        
+        .table {
+            width: 100%;
+            height: 10%;
+            border: 1px solid black;
+            border-bottom: none;
+            
+        }
+
+        .orders {
+            width: 100%;
+            height: 42%;
+            overflow: scroll;
+            border: 1px solid black;
+            border-bottom: none;
+            text-align: left;
+        }
+
+        .btn-totalbox {
+            width: 100%;
+            height: 15%;
+            border: 1px solid black;
+            @include flexSetUp(center, center);
+            .btn {
+                width: 25%;
+                height: 50%;
+            }
+        }     
+    }
+}

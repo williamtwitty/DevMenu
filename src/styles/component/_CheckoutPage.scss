@@ -200,3 +200,18 @@ letter-spacing: 3px;
 	align-items: flex-end;
 	align-content: stretch;
 }
+
+.Link {
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    @include flexSetUp(center,center);
+    letter-spacing: 2px;
+    border-radius: 70px;
+}
+
+.Link:hover {
+    background-color: rgba(90, 88, 88, 0.747);
+    color: white;
+    font-weight: bold;
+}

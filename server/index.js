@@ -7,7 +7,8 @@ const express = require('express'),
     cors =  require('cors'),
     passport = require('passport'),
     Auth0Strategy = require('passport-auth0');
-    ctrl = require('./controller/controller')
+    ctrl = require('./controller/controller');
+    stripe = require('stripe')(process.env.STRIPE_SECRETKEY);
 
 const app = express();
 const server = require('http').Server(app)
@@ -78,10 +79,43 @@ app.get('/auth/logout', (req, res) => {
 
 
 app.get('/api/:type', ctrl.getMenuType)
-app.get('/api/:table', ctrl.getCheckByTable)
+app.get('/checkout/:table', ctrl.getCheckByTable)
 app.get('/allorders', ctrl.getAdminOrders)
 
 app.post('/api/neworder', ctrl.newOrderPlaced)
+app.patch('/api/completed', ctrl.patchCompleted)
+
+app.post('/api/payment', function (req, res, next) {
+
+    const amountArray = req.body.amount.toString().split('');
+    const pennies = [];
+    for (var i = 0; i < amountArray.length; i++) {
+      if (amountArray[i] === ".") {
+        if (typeof amountArray[i + 1] === "string") {
+          pennies.push(amountArray[i + 1]);
+        } else {
+          pennies.push("0");
+        }
+        if (typeof amountArray[i + 2] === "string") {
+          pennies.push(amountArray[i + 2]);
+        } else {
+          pennies.push("0");
+        }
+        break;
+      } else {
+        pennies.push(amountArray[i])
+      }
+    }
+    const convertedAmt = parseInt(pennies.join(''));
+  
+    const charge = stripe.charges.create({
+      amount: convertedAmt, // amount in cents, again
+      currency: 'usd',
+      source: req.body.token.id,
+      description: 'Test Charge'
+    }
+    )}
+)
 
 
 const PORT = 3030;
