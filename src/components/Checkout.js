@@ -23,9 +23,6 @@ class CheckOut extends Component {
 
     onToken(token) {
         token.card = void 0;
-        swal({
-            title: 'Custom width, padding, background.'
-          })
         console.log('token', this.state);
         axios.post('/api/payment', { token, amount: this.props.checkByTable[0], options: this.state} ).then(response => {
             // alert('thanks for your purchase!')
@@ -46,13 +43,6 @@ class CheckOut extends Component {
         return (
             
             <div>
-
-<a href="#" class="a-btn">
-	<span class="a-btn-text"><Link className='back-link' to ='/menu'>DevMENU</Link></span> 
-	<span class="a-btn-slide-text">Go Back</span>
-	<span class="a-btn-icon-right"><span></span></span>
-</a>
-
 
 
                 <div className='cart-title'> <button className='back'><Link className='back-link' to ='/menu'>Back to menu</Link></button> Cart <div></div></div>
