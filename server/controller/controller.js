@@ -12,7 +12,7 @@ module.exports = {
         // console.log('newOrderPlaced req.body',req.body)
         const {id, tableNumber} = req.body
     db.new_order([id, tableNumber]).then(response => {
-        console.log('new order', response);
+       // console.log('new order', response);
     }).catch(err => console.log(err))
     },
 
@@ -23,7 +23,7 @@ module.exports = {
             db.get_table_receipt([req.params.table])]).then(response => {   
                 const tableReceipt = [response[0][0].sum,
                                     response[1]]
-                    console.log('check by table', response[1])
+                  //  console.log('check by table', response[1])
                     res.status(200).send(tableReceipt)
     }).catch(err => console.log(err))
     },
@@ -39,7 +39,7 @@ module.exports = {
 
     patchCompleted(req, res) {
         const db = req.app.get('db')
-            const {tableNumber } = req.body
+            const {tableNumber} = req.body
         db.clear_menu(tableNumber).then(response => {
             res.status(200).send(response)
         })

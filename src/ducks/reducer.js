@@ -5,7 +5,8 @@ const initialState = {
     checkByTable: [],
     tableNumber: 0,
     adminOrders: [],
-    newOrder: []
+    newOrder: [],
+    completeOrder: []
 }
 
 const GET_MENU_TYPE = 'GET_MENU_TYPE'

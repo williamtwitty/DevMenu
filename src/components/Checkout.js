@@ -36,10 +36,10 @@ class CheckOut extends Component {
       }
     
     render() {
-        console.log("url", this.props.match.params.table);
+     //   console.log("url", this.props.match.params.table);
         // console.log('its working',this.props.newOrder);
         // console.log(this.props.tableNumber, 'checkout table number');
-       console.log('test',this.props.checkByTable);
+      // console.log('test',this.props.checkByTable);
         return (
             
             <div>

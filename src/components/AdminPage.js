@@ -29,8 +29,8 @@ class Admin extends Component {
         for (groupName in groups) {
             myOrders.push({group: groupName, name: groups[groupName]});
         }
-        console.log('groups', groups);
-        console.log('myOrders', myOrders);
+       // console.log('groups', groups);
+       // console.log('myOrders', myOrders);
         const orders = myOrders.map((order, i) => {
             console.log('items', order.name)
            return( 
