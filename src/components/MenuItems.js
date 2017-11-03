@@ -3,7 +3,11 @@ import { connect } from 'react-redux';
 import FoodItems from './FoodItems';
 import { getMenuType } from '../ducks/reducer';
 import {newOrder} from '../ducks/reducer';
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
+=======
+import {Link} from 'react-router-dom'
+>>>>>>> master
 
 
 class MenuItems extends Component {
@@ -18,8 +22,14 @@ class MenuItems extends Component {
         this.props.getMenuType(this.props.match.params.type)
    } 
 
+<<<<<<< HEAD
    componentWillUpdate() {
        this.props.getMenuType(this.props.match.params.type);
+=======
+
+   componentWillUpdate() {
+    this.props.getMenuType(this.props.match.params.type)
+>>>>>>> master
    }
 
     render() {
@@ -36,6 +46,7 @@ class MenuItems extends Component {
         return (
             <div>
                 <div className='title'>DevMENU</div>
+<<<<<<< HEAD
                     <div className='Nav'>
                         <div className='nav-container'>
                             <div className='drinks'><Link to ='/drinks'>Drinks</Link></div>
@@ -44,6 +55,22 @@ class MenuItems extends Component {
                             <div className='drinks'><Link to ='/entrees'>Entrees</Link></div>
                             <div className='drinks'><Link to ='/desserts'>Desserts</Link></div>
                         </div>
+=======
+                <div className='Nav'>
+                    <div className='nav-container'>
+                        <div className='drinks'><Link to ='/drinks'>Drinks</Link></div>
+                        <div className='drinks'><Link to ='/appetizers'>Appetizers</Link></div>
+                        <div className='drinks'><Link to ='/salads'>Salads</Link></div>
+                        <div className='drinks'><Link to ='/entrees'>Entrees</Link></div>
+                        <div className='drinks'><Link to ='/desserts'>Desserts</Link></div>
+                    </div>
+                </div>
+
+                <div className='space'>
+                <div className='foods'>
+                    {item}
+                </div>
+>>>>>>> master
                     </div>
                     
                     <div className='space'>
