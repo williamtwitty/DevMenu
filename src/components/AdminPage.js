@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { getAdminOrders } from '../ducks/reducer'
+import { connect } from 'react-redux';
+import { getAdminOrders } from '../ducks/reducer';
+// import _ from 'lodash';
 
 class Admin extends Component {
     constructor(props) {
@@ -17,20 +18,70 @@ class Admin extends Component {
 
     render() {
         console.log(this.props.adminOrders);
-        const orders = this.props.adminOrders.map((order) => {
-           return( <div>
-            <div>TableNumber: {order.table_number}</div>
-            <div>Food: {order.name}</div> 
+
+        // const ordersLodash = _.map(this.props.adminOrders, order => {
+            
+
+        //     return( 
+        //         <div>
+        //             <div className='Orders-container'>
+        //                 <div className='Orders'>
+        //                     <div className='order-title flex'>Orders</div>
+        //                     <div className='table flex'>TableNumber: {order.table_number}</div>
+        //                     <div className='orders'>{order.name}</div>
+        //                     <div className='btn-totalbox'>
+        //                         <button className='btn'> Delete </button>
+        //                     </div>
+        //                 </div>
+        //         </div>
+               
+        //        </div>
+        //        )
+        // })
+
+        var groups = {};
+
+        for (var i = 0; i < this.props.adminOrders.length; i++) {
+            var groupName = this.props.adminOrders[i].table_number;
+            if (!groups[groupName]) {
+                groups[groupName] = [];
+            }
+            groups[groupName].push(this.props.adminOrders[i].name);
+        }
+        const myOrders = [];
+        for (groupName in groups) {
+            myOrders.push({group: groupName, name: groups[groupName]});
+        }
+        console.log('groups', groups);
+        console.log('myOrders', myOrders);
+        const orders = myOrders.map((order, i) => {
+            // if (order.table_menu === 1)
+           return( 
+            <div>
+                <div className='Orders-container'>
+                    <div className='Orders'>
+                        <div className='order-title flex'>Orders</div>
+                        <div className='table flex'>TableNumber: { order.group }</div>
+                        <div className='orders'>{ order.name }</div>
+                        <div className='btn-totalbox'>
+                            <button className='btn'> Delete </button>
+                        </div>
+                    </div>
+            </div>
+           
            </div>
            )
         })
         return (
             <div>
-                <div>
-                    haley
-                    <a href='http://localhost:3030/auth/logout'><button>LOGOUT</button></a>
+                <div className="admin-title"> Admin Page
+                <div className="top">
+                <a href='http://localhost:3030/auth/logout'><button>LOGOUT</button></a>
                 </div>
-                {orders}
+                </div>
+                <div> {orders}</div>
+
+                {/* <div> {ordersLodash}</div> */}
             </div>
         );
     }

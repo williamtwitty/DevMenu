@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FoodItems from './FoodItems'
+import FoodItems from './FoodItems';
 import { getMenuType } from '../ducks/reducer';
 import {newOrder} from '../ducks/reducer';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
 class MenuItems extends Component {
-    constructor(){
-        super()
-       this.state={
+    constructor(props){
+        super(props)
+       this.state = {
            menu: []
        }
     }
@@ -31,31 +31,28 @@ class MenuItems extends Component {
             return(
                 //<div>{type.name}</div>
                
-                <FoodItems key={type.name} type={type}/>
-                
-             
+                <FoodItems key={type.name} type={type}/>          
             )
         })
         return (
             <div>
                 <div className='title'>DevMENU</div>
-                <div className='Nav'>
-                    <div className='nav-container'>
-                        <div className='drinks'><Link to ='/drinks'>Drinks</Link></div>
-                        <div className='drinks'><Link to ='/appetizers'>Appetizers</Link></div>
-                        <div className='drinks'><Link to ='/salads'>Salads</Link></div>
-                        <div className='drinks'><Link to ='/entrees'>Entrees</Link></div>
-                        <div className='drinks'><Link to ='/desserts'>Desserts</Link></div>
+                    <div className='Nav'>
+                        <div className='nav-container'>
+                            <div className='drinks'><Link to ='/drinks'>Drinks</Link></div>
+                            <div className='drinks'><Link to ='/appetizers'>Appetizers</Link></div>
+                            <div className='drinks'><Link to ='/salads'>Salads</Link></div>
+                            <div className='drinks'><Link to ='/entrees'>Entrees</Link></div>
+                            <div className='drinks'><Link to ='/desserts'>Desserts</Link></div>
+                        </div>
+                    </div>
+                    
+                    <div className='space'>
+                        <div className='foods'>
+                            {item}
+                        </div>
                     </div>
                 </div>
-
-                <div className='space'>
-                <div className='foods'>
-                    {item}
-                </div>
-                    </div>
-                    </div>
-
         );
     }
 }
