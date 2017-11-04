@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAdminOrders } from '../ducks/reducer';
+import { getAdminOrders, completedOrder } from '../ducks/reducer';
 
 class Admin extends Component {
     constructor(props) {
@@ -14,8 +14,6 @@ class Admin extends Component {
     }
 
     render() {
-        console.log('adminOrders', this.props.adminOrders);
-
         var groups = {};
 
         for (var i = 0; i < this.props.adminOrders.length; i++) {
@@ -29,33 +27,35 @@ class Admin extends Component {
         for (groupName in groups) {
             myOrders.push({group: groupName, name: groups[groupName]});
         }
-       // console.log('groups', groups);
-       // console.log('myOrders', myOrders);
+        // console.log('groups', groups);
+        // console.log('myOrders', myOrders);
+
         const orders = myOrders.map((order, i) => {
-            console.log('items', order.name)
-           return( 
-            <div>
-                <div className='Orders-container'>
-                    <div className='Orders'>
-                        {/* <div className='order-title flex'>Orders</div> */}
-                        <div className='table flex'>TableNumber: { order.group }</div>
-                        <div className='orders'>
-                            {
-                                order.name.map((item) => {
-                                return (
-                                <div>{item}</div>
-                                )
-                            })}
-                              
-                        </div>
-                        <div className='btn-totalbox'>
-                            <button className='btn'> Delete </button>
+            return( 
+                <div key={i} >
+                    <div className='Orders-container'>
+                        <div className='Orders'>
+                            <div className='order-title flex'>Orders</div>
+                            <div className='table flex'>TableNumber: { parseInt(order.group) + 1 }</div>
+                            <div className='orders'>
+                                {
+                                    order.name.map((item, i) => {
+                                        return (
+                                            <div  key={i} className="item">{item}</div>
+                                        )
+                                    })
+                                }     
+                            </div>
+
+                            <div className='btn-totalbox'>
+                            <button className='btn'
+                                onClick={() => this.props.completedOrder(parseInt(order.group) )}> 
+                                Delete </button>
+                            </div>
                         </div>
                     </div>
-            </div>
-           
-           </div>
-           )
+                </div>
+            )
         })
         return (
             <div>
@@ -75,4 +75,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {getAdminOrders})(Admin);
+export default connect(mapStateToProps, {getAdminOrders, completedOrder})(Admin);
