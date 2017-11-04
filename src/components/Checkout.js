@@ -25,9 +25,9 @@ class CheckOut extends Component {
 
     onToken(token) {
         token.card = void 0;
-        swal({
-            title: 'Custom width, padding, background.'
-          })
+        // swal({
+        //     title: 'Custom width, padding, background.'
+        //   })
         console.log('token', this.state);
         axios.post('/api/payment', { token, amount: this.props.checkByTable[0], options: this.state} ).then(response => {
             // alert('thanks for your purchase!')
