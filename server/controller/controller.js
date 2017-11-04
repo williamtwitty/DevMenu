@@ -9,7 +9,7 @@ module.exports = {
 
     newOrderPlaced(req, res) {
         const db = req.app.get('db')
-        // console.log('newOrderPlaced req.body',req.body)
+        console.log('newOrderPlaced req.body',req.body)
         const {id, tableNumber} = req.body
     db.new_order([id, tableNumber]).then(response => {
         console.log('new order', response);
@@ -17,15 +17,18 @@ module.exports = {
     },
 
     getCheckByTable(req, res) {
+        
         const db = req.app.get('db')
         Promise.all([
+            
             db.get_table_total([req.params.table]),
-            db.get_table_receipt([req.params.table])]).then(response => {   
+            db.get_table_receipt([req.params.table])]).then(response => {
+                console.log('info', response)   
                 const tableReceipt = [response[0][0].sum,
                                     response[1]]
-                    console.log('check by table', response[1])
-                    res.status(200).send(tableReceipt)
-    }).catch(err => console.log(err))
+                    console.log('check by table', response[1][0].name)
+                    res.status(200).json(tableReceipt)
+        }).catch(err => console.log(err))
     },
 
     getAdminOrders(req, res) {
@@ -38,6 +41,7 @@ module.exports = {
     },
 
     patchCompleted(req, res) {
+        // console.log('patch', req.body)
         const db = req.app.get('db')
             const {tableNumber } = req.body
         db.clear_menu(tableNumber).then(response => {

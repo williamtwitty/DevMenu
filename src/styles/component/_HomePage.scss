@@ -27,25 +27,22 @@ float: right;
 .home-title {
     font-size: 100px;
     color: white;
+    text-shadow: 2px 2px #2b2c2f;
     letter-spacing: 7px;
 
 }
 
-.Login {
-    
-}
+// .chooseTable {
+//     color: white;
+//     font-size: 24px;
+//     line-height: 40px;
+//     margin-top: 50px;
+// }
 
-.chooseTable {
-    color: white;
-    font-size: 24px;
-    line-height: 40px;
-    margin-top: 50px;
-}
+// .tableInput {
+//     @include flexSetUp(center, center, row);
+// }
 
-.tableInput {
-    @include flexSetUp(center, center, row);
-}
-
-.home-input {
-   margin: 10px;
-}
+// .home-input {
+//    margin: 10px;
+// }
