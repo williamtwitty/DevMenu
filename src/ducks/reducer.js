@@ -54,7 +54,9 @@ export function newOrder(id, tableNumber) {
  }
 
  export function completedOrder(tableNumber) {
-    const completedOrder = axios.patch(`/api/completed/`, tableNumber).then( response => {
+     console.log('completedReducer', {tableNumber} )
+    const completedOrder = axios.patch(`/api/completed/`, {tableNumber}).then( response => {
+        console.log('completedOrder response', response.data);
         return response.data
      })
      return {

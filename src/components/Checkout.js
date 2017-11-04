@@ -25,7 +25,7 @@ class CheckOut extends Component {
 
     onToken(token) {
         token.card = void 0;
-        console.log('token', this.state);
+        // console.log('token', this.state);
         axios.post('/api/payment', { token, amount: this.props.checkByTable[0], options: this.state} ).then(response => {
             // alert('thanks for your purchase!')
             // swal({
@@ -59,7 +59,7 @@ class CheckOut extends Component {
         } else{
              orderList = []
         }
-        console.log("url", this.props.match.params.table);
+        // console.log("url", this.props.match.params.table);
         console.log("checkbytable", this.props.checkByTable)
       
         return (

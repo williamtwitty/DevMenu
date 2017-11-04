@@ -24,7 +24,7 @@ class MenuItems extends Component {
    }
 
     render() {
-        console.log("menu bladgfoSIJD",this.props.menu);
+        // console.log("menu bladgfoSIJD",this.props.menu);
         const item = this.props.menu.map((type)=>{
                    // console.log(type);
             //this.props.newOrder(item.id, this.props.tableNumber)
