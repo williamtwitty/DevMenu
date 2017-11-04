@@ -14,13 +14,10 @@ class Admin extends Component {
     }
 
     render() {
-        console.log('adminOrders', this.props.adminOrders);
-
         var groups = {};
 
         for (var i = 0; i < this.props.adminOrders.length; i++) {
             var groupName = this.props.adminOrders[i].table_number;
-            console.log(groupName, 'groupName');
             if (!groups[groupName]) {
                 groups[groupName] = [];
             }
@@ -30,21 +27,21 @@ class Admin extends Component {
         for (groupName in groups) {
             myOrders.push({group: groupName, name: groups[groupName]});
         }
-        console.log('groups', groups);
-        console.log('myOrders', myOrders);
+        // console.log('groups', groups);
+        // console.log('myOrders', myOrders);
+
         const orders = myOrders.map((order, i) => {
-            console.log('items', order.name)
-           return( 
-                <div>
+            return( 
+                <div key={i} >
                     <div className='Orders-container'>
                         <div className='Orders'>
                             <div className='order-title flex'>Orders</div>
                             <div className='table flex'>TableNumber: { parseInt(order.group) + 1 }</div>
                             <div className='orders'>
                                 {
-                                    order.name.map((item) => {
+                                    order.name.map((item, i) => {
                                         return (
-                                            <div>{item}</div>
+                                            <div  key={i} className="item">{item}</div>
                                         )
                                     })
                                 }     
@@ -52,7 +49,7 @@ class Admin extends Component {
 
                             <div className='btn-totalbox'>
                             <button className='btn'
-                                onClick={() => this.props.completedOrder(order.group)}> 
+                                onClick={() => this.props.completedOrder(parseInt(order.group) )}> 
                                 Delete </button>
                             </div>
                         </div>
@@ -62,7 +59,7 @@ class Admin extends Component {
         })
         return (
             <div>
-                <div className="admin-title"> Admin Page
+                <div className="admin-title"> Orders
                     <div className="top">
                     <a href='http://localhost:3030/auth/logout'><button>LOGOUT</button></a>
                     </div>
