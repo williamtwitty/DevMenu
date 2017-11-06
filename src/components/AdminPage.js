@@ -36,7 +36,7 @@ class Admin extends Component {
                     <div className='Orders-container'>
                         <div className='Orders'>
                             <div className='order-title flex'>Orders</div>
-                            <div className='table flex'>TableNumber: { parseInt(order.group) + 1 }</div>
+                            <div className='table flex'>TableNumber: { parseInt(order.group, 10) + 1 }</div>
                             <div className='orders'>
                                 {
                                     order.name.map((item, i) => {
@@ -49,7 +49,7 @@ class Admin extends Component {
 
                             <div className='btn-totalbox'>
                             <button className='btn'
-                                onClick={() => this.props.completedOrder(parseInt(order.group) )}> 
+                                onClick={() => this.props.completedOrder(parseInt(order.group, 10) )}> 
                                 Delete </button>
                             </div>
                         </div>
