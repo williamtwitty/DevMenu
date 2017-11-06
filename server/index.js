@@ -8,7 +8,9 @@ const express = require('express'),
     passport = require('passport'),
     Auth0Strategy = require('passport-auth0');
     ctrl = require('./controller/controller');
-    stripe = require('stripe')(process.env.STRIPE_SECRETKEY);
+    stripe = require('stripe')(process.env.STRIPE_SECRETKEY),
+    nodemailer = require('nodemailer')
+
 
 const app = express();
 const server = require('http').Server(app)
@@ -129,3 +131,16 @@ server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
         console.log('we disconnected');
     })
 })
+
+app.post('/api/email', (req,res) => {
+    const transporter = nodemailer.createTransport({
+        service: ‘gmail’,
+        auth: {
+            user: ‘fullstackco@gmail.com’,
+            pass: process.env.EMAIL_PASS
+        }
+     });
+
+     const
+})
+
