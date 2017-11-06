@@ -60,7 +60,7 @@ class Admin extends Component {
 
                             <div className='btn-totalbox'>
                             <button className='btn'
-                                onClick={() => this.props.completedOrder(parseInt(order.group) )}> 
+                                onClick={() => this.props.completedOrder(parseInt(order.group, 10) )}> 
                                 Delete </button>
                             </div>
                         </div>

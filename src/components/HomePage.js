@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { selectTableNumber } from '../ducks/reducer'
 import ChatBox from './ChatBox'
@@ -13,14 +13,18 @@ class HomePage extends Component {
     }
 
     handleOnChange(e) {
-        this.props.selectTableNumber(e)
+     return this.props.selectTableNumber(e); 
     }
 
-
+    handleOnClick(e) {
+        if (e === undefined) {
+            return alert('please select a table first...');
+        } else {
+            return this.props.selectTableNumber(e);
+        }
+    }
 
     render() {
-
-
         return (
             <div className='HomePage-container'>
                     <a href={process.env.REACT_APP_LOGIN}>Log In</a>
@@ -29,7 +33,8 @@ class HomePage extends Component {
                     <div className='home-title'>DevMENU</div>
                     <div className='chooseTable'>Choose Your Table</div>
                     <div className='tableInput'>
-                    <select className='home-input' defaultValue={0} onChange={(e)=>{this.handleOnChange(e.target.value)}} >
+                    <select className='home-input' defaultValue={0} onChange={(e)=>{
+                        this.handleOnChange(e.target.value)}} >
                         <option value='0'>Select your table</option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
@@ -39,12 +44,31 @@ class HomePage extends Component {
                         <option value='6'>6</option>
                         <option value='7'>7</option>
                     </select>
-                    <button className='next-btn'> <Link to = '/menu'>  orders</Link> </button>
-                    </div>
+                    <button className='next-btn' defaultValue={0} onClick={(e)=>{ 
+
+                        if (this.props.tableNumber > 0) {
+                            this.props.history.push("/menu");
+                            
+                        } else {
+                            this.props.history.push("/");
+                        }
+                   
+                        // (e.target.value === undefined) 
+                        // ?
+                        // this.handleOnClick(e.target.value)}}> 
+                        // <Link to = '/'>  orders</Link> </button>
+                        // :
+                        // this.handleOnClick(e.target.value)}}> 
+                        // <Link to = '/menu'>  orders</Link> </button>
+                        
+                         this.handleOnClick(e.target.value)}}> 
+                            orders 
+                         </button>  
+                        </div>
                     </div>
                     <ChatBox/>
                 </div>
-                </div>
+            </div>
         );
     }
 }
