@@ -25,11 +25,11 @@ class HomePage extends Component {
                     <a href={process.env.REACT_APP_LOGIN}>Log In</a>
                 <div className='HomePage'>
                 <div className='menu-access'>
-                    <div className='home-title'>DevMENU</div>
+                    <div className='home-title'>Fullstack Co.</div>
                     <div className='chooseTable'>Choose Your Table</div>
                     <div className='tableInput'>
                     <select className='home-input' defaultValue={0} onChange={(e)=>{this.handleOnChange(e.target.value)}} >
-                        <option value='0'>Select your table</option>
+                        <option value='0'></option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>
@@ -38,7 +38,10 @@ class HomePage extends Component {
                         <option value='6'>6</option>
                         <option value='7'>7</option>
                     </select>
-                    <button className='next-btn'> <Link to = '/menu'>  orders</Link> </button>
+                    <button className='next-btn'> 
+                        <Link to = '/menu'>  
+                        next
+                        </Link> </button>
                     </div>
                     </div>
                 </div>
