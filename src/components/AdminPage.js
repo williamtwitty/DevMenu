@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAdminOrders, completedOrder } from '../ducks/reducer';
+import io from 'socket.io-client';
+ const adminSocket = io('/admin');
 
 class Admin extends Component {
     constructor(props) {
@@ -13,7 +15,17 @@ class Admin extends Component {
         this.props.getAdminOrders()
     }
 
+
+
     render() {
+        adminSocket.on('new customer admin', function(table){
+          //  console.log('new customer sat down at table:', table);
+        })
+
+        adminSocket.on('new item ordered', function(table){
+           // console.log('new item ordered at table:', table);
+        })
+
         var groups = {};
 
         for (var i = 0; i < this.props.adminOrders.length; i++) {
@@ -27,8 +39,7 @@ class Admin extends Component {
         for (groupName in groups) {
             myOrders.push({group: groupName, name: groups[groupName]});
         }
-        // console.log('groups', groups);
-        // console.log('myOrders', myOrders);
+
 
         const orders = myOrders.map((order, i) => {
             return( 
