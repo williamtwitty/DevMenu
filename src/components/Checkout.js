@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCheckByTable } from '../ducks/reducer';
+import {deleteItem} from '../ducks/reducer'
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import StripeCheckout from 'react-stripe-checkout';
@@ -17,6 +18,8 @@ class CheckOut extends Component {
         this.onToken=this.onToken.bind(this);
 
     }
+
+   
     componentDidMount() {
         this.props.getCheckByTable(this.props.match.params.table)
     }
@@ -44,11 +47,12 @@ class CheckOut extends Component {
                 return  (
                       
                       <div className='cart-item' key={i}>
-                        <div className='cart-delete'> X </div>
-                        <div className='cart-img-box'><img alt="punk" className="punks"src={item.image}/> </div>
-                        <div className='cart-product'> 
-                            <div> {item.name} </div>
-                        </div>
+                      <div className='cart-delete' onClick={()=> this.props.deleteItem(item.id, this.props.match.params.table)} > X </div>
+                      <div className='cart-img-box'><img src={item.image} alt=""/> </div>
+                      <div className='cart-product'> 
+                          <h1> {item.name} </h1>
+                          <button className='edit-options'> Edit Options</button>
+                      </div>
                       <div className='cart-price'>{item.price} </div>
                   </div>
                  ) 
@@ -131,4 +135,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {getCheckByTable})(CheckOut);
+export default connect(mapStateToProps, {getCheckByTable, deleteItem})(CheckOut);

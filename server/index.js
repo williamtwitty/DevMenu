@@ -84,6 +84,7 @@ app.get('/allorders', ctrl.getAdminOrders)
 
 app.post('/api/neworder', ctrl.newOrderPlaced)
 app.patch('/api/completed', ctrl.patchCompleted)
+app.delete('/api/delete/:id/:table', ctrl.deleteItem)
 
 app.post('/api/payment', function (req, res, next) {
 
