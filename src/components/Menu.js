@@ -21,11 +21,11 @@ class Menu extends Component {
                 <div className= 'top'>
                         <div className='dev'>DevMENU</div>
                    <div className='fork'>
-                    <img src='http://renewecoblasting.com/wp-content/uploads/2016/05/blackline.png' width='15%' height='3%'/> 
+                    <img src='http://renewecoblasting.com/wp-content/uploads/2016/05/blackline.png' width='15%' height='3%'alt=""/> 
                     &nbsp; &nbsp;
-                    <img src ='http://www.clker.com/cliparts/A/D/6/r/B/X/gray-silverware-hi.png' width='3%' height='5%'/>
+                    <img src ='http://www.clker.com/cliparts/A/D/6/r/B/X/gray-silverware-hi.png' width='3%' height='5%'alt=""/>
                     &nbsp; &nbsp;
-                    <img src='http://renewecoblasting.com/wp-content/uploads/2016/05/blackline.png' width='15%' height='3%'/>
+                    <img src='http://renewecoblasting.com/wp-content/uploads/2016/05/blackline.png' width='15%' height='3%' alt=""/>
                     </div>
                 </div>
                <div className='dessert111'>

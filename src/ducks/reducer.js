@@ -14,6 +14,7 @@ const SELECT_TABLE_NUMBER = 'SELECT_TABLE_NUMBER'
 const NEW_ORDER = 'NEW_ORDER'
 const COMPLETED_ORDER = 'COMPLETED_ORDER'
 const GET_ADMIN_ORDERS = 'GET_ADMIN_ORDERS'
+const DELETE_ITEM = 'DELETE_ITEM'
 
 
 export function getMenuType(type) {
@@ -75,6 +76,17 @@ export function newOrder(id, tableNumber) {
      }
  }
 
+ export function deleteItem(id, table){
+     const deleteItem = axios.delete(`/api/delete/${id}/${table}`).then(response => {
+         return response.data
+     }) 
+
+     return {
+         type: DELETE_ITEM,
+         payload: deleteItem
+     }
+ }
+
 
 export default function reducer(state=initialState, action) {
     switch (action.type) {
@@ -90,6 +102,9 @@ export default function reducer(state=initialState, action) {
             return Object.assign({}, state, { newOrder: action.payload})
         case COMPLETED_ORDER + '_FULFILLED':
             return Object.assign({}, state, {completedOrder: action.payload})
+        case DELETE_ITEM + '_FULFILLED':
+        console.log(action.payload);
+            return Object.assign({}, state, {checkByTable: action.payload})
         default:
             return state;
     }
