@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import { getMenuType } from '../ducks/reducer';
-// import io from 'socket.io-client';
-// const socket = io('http://localhost:3030');
+
 
 
 class Menu extends Component {
@@ -12,7 +10,7 @@ class Menu extends Component {
         this.state = {
     
         }
-    }
+    }    
 
     render() {
         console.log( this.props.tableNumber)

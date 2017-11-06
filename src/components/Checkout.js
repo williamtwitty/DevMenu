@@ -7,6 +7,8 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 // import swal from 'sweetalert2';
 
+
+
 class CheckOut extends Component {
     constructor(props) {
         super(props)
