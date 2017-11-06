@@ -53,8 +53,8 @@ class MenuItems extends Component {
                         </div>
                     </div>
                 </div>
-          
-        )
+            
+        ); 
     }
 }
 function mapStateToProps(state){

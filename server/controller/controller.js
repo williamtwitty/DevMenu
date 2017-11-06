@@ -47,6 +47,22 @@ module.exports = {
         db.clear_menu(tableNumber).then(response => {
             res.status(200).send(response)
         })
+    },
+
+    deleteItem(req,res){
+        const db = req.app.get('db') 
+        db.delete_item([req.params.id ,req.params.table]).then(() =>{
+            Promise.all([
+                
+                db.get_table_total([req.params.table]),
+                db.get_table_receipt([req.params.table])]).then(response => {
+                    console.log('info', response)   
+                    const tableReceipt = [response[0][0].sum,
+                                        response[1]]
+                        // console.log('check by table', response[1][0].name)
+                        res.status(200).json(tableReceipt)
+            }).catch(err => console.log(err))
+        })
     }
 }
 
