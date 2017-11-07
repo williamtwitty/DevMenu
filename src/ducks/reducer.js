@@ -1,11 +1,14 @@
 import axios from 'axios'
+import io from 'socket.io-client';
+const socket = io('http://localhost:3030');
 
 const initialState = {
     menu: [],
     checkByTable: [],
     tableNumber: 0,
     adminOrders: [],
-    newOrder: []
+    newOrder: [],
+    completeOrder: []
 }
 
 const GET_MENU_TYPE = 'GET_MENU_TYPE'
@@ -28,6 +31,7 @@ export function getMenuType(type) {
 }
 
 export function selectTableNumber(table) {
+    socket.emit('new customer',table)
     return {
         type: SELECT_TABLE_NUMBER,
         payload: table
@@ -35,6 +39,7 @@ export function selectTableNumber(table) {
 }
 
 export function getCheckByTable(table) {
+    
    const checkByTable = axios.get(`/checkout/${table}`).then( response => {
             return response.data
     })
@@ -45,6 +50,7 @@ export function getCheckByTable(table) {
 }
 
 export function newOrder(id, tableNumber) {
+        socket.emit('new order', tableNumber)
     const newOrder = axios.post(`/api/neworder/`, {id, tableNumber}).then( response => {
         return response.data
      })
@@ -55,9 +61,9 @@ export function newOrder(id, tableNumber) {
  }
 
  export function completedOrder(tableNumber) {
-     console.log('completedReducer', {tableNumber} )
+    // console.log('completedReducer', {tableNumber} )
     const completedOrder = axios.patch(`/api/completed/`, {tableNumber}).then( response => {
-        console.log('completedOrder response', response.data);
+        //console.log('completedOrder response', response.data);
         return response.data
      })
      return {
