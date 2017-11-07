@@ -4,6 +4,7 @@ import { getCheckByTable } from '../ducks/reducer';
 import {deleteItem} from '../ducks/reducer'
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+import ChatBox from '../components/ChatBox'
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 // import swal from 'sweetalert2';
@@ -102,8 +103,11 @@ class CheckOut extends Component {
                         </div>
                     </div>
                     <div className='empty-space'> </div>
+
+                 
                 </div>
                 <Footer/>
+                <ChatBox/>
             </div>
         );
     }

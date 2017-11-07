@@ -8,8 +8,8 @@ const express = require('express'),
     passport = require('passport'),
     Auth0Strategy = require('passport-auth0');
     ctrl = require('./controller/controller');
-    stripe = require('stripe')(process.env.STRIPE_SECRETKEY),
-    nodemailer = require('nodemailer')
+    stripe = require('stripe')(process.env.STRIPE_SECRETKEY);
+
 
 
 const app = express();
