@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import ChatBox from '../components/ChatBox'
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import ChatBox from './ChatBox'
 // import swal from 'sweetalert2';
 
 class CheckOut extends Component {
@@ -49,10 +50,9 @@ class CheckOut extends Component {
                       
                       <div className='cart-item' key={i}>
                       <div className='cart-delete' onClick={()=> this.props.deleteItem(item.id, this.props.match.params.table)} > X </div>
-                      <div className='cart-img-box'><img src={item.image} alt=""/> </div>
+                      <div className='cart-img-box'><img src={item.image} alt="punk" className="punks"/> </div>
                       <div className='cart-product'> 
-                          <h1> {item.name} </h1>
-                          <button className='edit-options'> Edit Options</button>
+                          <div> {item.name} </div>
                       </div>
                       <div className='cart-price'>{item.price} </div>
                       <div className='cart-quantity'> <input></input> </div>
@@ -107,7 +107,7 @@ class CheckOut extends Component {
                  
                 </div>
                 <Footer/>
-                <ChatBox/>
+                <ChatBox table={this.props.match.params.table}/>
             </div>
         );
     }

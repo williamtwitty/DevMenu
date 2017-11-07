@@ -36,14 +36,18 @@ class MenuItems extends Component {
         })
         return (
             <div>
-                <div className='title'>DevMENU</div>
+                <div className='title'>Fullstack Co.</div>
                     <div className='Nav'>
                         <div className='nav-container'>
-                            <div className='drinks'><Link to ='/drinks'>Drinks</Link></div>
-                            <div className='drinks'><Link to ='/appetizers'>Appetizers</Link></div>
-                            <div className='drinks'><Link to ='/salads'>Salads</Link></div>
-                            <div className='drinks'><Link to ='/entrees'>Entrees</Link></div>
-                            <div className='drinks'><Link to ='/desserts'>Desserts</Link></div>
+                            <div className='drinks'><Link className='linkk' to= '/drinks'>&nbsp;&nbsp;</Link></div>
+                            <img src='https://imgur.com/j4ad6Vg.jpg' className='line' width='35px' height='35px'/>
+                            <div className='apps'><Link className='linkk' to ='/appetizers'>&nbsp;&nbsp;</Link></div>
+                            <img src='https://imgur.com/j4ad6Vg.jpg' className='line' width='35px' height='35px'/>
+                            <div className='salads'><Link  className='linkk' to ='/salads'>&nbsp;&nbsp;</Link></div>
+                            <img src='https://imgur.com/j4ad6Vg.jpg' className='line' width='35px' height='35px'/>
+                            <div className='entrees'><Link className='linkk' to ='/entrees'>&nbsp;&nbsp;</Link></div>
+                            <img src='https://imgur.com/j4ad6Vg.jpg' className='line' width='35px' height='35px'/>
+                            <div className='desserts'><Link className='linkk' to ='/desserts'>&nbsp;&nbsp;</Link></div>
                         </div>
                     </div>
                         <div><Link to ={`/checkout/${this.props.tableNumber}`}>Checkout</Link></div>

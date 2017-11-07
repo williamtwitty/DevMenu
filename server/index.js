@@ -83,7 +83,9 @@ app.get('/auth/logout', (req, res) => {
 app.get('/api/:type', ctrl.getMenuType)
 app.get('/checkout/:table', ctrl.getCheckByTable)
 app.get('/allorders', ctrl.getAdminOrders)
+app.get('/tablemessages/:table', ctrl.getMessagesByTable)
 
+app.post('/api/newmessage', ctrl.sendNewMessage)
 app.post('/api/neworder', ctrl.newOrderPlaced)
 app.patch('/api/completed', ctrl.patchCompleted)
 app.delete('/api/delete/:id/:table', ctrl.deleteItem)
@@ -122,10 +124,9 @@ app.post('/api/payment', function (req, res, next) {
 
 
 const PORT = 3030;
-
 server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
 
-     var admin = io.of('/admin')
+var admin = io.of('/admin')
 
     admin.on('connection', function(socket){
        // console.log('Admin has connected');
@@ -140,9 +141,6 @@ server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
            // console.log('Customer has connected');
         })
 
-
-
-
     io.on('connection', function(socket) {
        // console.log('we are connected');
     
@@ -156,10 +154,14 @@ server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
         io.of('/admin').emit('new item ordered', table)
     })
 
+    socket.on('new message', function(table, msg) {
+        console.log('Table:', table, 'has requested', msg);
+    })
+
 
 
     socket.on('disconnect', function(socket){
-       // console.log('we disconnected');
+        console.log('we disconnected');
     })
 })
 
