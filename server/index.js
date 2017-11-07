@@ -120,43 +120,11 @@ app.post('/api/payment', function (req, res, next) {
 
 
 const PORT = 3030;
-
 server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
 
-     var admin = io.of('/admin')
-
-    admin.on('connection', function(socket){
-       // console.log('Admin has connected');
-    })
-    admin.on('disconnect', function(socket){
-        //console.log('Admin is outta here');
-    })
-
-        var customer = io.of('/customer')
-
-        customer.on('connection', function(socket){
-           // console.log('Customer has connected');
-        })
-
-
-
-
     io.on('connection', function(socket) {
-       // console.log('we are connected');
-    
-    socket.on('new customer', function(table) {
-         console.log('New customer seated at table:', table);
-        io.of('/admin').emit('new customer admin', table )
-    })
-
-    socket.on('new order', function(table) {
-        console.log('Table:', table, 'has ordered a new item');
-        io.of('/admin').emit('new item ordered', table)
-    })
-
-
-
+        console.log('we are connected');
     socket.on('disconnect', function(socket){
-       // console.log('we disconnected');
+        console.log('we disconnected');
     })
 })

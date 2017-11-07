@@ -27,8 +27,9 @@
     justify-content: stretch;
     align-items: stretch;
     width: 100%;
-    height: 80vh;
+    height: 75vh;
     font-size: 55px;
+    position: absolute;
 
     .dessert1 {
         @include flexSetUp(center, flex-end);
@@ -43,6 +44,7 @@
         background-size: cover;
         margin: 7px;
     }
+
     .dessert3 {
         @include flexSetUp(center, flex-end);
         background-image: url('https://i.imgur.com/d7wVdrD.jpg?1');
@@ -63,16 +65,87 @@
     }
     
 }
+.dessert1111 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    justify-content: stretch;
+    align-items: stretch;
+    width: 100%;
+    height: 75vh;
+    font-size: 55px;
+    position: absolute;
+
+    .dessert11 {
+        @include flexSetUp(center, flex-end);
+        background-size: cover;
+        margin: 7px;
+        background-color:rgba(7, 7, 7, 0.432);
+        opacity: 1;
+    }
+
+    .dessert21 {
+        @include flexSetUp(center, flex-end);
+        background-size: cover;
+        margin: 7px;
+        background-color:rgba(7, 7, 7, 0.432);
+        opacity: 1;
+    }
+    .dessert31 {
+        @include flexSetUp(center, flex-end);
+        background-size: cover;
+        margin: 7px;
+        background-color:rgba(7, 7, 7, 0.432);
+        opacity: 1;
+    }
+    .dessert41 {
+        @include flexSetUp(center, flex-end);
+        background-size: cover;
+        margin: 7px;
+        background-color:rgba(7, 7, 7, 0.432);
+        opacity: 1;
+    }
+    .dessert51 {
+        @include flexSetUp(center, flex-end);
+        background-size: cover;
+        margin: 7px;
+        background-color:rgba(7, 7, 7, 0.432);
+        opacity: 1;
+    }
+    
+}
+
+    .dessert11:hover {
+        opacity: 0;
+    }
+    .dessert21:hover {
+        opacity: 0;
+    }
+    .dessert31:hover {
+        opacity: 0;
+    }
+    .dessert41:hover {
+        opacity: 0;
+    }
+    .dessert51:hover {
+        opacity: 0;
+    }
+
+
+.top2 {
+height: 80%;
+margin-bottom: 580px;
+}
 
 .top {
-    @include flexSetUp(center,center,column);
-    height: 150px;
-    margin: 0;
     font-size: 42px;
+    height: 20%;
 }
 
 .dev {
     margin: 15px;
+    font-family: 'Lobster', sans-serif;
+    margin-left: 25px;
 }
 
 .fork {
@@ -81,7 +154,9 @@
 
 .Link-menu {
     text-decoration: none;
-    color: #d1b183;
+    color: rgb(223, 222, 222);
     text-shadow: 2px 2px #2b2c2f;
-    margin-bottom: 10px;
+    width: 100%;
+    height: 100%;
+    @include flexSetUp(center,flex-end);
 }
