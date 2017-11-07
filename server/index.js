@@ -82,6 +82,7 @@ app.get('/api/:type', ctrl.getMenuType)
 app.get('/checkout/:table', ctrl.getCheckByTable)
 app.get('/allorders', ctrl.getAdminOrders)
 app.get('/tablemessages/:table', ctrl.getMessagesByTable)
+app.get('/adminmessages', ctrl.getAdminMessages)
 
 app.post('/api/newmessage', ctrl.sendNewMessage)
 app.post('/api/neworder', ctrl.newOrderPlaced)
@@ -154,6 +155,7 @@ var admin = io.of('/admin')
 
     socket.on('new message', function(table, msg) {
         console.log('Table:', table, 'has requested', msg);
+        io.of('/admin').emit('new customer message', table, msg)
     })
 
 

@@ -14,19 +14,27 @@ class ChatBox extends Component {
     // componentDidMount() {
     //     this.props.newMessage(this.props.match.params.table)
     // }
+
     componentDidMount() {
         this.props.getTableMessages(this.props.table)
     }
     
-    
+
     updateMessage(e){
         this.setState({
             text: e.target.value
         })
     }
+
+    handleOnClick () {
+        this.setState({
+            text: ''
+        })
+    }
+
     
     render() {
-        console.log('chat msgs', this.props.tableMessages);
+        // console.log('chat msgs', this.props.tableMessages);
         const messages = this.props.tableMessages.map(msg => {
            return <div>{msg.message} {msg.has_been_read ? 'read': 'unread'}</div>
         })
@@ -38,7 +46,7 @@ class ChatBox extends Component {
                       value={this.state.text}
                       onChange={(e) => {this.updateMessage(e)}}
                   />
-                <button onClick={()=>{ this.props.sendNewMessage(this.state.text, this.props.tableNumber)}}
+                <button onClick={()=>{ this.props.sendNewMessage(this.state.text, this.props.tableNumber); this.handleOnClick()}}
                 >Message</button>
             </div>
         );
