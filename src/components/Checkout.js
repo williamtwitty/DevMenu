@@ -51,10 +51,9 @@ class CheckOut extends Component {
                       
                       <div className='cart-item' key={i}>
                       <div className='cart-delete' onClick={()=> this.props.deleteItem(item.id, this.props.match.params.table)} > X </div>
-                      <div className='cart-img-box'><img src={item.image} alt=""/> </div>
+                      <div className='cart-img-box'><img src={item.image} alt="punk" className="punks"/> </div>
                       <div className='cart-product'> 
-                          <h1> {item.name} </h1>
-                          <button className='edit-options'> Edit Options</button>
+                          <div> {item.name} </div>
                       </div>
                       <div className='cart-price'>{item.price} </div>
                   </div>

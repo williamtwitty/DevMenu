@@ -122,10 +122,9 @@ app.post('/api/payment', function (req, res, next) {
 
 
 const PORT = 3030;
-
 server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
 
-     var admin = io.of('/admin')
+var admin = io.of('/admin')
 
     admin.on('connection', function(socket){
        // console.log('Admin has connected');
@@ -139,9 +138,6 @@ server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
         customer.on('connection', function(socket){
            // console.log('Customer has connected');
         })
-
-
-
 
     io.on('connection', function(socket) {
        // console.log('we are connected');
@@ -163,6 +159,6 @@ server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
 
 
     socket.on('disconnect', function(socket){
-       // console.log('we disconnected');
+        console.log('we disconnected');
     })
 })
