@@ -19,9 +19,10 @@ class HomePage extends Component {
     handleOnClick(e) {
         if (e === undefined) {
             return alert('please select a table first...');
-        } else {
-            return this.props.selectTableNumber(e);
-        }
+        } 
+        // else {
+        //     return this.props.selectTableNumber(e);
+        // }
     }
 
     render() {
