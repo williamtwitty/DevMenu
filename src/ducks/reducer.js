@@ -109,7 +109,6 @@ const tableMessages = axios.post(`/api/newMessage/`, {tableNumber, msg}).then( r
 }
 
 export function getTableMessages(table) {
-    console.log(table, 'ruff');
     const tableMessages = axios.get(`/tablemessages/${table}`).then( response => {
              return response.data
      })
