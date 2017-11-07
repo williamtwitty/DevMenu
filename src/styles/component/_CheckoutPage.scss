@@ -40,7 +40,8 @@
                 width: 80%;
                 height: auto;
                 @include flexSetUp(center, center, row);
-                border: 1px solid black;
+                border-left: 1px solid black;
+                border-right: 1px solid black;
     
                 .cart-delete {
                     width: 4%;

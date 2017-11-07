@@ -19,15 +19,18 @@ class HomePage extends Component {
     handleOnClick(e) {
         if (e === undefined) {
             return alert('please select a table first...');
-        } else {
-            return this.props.selectTableNumber(e);
-        }
+        } 
+        // else {
+        //     return this.props.selectTableNumber(e);
+        // }
     }
 
     render() {
         return (
-            <div className='HomePage-container'>
-                    <a href={process.env.REACT_APP_LOGIN}>Log In</a>
+            <div className='div'>
+            <div className='HomePage-container'></div>
+                <div className='HomePage-img'>
+                    <div className='login'><a className='log'href={process.env.REACT_APP_LOGIN}>Log In</a></div>
                 <div className='HomePage'>
                 <div className='menu-access'>
                     <div className='home-title'>Fullstack Co.</div>
@@ -35,8 +38,7 @@ class HomePage extends Component {
                     <div className='tableInput'>
                     <select className='home-input' defaultValue={0} onChange={(e)=>{
                         this.handleOnChange(e.target.value)}} >
-                        <option value='0'>Select your table</option>
-
+                        <option value='0'></option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>
@@ -64,12 +66,14 @@ class HomePage extends Component {
                         // <Link to = '/menu'>  orders</Link> </button>
                         
                          this.handleOnClick(e.target.value)}}> 
-                            orders 
+                            <img src='https://imgur.com/KdSyY3c.jpg'width='19px'height='19px'/>
+                            <img className='hover-arrow' src='https://imgur.com/KdSyY3c.jpg'width='15px'height='15px'/>
+                            <img className='hover-arrow2' src='https://imgur.com/KdSyY3c.jpg'width='12.5px'height='12.5px'/>
                          </button>  
                         </div>
                     </div>
-                    <ChatBox/>
                 </div>
+            </div>
             </div>
         );
     }

@@ -46,7 +46,6 @@ class Admin extends Component {
                 <div key={i} >
                     <div className='Orders-container'>
                         <div className='Orders'>
-                            <div className='order-title flex'>Orders</div>
                             <div className='table flex'>TableNumber: { parseInt(order.group, 10) + 1 }</div>
                             <div className='orders'>
                                 {
