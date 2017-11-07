@@ -58,15 +58,17 @@
                     // margin: 5px;
                     // flex: 1 1;
                     // min-width: 100px;
-                    max-height: 300px;
-                    width: 30%;
+                    max-height: 200px;
+                    width: 20%;
                     overflow: hidden;
                     object-fit: scale-down;
                 }
 
                 img.punks {
-                    max-width: 150px;
-                    max-height: 200px;
+                    max-width: 200px;
+                    max-height: 120px;
+                    object-fit: scale-down;
+                    
                 }
     
                 .cart-product {
@@ -97,12 +99,11 @@
                 justify-content: flex-start;
                 align-items: center;
                 
-    
                 .coupon-code {
                     height: 65%;
                     width: 20%;
                     margin-left: 10px;
-                    font-size: 18px;
+                    font-size: 16px;
                     letter-spacing: 1px;
                     outline: none;
                 }
@@ -113,7 +114,7 @@
                     width: 10%;
                     background-color: white;
                     border: 1px solid #2b2c2f;
-                    font-size: 12px;
+                    font-size: 11px;
                     letter-spacing: 2px;
                     color: #d1b183;
                     outline: none;
@@ -239,7 +240,7 @@
     .Link:hover {
         background-color: #2b2c2f;
         color: #d1b183;
-        font-weight: bold;
+        // font-weight: bold;
     }
     
     
