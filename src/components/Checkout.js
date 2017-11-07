@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import ChatBox from './ChatBox'
 // import swal from 'sweetalert2';
 
 
@@ -125,6 +126,7 @@ class CheckOut extends Component {
                     <div className='empty-space'> </div>
                 </div>
                 <Footer/>
+                <ChatBox table={this.props.match.params.table}/>
             </div>
         );
     }

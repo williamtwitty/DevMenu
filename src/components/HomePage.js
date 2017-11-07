@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { selectTableNumber } from '../ducks/reducer'
-import ChatBox from './ChatBox'
+
 
 class HomePage extends Component {
     constructor(props) {
@@ -19,9 +19,10 @@ class HomePage extends Component {
     handleOnClick(e) {
         if (e === undefined) {
             return alert('please select a table first...');
-        } else {
-            return this.props.selectTableNumber(e);
         }
+        //  else {
+        //     return this.props.selectTableNumber(e);
+        // }
     }
 
     render() {
@@ -66,7 +67,6 @@ class HomePage extends Component {
                          </button>  
                         </div>
                     </div>
-                    <ChatBox/>
                 </div>
             </div>
         );
