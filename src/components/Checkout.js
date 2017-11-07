@@ -8,8 +8,6 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 // import swal from 'sweetalert2';
 
-
-
 class CheckOut extends Component {
     constructor(props) {
         super(props)
@@ -56,6 +54,8 @@ class CheckOut extends Component {
                           <button className='edit-options'> Edit Options</button>
                       </div>
                       <div className='cart-price'>{item.price} </div>
+                      <div className='cart-quantity'> <input></input> </div>
+                      <div className='cart-total'> </div>
                   </div>
                  ) 
               })
@@ -63,27 +63,7 @@ class CheckOut extends Component {
              orderList = []
         }
         // console.log("url", this.props.match.params.table);
-        // console.log("checkbytable", this.props.checkByTable)
-
-
-        let receiptList = []
-        if (this.props.checkByTable[1]) {
-             receiptList = this.props.checkByTable[1].map((item, i)=>{
-                return  (
-                      
-                      <div className='receipt-item' key={i}>
-                        
-                        <div className='receipt-product'> 
-                            <div> {item.name} </div>
-                        </div>
-    
-                      <div className='receipt-price'>{item.price} </div>
-                  </div>
-                 ) 
-              })
-        } else{
-             receiptList = []
-        }
+        console.log("checkbytable", this.props.checkByTable)
       
         return (
             
@@ -95,6 +75,8 @@ class CheckOut extends Component {
                     <div className='cart-titles'>
                         <div className='Product'>Product</div>
                         <div className='Price'>Price</div>
+                        <div className='Quantity'>Quantity</div>
+                        <div className='Total'>Total</div>
                     </div>
                  {orderList}
                     <div className='cart-coupon'>
@@ -105,12 +87,9 @@ class CheckOut extends Component {
                     <div className='Totals-container'>
                         <div className='TOTALS'>
                             <div className='cart-total-title flex'>Cart Totals</div>
-                            <div className='subtotal flex'>
-                                <div className="sub">Subtotal</div>
-                            </div>
-                            <div className='receipt'>{receiptList}</div>
-                            <div className='total'>
-                                <div className="sub">{this.props.checkByTable[0]}</div>
+                            <div className='subtotal flex'>Subtotal</div>
+                            <div className='receipt'>Receipt</div>
+                            <div className='total flex'>{this.props.checkByTable[0]}
                           
                             </div>
                             <div className='btn-totalbox'>

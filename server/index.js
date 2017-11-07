@@ -163,15 +163,15 @@ server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
     })
 })
 
-app.post('/api/email', (req,res) => {
-    const transporter = nodemailer.createTransport({
-        service: ‘gmail’,
-        auth: {
-            user: ‘fullstackco@gmail.com’,
-            pass: process.env.EMAIL_PASS
-        }
-     });
+// app.post('/api/email', (req,res) => {
+//     const transporter = nodemailer.createTransport({
+//         service: ‘gmail’,
+//         auth: {
+//             user: ‘fullstackco@gmail.com’,
+//             pass: process.env.EMAIL_PASS
+//         }
+//      });
 
-     const
-})
+//      const
+// })
 
