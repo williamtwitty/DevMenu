@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAdminOrders, completedOrder } from '../ducks/reducer';
+import { getAdminOrders, completedOrder, getAdminMessages } from '../ducks/reducer';
 import io from 'socket.io-client';
  const adminSocket = io('/admin');
 
@@ -13,11 +13,13 @@ class Admin extends Component {
     }
     componentDidMount() {
         this.props.getAdminOrders()
+        this.props.getAdminMessages()
     }
 
 
 
     render() {
+        console.log('admin messages', this.props.adminMessages);
         adminSocket.on('new customer admin', function(table){
           //  console.log('new customer sat down at table:', table);
         })
@@ -25,6 +27,11 @@ class Admin extends Component {
         adminSocket.on('new item ordered', function(table){
            // console.log('new item ordered at table:', table);
         })
+
+        adminSocket.on('new customer message', function(table, msg) {
+            console.log('admin page rec', table, msg);
+        })
+        
 
         var groups = {};
 
@@ -81,8 +88,9 @@ class Admin extends Component {
 }
 function mapStateToProps(state){
     return {
-        adminOrders: state.adminOrders
+        adminOrders: state.adminOrders,
+        adminMessages: state.adminMessages
     }
 }
 
-export default connect(mapStateToProps, {getAdminOrders, completedOrder})(Admin);
+export default connect(mapStateToProps, {getAdminOrders, completedOrder, getAdminMessages})(Admin);
