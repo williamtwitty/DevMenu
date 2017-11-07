@@ -8,7 +8,9 @@ const initialState = {
     tableNumber: 0,
     adminOrders: [],
     newOrder: [],
-    completeOrder: []
+    completeOrder: [],
+    adminMessages: [],
+    tableMessages: []
 }
 
 const GET_MENU_TYPE = 'GET_MENU_TYPE'
@@ -18,7 +20,9 @@ const NEW_ORDER = 'NEW_ORDER'
 const COMPLETED_ORDER = 'COMPLETED_ORDER'
 const GET_ADMIN_ORDERS = 'GET_ADMIN_ORDERS'
 const DELETE_ITEM = 'DELETE_ITEM'
-
+const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE'
+const GET_ADMIN_MESSAGES = 'GET_ADMIN_MESSAGES'
+const GET_TABLE_MESSAGES = 'GET_TABLE_MESSAGES'
 
 export function getMenuType(type) {
    const menu = axios.get(`/api/${type}`).then( response => {
@@ -93,6 +97,37 @@ export function newOrder(id, tableNumber) {
      }
  }
 
+ export function sendNewMessage(msg, tableNumber) {
+    socket.emit('new message',tableNumber, msg)
+const tableMessages = axios.post(`/api/newMessage/`, {tableNumber, msg}).then( response => {
+    return response.data
+ })
+ return {
+     type: SEND_NEW_MESSAGE,
+     payload: tableMessages
+ }
+}
+
+export function getTableMessages(table) {
+    const tableMessages = axios.get(`/tablemessages/${table}`).then( response => {
+             return response.data
+     })
+     return {
+         type: GET_TABLE_MESSAGES,
+         payload: tableMessages
+     }
+ }
+
+export function getAdminMessages() {
+    const adminMessages = axios.get('/adminmessages').then( response => {
+             return response.data
+     })
+     return {
+         type: GET_ADMIN_MESSAGES,
+         payload: adminMessages
+     }
+ }
+
 
 export default function reducer(state=initialState, action) {
     switch (action.type) {
@@ -102,15 +137,21 @@ export default function reducer(state=initialState, action) {
             return Object.assign({}, state, {checkByTable: action.payload})
         case SELECT_TABLE_NUMBER:
             return Object.assign({}, state, { tableNumber: action.payload})
-            case GET_ADMIN_ORDERS + '_FULFILLED':
+        case GET_ADMIN_ORDERS + '_FULFILLED':
             return Object.assign({}, state, {adminOrders: action.payload})
         case NEW_ORDER + '_FULFILLED':
             return Object.assign({}, state, { newOrder: action.payload})
         case COMPLETED_ORDER + '_FULFILLED':
             return Object.assign({}, state, {completedOrder: action.payload})
         case DELETE_ITEM + '_FULFILLED':
-        console.log(action.payload);
             return Object.assign({}, state, {checkByTable: action.payload})
+        case SEND_NEW_MESSAGE + '_FULFILLED':
+            return Object.assign({}, state, { tableMessages: action.payload})
+        case GET_ADMIN_MESSAGES + '_FULFILLED':
+            return Object.assign({}, state, {adminMessages: action.payload})
+        case GET_TABLE_MESSAGES + '_FULFILLED':
+            return Object.assign({}, state, {tableMessages: action.payload})
+
         default:
             return state;
     }

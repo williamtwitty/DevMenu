@@ -63,6 +63,34 @@ module.exports = {
                         res.status(200).json(tableReceipt)
             }).catch(err => console.log(err))
         })
+    },
+
+    sendNewMessage(req, res) {
+        const db = req.app.get('db')
+        const {tableNumber, msg} = req.body
+    db.new_message([tableNumber, msg]).then(response => {
+        db.get_messages_by_table([tableNumber]).then(response => {
+            res.status(200).json(response)
+}).catch(err => console.log(err))
+       // console.log('new order', response);
+    }).catch(err => console.log(err))
+    },
+
+    getMessagesByTable(req, res) {
+        const db = req.app.get('db')        
+            db.get_messages_by_table([req.params.table]).then(response => {
+                    res.status(200).json(response)
+        }).catch(err => console.log(err))
+    },
+
+    getAdminMessages(req, res) {
+
+        const db = req.app.get('db')        
+            db.get_admin_messages().then(response => {
+                    res.status(200).json(response)
+        }).catch(err => console.log(err))
     }
+
+
 }
 
