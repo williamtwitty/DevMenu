@@ -1,3 +1,8 @@
+.full {
+    background-color: rgba(0, 0, 0, 0.048);
+}
+
+
 .Wrap-Menu {
     display: grid;
     grid-template-columns: 1fr;
@@ -7,6 +12,7 @@
     align-items: stretch;
     width: 100%;
     height: 100vh;
+    background-color: rgba(0, 0, 0, 0.048);
 }
 
 .menu-top {
@@ -80,7 +86,7 @@
         @include flexSetUp(center, flex-end);
         background-size: cover;
         margin: 7px;
-        background-color:rgba(7, 7, 7, 0.432);
+        background-color:rgba(7, 7, 7, 0.397);
         opacity: 1;
     }
 
@@ -88,28 +94,28 @@
         @include flexSetUp(center, flex-end);
         background-size: cover;
         margin: 7px;
-        background-color:rgba(7, 7, 7, 0.432);
+        background-color:rgba(7, 7, 7, 0.397);
         opacity: 1;
     }
     .dessert31 {
         @include flexSetUp(center, flex-end);
         background-size: cover;
         margin: 7px;
-        background-color:rgba(7, 7, 7, 0.432);
+        background-color:rgba(7, 7, 7, 0.397);
         opacity: 1;
     }
     .dessert41 {
         @include flexSetUp(center, flex-end);
         background-size: cover;
         margin: 7px;
-        background-color:rgba(7, 7, 7, 0.432);
+        background-color:rgba(7, 7, 7, 0.397);
         opacity: 1;
     }
     .dessert51 {
         @include flexSetUp(center, flex-end);
         background-size: cover;
         margin: 7px;
-        background-color:rgba(7, 7, 7, 0.432);
+        background-color:rgba(7, 7, 7, 0.397);
         opacity: 1;
     }
     
