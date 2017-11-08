@@ -118,6 +118,38 @@ app.post('/api/payment', function (req, res, next) {
     )}
 )
 
+app.post('/api/sendEmail', (req, res) => {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'rachel.noble77@gmail.com',
+        pass: process.env.EMAIL_PASSWORD
+      }
+    })
+    const {email, receipt} = req.body;
+    var mailOptions = {
+      from: 'fullstackco@gmail.com',
+      to: req.body.email,
+      subject: receipt,
+      html:`
+            <h1>Receipt from Fullstack Co.</h1>
+            <p>req.body.receipt</p>
+            <br/>
+            <p>Thank you,</p>
+            <p>Fullstack Co.</p>
+            <br/>
+            <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
+            <p>Copyright © 2017 Fullstack Co., All rights reserved.</p>`
+    };
+    console.log(mailOptions)
+    transporter.sendMail(mailOptions, function (error, response) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('message sent!')
+      }
+    });
+  })
 
 const PORT = 3030;
 server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
