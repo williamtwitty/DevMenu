@@ -86,7 +86,6 @@ class CheckOut extends Component {
         }
       
         return (
-         
             <div className='Checkout'>
                 <ChatBox table={this.props.match.params.table}/>
                 <div className='cart-title'> <button className='back'><Link className='back-link' to ='/menu'>Back to menu</Link></button> Cart <div></div></div>

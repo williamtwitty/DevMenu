@@ -1,7 +1,3 @@
-.Checkout {
-    background-color: rgba(0, 0, 0, 0.048);
-}
-
 
 .cart-title {
     width: 100%;
@@ -70,10 +66,9 @@
                 }
 
                 img.punks {
-                    max-width: 200px;
-                    max-height: 120px;
-                    object-fit: scale-down;
-                    
+                    width: 150px;
+                    height: 150px;
+                    object-fit: cover;
                 }
     
                 .cart-product {
