@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import ChatBox from './ChatBox'
 // import swal from 'sweetalert2';
 
 
@@ -85,10 +86,8 @@ class CheckOut extends Component {
         }
       
         return (
-            
-            <div>
-
-
+            <div className='Checkout'>
+                <ChatBox table={this.props.match.params.table}/>
                 <div className='cart-title'> <button className='back'><Link className='back-link' to ='/menu'>Back to menu</Link></button> Cart <div></div></div>
                 <div className='cart-container'>
                     <div className='cart-titles'>

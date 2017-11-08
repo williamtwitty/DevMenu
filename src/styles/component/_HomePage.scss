@@ -47,15 +47,18 @@ float: right;
     text-shadow: 2px 2px #2b2c2f;
     letter-spacing: 8px;
     font-family: 'Lobster', sans-serif;
+    margin-bottom: 80px;
 }
 
 .chooseTable {
-    color: rgb(223, 222, 222);
-    font-size: 20px;
+    color: rgba(223, 222, 222, 0.815);
+    font-size: 24px;
     line-height: 40px;
-    margin-top: 30px;
     text-shadow: 2px 2px #2b2c2f;
     letter-spacing: 3px;
+    border:1px solid rgba(255, 255, 255, 0.74);
+    padding:5px 10px 5px 10px;
+    line-height: 0px;
 }
 
 .tableInput {
@@ -63,13 +66,19 @@ float: right;
 }
 
 .home-input {
-   margin: 10px;
-   width: 30px;
-   height: 30px;
+   width: 60px;
+   height: 50px;
    outline: none;
-   background: rgb(202, 200, 200);
+   background: rgba(233, 230, 230, 0);
    font-weight: bold;
+   font-size: 32px;
+   margin-left: 10px;
+   border: 1px solid rgba(0, 0, 0, 0);
+   border-radius: 0px;
+   color:rgba(255, 255, 255, 0.795);
 }
+
+
 
 .next-btn {
     background-color: rgba(255, 255, 255, 0);

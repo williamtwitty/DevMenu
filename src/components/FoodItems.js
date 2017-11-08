@@ -10,7 +10,7 @@ class FoodItems extends Component {
       <div className="food-container">
                 <div className="food-together">
                   <div className="food-img">
-                  <img src={type.image} alt="" width='400px' height='300px' />
+                  <img className='foodItems-img'src={type.image} alt=""/>
                   </div>
                   <div className="food-info">
                     <div className="food-title">{type.name}</div>
