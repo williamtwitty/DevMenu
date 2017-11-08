@@ -61,7 +61,7 @@ class MenuItems extends Component {
                             <div className='desserts1'><Link className='linkk11' to ='/desserts'>desserts</Link></div>
                         </div>
                     </div>
-                        <div><Link to ={`/checkout/${this.props.tableNumber}`}>Checkout</Link></div>
+                        <div className='checkoutbutton'><Link to ={`/checkout/${this.props.tableNumber}`}>Checkout</Link></div>
                     <div className='space'>
                         <div className='foods'>
                             {item}

@@ -1,9 +1,5 @@
-.full {
-    background-color: rgba(0, 0, 0, 0.048);
-}
 
-
-.Wrap-Menu {
+.Wrap-Menu{
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: minmax(100px, auto);
@@ -12,8 +8,9 @@
     align-items: stretch;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.048);
+    position: absolute;
 }
+
 
 .menu-top {
     width: 100%;
@@ -23,7 +20,7 @@
 	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: center;
-	align-content: center;
+    align-content: center;
 }
 
 .dessert111 {
