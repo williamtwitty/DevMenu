@@ -8,22 +8,27 @@ class HomePage extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            // tableNum: ''
         }
-        this.handleOnChange = this.handleOnChange.bind(this)
+        this.handleOnChange = this.handleOnChange.bind(this);
+        // this.handleOnClick = this.handleOnClick.bind(this);
     }
 
     handleOnChange(e) {
-     return this.props.selectTableNumber(e); 
+        // this.setState = {
+        //     tableNum: e
+        //     }
+        return this.props.selectTableNumber(e); 
     }
 
     handleOnClick(e) {
-        // if (e === undefined) {
-        //     return alert('please select a table first...');
-        // } 
-        // else {
-        //     return this.props.selectTableNumber(e);
-        // }
+        // this.setState = {
+        //     tableNum: e
+        //     }
+        // return this.props.selectTableNumber(e);
     }
+        
+    
 
     render() {
         return (
@@ -34,11 +39,10 @@ class HomePage extends Component {
                 <div className='HomePage'>
                 <div className='menu-access'>
                     <div className='home-title'>Fullstack Co.</div>
-                    <div className='chooseTable'>Choose Your Table</div>
                     <div className='tableInput'>
-                    <select className='home-input' defaultValue={0} onChange={(e)=>{
+                    <div className='chooseTable'>CHOOSE YOUR TABLE<select className='home-input' defaultValue={0} onChange={(e)=>{
                         this.handleOnChange(e.target.value)}} >
-                        <option value='0'>#</option>
+                        <option className='option' value='0'>#</option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>
@@ -46,7 +50,9 @@ class HomePage extends Component {
                         <option value='5'>5</option>
                         <option value='6'>6</option>
                         <option value='7'>7</option>
-                    </select>
+                    </select></div>
+                  
+                  
 
                     <button className='next-btn' defaultValue={0} onClick={(e)=>{ 
 
@@ -66,9 +72,9 @@ class HomePage extends Component {
                         // <Link to = '/menu'>  orders</Link> </button>
                         
                          this.handleOnClick(e.target.value)}}> 
-                            <img src='https://imgur.com/KdSyY3c.jpg'width='19px'height='19px'/>
-                            <img className='hover-arrow' src='https://imgur.com/KdSyY3c.jpg'width='15px'height='15px'/>
-                            <img className='hover-arrow2' src='https://imgur.com/KdSyY3c.jpg'width='12.5px'height='12.5px'/>
+                            <img alt="" src='https://imgur.com/KdSyY3c.jpg'width='25px'height='25px'/>
+                            <img alt="" className='hover-arrow' src='https://imgur.com/KdSyY3c.jpg'width='20px'height='20px'/>
+                            <img alt="" className='hover-arrow2' src='https://imgur.com/KdSyY3c.jpg'width='16.5px'height='16.5px'/>
                          </button>  
                         </div>
                     </div>
