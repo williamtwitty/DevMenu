@@ -153,9 +153,9 @@ var admin = io.of('/admin')
         io.of('/admin').emit('new item ordered', table)
     })
 
-    socket.on('new message', function(table, msg) {
-        console.log('Table:', table, 'has requested', msg);
-        io.of('/admin').emit('new customer message', table, msg)
+    socket.on('new message', function(data) {
+        //console.log('Table:', table, 'has requested', msg);
+        io.of('/admin').emit('new customer message', data)
     })
 
 

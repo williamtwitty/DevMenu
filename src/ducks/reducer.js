@@ -98,8 +98,9 @@ export function newOrder(id, tableNumber) {
  }
 
  export function sendNewMessage(msg, tableNumber) {
-    socket.emit('new message',tableNumber, msg)
+    // socket.emit('new message',tableNumber, msg)
 const tableMessages = axios.post(`/api/newMessage/`, {tableNumber, msg}).then( response => {
+    socket.emit('new message', response.data)
     return response.data
  })
  return {

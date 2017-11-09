@@ -17,9 +17,9 @@ class HomePage extends Component {
     }
 
     handleOnClick(e) {
-        if (e === undefined) {
-            return alert('please select a table first...');
-        } 
+        // if (e === undefined) {
+        //     return alert('please select a table first...');
+        // } 
         // else {
         //     return this.props.selectTableNumber(e);
         // }
@@ -38,7 +38,7 @@ class HomePage extends Component {
                     <div className='tableInput'>
                     <select className='home-input' defaultValue={0} onChange={(e)=>{
                         this.handleOnChange(e.target.value)}} >
-                        <option value='0'></option>
+                        <option value='0'>#</option>
                         <option value='1'>1</option>
                         <option value='2'>2</option>
                         <option value='3'>3</option>
