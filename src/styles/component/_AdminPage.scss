@@ -7,12 +7,20 @@
 }
 
 .Orders-container {
-    width: 100%;
-    height: 430px;
+    border: 1px solid yellow;
+    width: 30%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    justify-content: stretch;
+    align-items: stretch;
+
     @include flexSetUp(center,center);
     
     .Orders {
-        width: 40%;
+        border: 1px solid blue;
+        width: 100%;
         height: 100%;
         display: flex;
         flex-wrap: wrap;
@@ -29,7 +37,7 @@
         .table {
             width: 100%;
             height: 10%;
-            border: 1px solid black;
+            border: 1px solid red;
             border-bottom: none;
             
         }
@@ -38,7 +46,7 @@
             width: 100%;
             height: 42%;
             overflow: scroll;
-            border: 1px solid black;
+            border: 1px solid green;
             border-bottom: none;
             text-align: left;
         }

@@ -27,7 +27,15 @@ class CheckOut extends Component {
         this.props.getCheckByTable(this.props.match.params.table)
     }
  
-
+    sendEmail() {
+        axios.post('/api/sendEmail', {
+          'email': this.state.email,
+          'message': this.state.message
+        }).catch((err) => {
+          console.log(err);
+          alert('Email Sent!', err);
+        })
+      }
 
     onToken(token) {
         token.card = void 0;
@@ -102,7 +110,7 @@ class CheckOut extends Component {
                     </div>
                     <div className='Totals-container'>
                         <div className='TOTALS'>
-                            <div className='cart-total-title flex'>Cart Totals</div>
+                            <div className='cart-total-title flex'>Total</div>
                             <div className='subtotal flex'>
                                 <div className="sub">Subtotal</div>
                             </div>
@@ -112,6 +120,11 @@ class CheckOut extends Component {
                           
                             </div>
                             <div className='btn-totalbox'>
+                                <div className="email-box">
+                                    <div className="email">Email your receipt</div>
+                                    <input className="email" placeholder="enter email"/>
+                                </div>
+
                                 <StripeCheckout
                                 token={this.onToken}
                                 stripeKey={ process.env.REACT_APP_STRIPE_SECRETKEY }

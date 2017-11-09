@@ -5,14 +5,21 @@
   float: right; }
 
 .Orders-container {
-  width: 100%;
-  height: 430px;
+  border: 1px solid yellow;
+  width: 30%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(100px, auto);
+  justify-content: stretch;
+  align-items: stretch;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row; }
   .Orders-container .Orders {
-    width: 40%;
+    border: 1px solid blue;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -26,13 +33,13 @@
     .Orders-container .Orders .table {
       width: 100%;
       height: 10%;
-      border: 1px solid black;
+      border: 1px solid red;
       border-bottom: none; }
     .Orders-container .Orders .orders {
       width: 100%;
       height: 42%;
       overflow: scroll;
-      border: 1px solid black;
+      border: 1px solid green;
       border-bottom: none;
       text-align: left; }
     .Orders-container .Orders .btn-totalbox {
@@ -51,12 +58,13 @@
   width: 100%;
   height: 100px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  padding-left: 162px;
   align-content: center;
-  font-size: 25px;
+  font-size: 40px;
   letter-spacing: 3px; }
 
 .cart-container {
