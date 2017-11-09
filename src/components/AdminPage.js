@@ -8,30 +8,57 @@ class Admin extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            adminOrders: []
+            adminOrders: [],
+            adminMessages: []
         }
     }
     componentDidMount() {
         this.props.getAdminOrders()
         this.props.getAdminMessages()
+        adminSocket.on('new customer message', this.props.getAdminMessages)
+        adminSocket.on('new item ordered', this.props.getAdminOrders)
     }
 
 
 
+
     render() {
-        console.log('admin messages', this.props.adminMessages);
-        adminSocket.on('new customer admin', function(table){
-          //  console.log('new customer sat down at table:', table);
-        })
+        console.log('test messages admin', this.props.adminMessages);
+        // adminSocket.on('new customer admin', function(table){
+        //   //  console.log('new customer sat down at table:', table);
+        // })
+        var tables = {}
+        for (var i = 0; i < this.props.adminMessages.length; i++) {
+            var tableNum = this.props.adminMessages[i].table_number
+            if (!tables[tableNum]) {
+                tables[tableNum] = []
+            }
+            tables[tableNum].push(this.props.adminMessages[i].message)
+        }   
+            const tableMessages = []
+                for (tableNum in tables) {
+                    tableMessages.push({table: tableNum, message: tables[tableNum]})
+                }
 
-        adminSocket.on('new item ordered', function(table){
-           // console.log('new item ordered at table:', table);
-        })
+                const messages = tableMessages.map((message, i) => {
+                    return(<div key={i} >
+                        <div className='Orders-container'>
+                            <div className='Orders'>
+                                <div className='table flex'>TableNumber: { parseInt(message.table, 10) }</div>
+                                    <div className='orders'> {
+                                    message.message.map((item, i) =>{
+                                        return(
+                                            <div key={i}className="item">{item}</div>
+                                        )
+                                    })
+                                })
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                    )
+                })
 
-        adminSocket.on('new customer message', function(table, msg) {
-            console.log('admin page rec', table, msg);
-        })
-        
 
         var groups = {};
 
@@ -53,7 +80,7 @@ class Admin extends Component {
                 <div key={i} >
                     <div className='Orders-container'>
                         <div className='Orders'>
-                            <div className='table flex'>TableNumber: { parseInt(order.group, 10) + 1 }</div>
+                            <div className='table flex'>TableNumber: { parseInt(order.group, 10) }</div>
                             <div className='orders'>
                                 {
                                     order.name.map((item, i) => {
@@ -74,6 +101,7 @@ class Admin extends Component {
                 </div>
             )
         })
+
         return (
             <div>
                 <div className="admin-title"> Orders
@@ -82,6 +110,7 @@ class Admin extends Component {
                     </div>
                 </div>
                 <div className='newOrders'> {orders} </div>
+                <div className='newOrders'>{messages}</div>
             </div>
         );
     }
