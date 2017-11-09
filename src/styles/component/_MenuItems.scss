@@ -18,10 +18,11 @@
     // border: 1px solid rgb(14, 13, 13);
     // border-radius: 100px;
     @include flexSetUp(center, center, row);
+    position: absolute;
 
     .drinks {
         height: 50px;
-        width: 50px;
+        width: 53px;
         background-image: url('https://imgur.com/bMd7UxS.jpg');
         background-size: cover;
     }
@@ -48,8 +49,8 @@
     }
 
     .apps {
-        height: 48px;
-        width: 48px;
+        height: 47px;
+        width: 47px;
         background-image: url('https://imgur.com/X5t9qBa.jpg');
         background-size: cover;
     }
@@ -62,3 +63,109 @@
     }
 }
 
+.nav-container1 {
+    width: 100%;
+    height: 50%;
+    // border: 1px solid rgb(14, 13, 13);
+    // border-radius: 100px;
+    @include flexSetUp(center, center, row);
+    position: absolute;
+
+    .drinks1 {
+        height: 43px;
+        width: 45px;
+        background-color: rgba(0, 0, 0, 0.342);
+        background-size: cover;
+        opacity: 0;
+        border-radius: 100px;
+        margin-bottom: 1px;
+    }
+
+    .salads1 {
+        height: 46px;
+        width: 46px;
+        background-color: rgba(0, 0, 0, 0.342);
+        background-size: cover;
+        opacity: 0;
+        border-radius: 100px;
+        margin-right: 5px;
+    }
+
+    .desserts1 {
+        height: 43px;
+        width: 43px;
+        margin-left: 7px;
+        background-color: rgba(0, 0, 0, 0.342);
+        background-size: cover;
+        opacity: 0;
+        border-radius: 100px;
+    }
+
+    .apps1 {
+        height: 45px;
+        width: 45px;
+        background-color: rgba(0, 0, 0, 0.342);
+        background-size: cover;
+        opacity: 0;
+        border-radius: 100px;
+        margin-left: 5px;
+    }
+
+    .entrees1 {
+        height: 44px;
+        width: 44px;
+        background-color: rgba(0, 0, 0, 0.342);
+        background-size: cover;
+        opacity: 0;
+        margin-left: 3px;
+        border-radius: 100px;
+    }
+}
+
+.drinks1:hover {
+    opacity: 1;
+}
+
+.salads1:hover {
+    opacity: 1;
+}
+
+.entrees1:hover {
+    opacity: 1;
+}
+
+.desserts1:hover {
+    opacity: 1;
+}
+
+.apps1:hover {
+    opacity: 1;
+}
+
+
+.linkk1 {
+    width:51px;
+    height: 50px;
+    @include flexSetUp(center, center);
+    text-decoration: none;
+    color: white;
+    font-size: 7px;
+    letter-spacing: 3px;
+}
+
+.linkk11 {
+    width:51px;
+    height: 50px;
+    @include flexSetUp(center, center);
+    text-decoration: none;
+    color: white;
+    font-size: 6px;
+    letter-spacing: 3px;
+}
+
+
+
+.checkoutbutton {
+    position: absolute;
+    width: 100%;
+}

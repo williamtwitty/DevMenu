@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import ChatBox from './ChatBox'
 // import swal from 'sweetalert2';
 
 
@@ -93,25 +94,9 @@ class CheckOut extends Component {
         }
       
         return (
-            
-            <div>
-                <button className='back'><Link className='back-link' to ='/menu'>Back to menu</Link></button> 
-                <div className= 'top'>
-                        <div className='dev'>Fullstack Co.</div>
-                   <div className='fork'>
-                    <img src='http://renewecoblasting.com/wp-content/uploads/2016/05/blackline.png' width='15%' height='3%'alt=""/> 
-                    &nbsp; &nbsp;
-                    <img src ='http://www.clker.com/cliparts/A/D/6/r/B/X/gray-silverware-hi.png' width='3%' height='5%'alt=""/>
-                    &nbsp; &nbsp;
-                    <img src='http://renewecoblasting.com/wp-content/uploads/2016/05/blackline.png' width='15%' height='3%' alt=""/>
-                    </div>
-                </div>
-
-                <div className='cart-title'> 
-                    <div></div>
-                        <div> Checkout </div>
-                       
-                    </div>
+            <div className='Checkout'>
+                <ChatBox table={this.props.match.params.table}/>
+                <div className='cart-title'> <button className='back'><Link className='back-link' to ='/menu'>Back to menu</Link></button> Cart <div></div></div>
                 <div className='cart-container'>
                     <div className='cart-titles'>
                         <div className='Product'>Product</div>

@@ -81,7 +81,10 @@ app.get('/auth/logout', (req, res) => {
 app.get('/api/:type', ctrl.getMenuType)
 app.get('/checkout/:table', ctrl.getCheckByTable)
 app.get('/allorders', ctrl.getAdminOrders)
+app.get('/tablemessages/:table', ctrl.getMessagesByTable)
+app.get('/adminmessages', ctrl.getAdminMessages)
 
+app.post('/api/newmessage', ctrl.sendNewMessage)
 app.post('/api/neworder', ctrl.newOrderPlaced)
 app.patch('/api/completed', ctrl.patchCompleted)
 app.delete('/api/delete/:id/:table', ctrl.deleteItem)
@@ -154,8 +157,41 @@ app.post('/api/sendEmail', (req, res) => {
 const PORT = 3030;
 server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
 
+var admin = io.of('/admin')
+
+    admin.on('connection', function(socket){
+       // console.log('Admin has connected');
+    })
+    admin.on('disconnect', function(socket){
+        //console.log('Admin is outta here');
+    })
+
+        var customer = io.of('/customer')
+
+        customer.on('connection', function(socket){
+           // console.log('Customer has connected');
+        })
+
     io.on('connection', function(socket) {
-        console.log('we are connected');
+       // console.log('we are connected');
+    
+    socket.on('new customer', function(table) {
+         console.log('New customer seated at table:', table);
+        io.of('/admin').emit('new customer admin', table )
+    })
+
+    socket.on('new order', function(table) {
+        console.log('Table:', table, 'has ordered a new item');
+        io.of('/admin').emit('new item ordered', table)
+    })
+
+    socket.on('new message', function(table, msg) {
+        console.log('Table:', table, 'has requested', msg);
+        io.of('/admin').emit('new customer message', table, msg)
+    })
+
+
+
     socket.on('disconnect', function(socket){
         console.log('we disconnected');
     })
