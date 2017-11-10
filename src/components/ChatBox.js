@@ -38,16 +38,20 @@ class ChatBox extends Component {
         const messages = this.props.tableMessages.map(msg => {
            return <div>{msg.message} {msg.has_been_read ? 'read': 'unread'}</div>
         })
+
         return (
-            <div>
-                {messages}
-                <input
+            <div className='chatbox-comp'>
+               <div className='chat-messages'> {messages} </div>
+                <div className='enter-message'>
+                    <input
                       placeholder="question here"
                       value={this.state.text}
+                      className='chat-input'
                       onChange={(e) => {this.updateMessage(e)}}
                   />
-                <button onClick={()=>{ this.props.sendNewMessage(this.state.text, this.props.tableNumber); this.handleOnClick()}}
-                >Message</button>
+                <button className='chat-btn' onClick={()=>{ this.props.sendNewMessage(this.state.text, this.props.tableNumber); this.handleOnClick()}}
+                >SEND</button>
+                </div>
             </div>
         );
     }

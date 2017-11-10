@@ -157,7 +157,7 @@
                         display: flex;
                         flex-direction: column;
                         flex-wrap: nowrap;
-                        justify-content: flex-end;
+                        justify-content: flex-start;
                         align-items: flex-start;
                         align-content: stretch;
                         border-bottom: none;
@@ -277,4 +277,79 @@
     .receipt{
     font-size: 10px;
     }
+}
+
+
+
+
+  
+  .container {
+    width: 40%;
+    margin-top: 80px;
+  }
+
+  .container-contained {
+        position: relative;
+        background: #ffffff;
+        border-radius: .4em;
+        border: 1px solid black;
+  }
+    
+    .container-contained:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: 17px solid transparent;
+        border-top-color: black;
+        border-bottom: 0;
+        margin-left: -17px;
+        margin-bottom: -17px; 
+  }
+
+  .chatbox {
+      width: 100%;
+      overflow: scroll;
+    //   border: 1px solid red;
+  }
+
+  .chat-input {
+      width: 80.6%;
+      height: 30px;
+      border-bottom: none;
+      border-left: none;
+      border-right: none;
+      background-color: transparent;
+      outline: none;
+  }
+
+  .chat-btn {
+      height: 36px;
+      letter-spacing: 3px;
+      border-right: none;
+      border-bottom: none;
+      background-color: transparent;
+      border-radius: 2px;
+      border-top: 1px solid black;
+      outline: none;
+  }
+
+  .chat-btn:hover {
+      color: tan;
+  }
+
+  .chat-messages {
+    width: 100%;
+    height:205px;
+    overflow: scroll;
+    font-size: 16px;
+    line-height: 30px;
+    // border: 1px solid black;
+  }
+
+  .enter-message {
+    width: 100%;
+    height:20%;
 }
