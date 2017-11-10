@@ -39,6 +39,16 @@ class CheckOut extends Component {
     this.setState({
         input: ''
     })
+ 
+    sendEmail() {
+        axios.post('/api/sendEmail', {
+          'email': this.state.email,
+          'message': this.state.message
+        }).catch((err) => {
+          console.log(err);
+          alert('Email Sent!', err);
+        })
+      }
 
     }
   
@@ -129,7 +139,7 @@ class CheckOut extends Component {
                     </div>
                     <div className='Totals-container'>
                         <div className='TOTALS'>
-                            <div className='cart-total-title flex'>Cart Totals</div>
+                            <div className='cart-total-title flex'>Total</div>
                             <div className='subtotal flex'>
                                 <div className="sub">Subtotal</div>
                             </div>
@@ -142,11 +152,25 @@ class CheckOut extends Component {
                           
                             </div>
                             <div className='btn-totalbox'>
+                                <div className="email-box">
+                                    <div className="email">Email your receipt</div>
+                                    <input className="email" placeholder="enter email"/>
+                                </div>
+
                                 <StripeCheckout
                                 token={this.onToken}
                                 stripeKey={ process.env.REACT_APP_STRIPE_SECRETKEY }
                                 amount={+this.props.checkByTable[0] * 100}
                                 />
+                            </div>
+                        </div>
+                        <div className='CHATBOX'>
+                        <div className="container">
+                            <div className="container-contained">
+                                <div className='chatbox'>
+                            <ChatBox table={this.props.match.params.table}/>
+                            </div>
+                            </div>
                             </div>
                         </div>
                     </div>

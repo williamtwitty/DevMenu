@@ -84,6 +84,7 @@ app.get('/api/:type', ctrl.getMenuType)
 app.get('/checkout/:table', ctrl.getCheckByTable)
 app.get('/allorders', ctrl.getAdminOrders)
 app.get('/tablemessages/:table', ctrl.getMessagesByTable)
+app.get('/adminmessages', ctrl.getAdminMessages)
 
 app.post('/api/newmessage', ctrl.sendNewMessage)
 app.post('/api/neworder', ctrl.newOrderPlaced)
@@ -122,6 +123,38 @@ app.post('/api/payment', function (req, res, next) {
     )}
 )
 
+app.post('/api/sendEmail', (req, res) => {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'rachel.noble77@gmail.com',
+        pass: process.env.EMAIL_PASSWORD
+      }
+    })
+    const {email, receipt} = req.body;
+    var mailOptions = {
+      from: 'fullstackco@gmail.com',
+      to: req.body.email,
+      subject: receipt,
+      html:`
+            <h1>Receipt from Fullstack Co.</h1>
+            <p>req.body.receipt</p>
+            <br/>
+            <p>Thank you,</p>
+            <p>Fullstack Co.</p>
+            <br/>
+            <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
+            <p>Copyright © 2017 Fullstack Co., All rights reserved.</p>`
+    };
+    console.log(mailOptions)
+    transporter.sendMail(mailOptions, function (error, response) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('message sent!')
+      }
+    });
+  })
 
 const PORT = 3030;
 server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
@@ -154,8 +187,9 @@ var admin = io.of('/admin')
         io.of('/admin').emit('new item ordered', table)
     })
 
-    socket.on('new message', function(table, msg) {
-        console.log('Table:', table, 'has requested', msg);
+    socket.on('new message', function(data) {
+        //console.log('Table:', table, 'has requested', msg);
+        io.of('/admin').emit('new customer message', data)
     })
 
 

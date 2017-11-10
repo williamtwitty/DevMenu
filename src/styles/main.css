@@ -5,14 +5,21 @@
   float: right; }
 
 .Orders-container {
-  width: 100%;
-  height: 430px;
+  border: 1px solid yellow;
+  width: 30%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(100px, auto);
+  justify-content: stretch;
+  align-items: stretch;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row; }
   .Orders-container .Orders {
-    width: 40%;
+    border: 1px solid blue;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -26,13 +33,13 @@
     .Orders-container .Orders .table {
       width: 100%;
       height: 10%;
-      border: 1px solid black;
+      border: 1px solid red;
       border-bottom: none; }
     .Orders-container .Orders .orders {
       width: 100%;
       height: 42%;
       overflow: scroll;
-      border: 1px solid black;
+      border: 1px solid green;
       border-bottom: none;
       text-align: left; }
     .Orders-container .Orders .btn-totalbox {
@@ -51,12 +58,13 @@
   width: 100%;
   height: 100px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  padding-left: 162px;
   align-content: center;
-  font-size: 25px;
+  font-size: 40px;
   letter-spacing: 3px; }
 
 .cart-container {
@@ -100,9 +108,9 @@
       overflow: hidden;
       object-fit: scale-down; }
     .cart-container .cart-item img.punks {
-      max-width: 200px;
-      max-height: 120px;
-      object-fit: scale-down; }
+      width: 150px;
+      height: 150px;
+      object-fit: cover; }
     .cart-container .cart-item .cart-product {
       width: 35%;
       font-size: 14px;
@@ -168,7 +176,7 @@
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        justify-content: flex-end;
+        justify-content: flex-start;
         align-items: flex-start;
         align-content: stretch;
         border-bottom: none; }
@@ -255,7 +263,7 @@ button.stripe {
   width: 9%;
   height: 25%;
   border: none;
-  background-color: white;
+  background-color: transparent;
   font-size: 16px; }
 
 .back-link {
@@ -265,6 +273,66 @@ button.stripe {
 @media (min-width: 600px) {
   .receipt {
     font-size: 10px; } }
+
+.container {
+  width: 40%;
+  margin-top: 80px; }
+
+.container-contained {
+  position: relative;
+  background: #ffffff;
+  border-radius: .4em;
+  border: 1px solid black; }
+
+.container-contained:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 17px solid transparent;
+  border-top-color: black;
+  border-bottom: 0;
+  margin-left: -17px;
+  margin-bottom: -17px; }
+
+.chatbox {
+  width: 100%;
+  overflow: scroll; }
+
+.chat-input {
+  width: 80.6%;
+  height: 30px;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  background-color: transparent;
+  outline: none; }
+
+.chat-btn {
+  height: 36px;
+  letter-spacing: 3px;
+  border-right: none;
+  border-bottom: none;
+  background-color: transparent;
+  border-radius: 2px;
+  border-top: 1px solid black;
+  outline: none; }
+
+.chat-btn:hover {
+  color: tan; }
+
+.chat-messages {
+  width: 100%;
+  height: 205px;
+  overflow: scroll;
+  font-size: 16px;
+  line-height: 30px; }
+
+.enter-message {
+  width: 100%;
+  height: 20%; }
 
 .footer-container {
   width: 100%;
@@ -282,7 +350,6 @@ body {
 .HomePage-container {
   width: 100%;
   height: 100vh;
-  background: url("https://i.imgur.com/gmaqcSX.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -293,7 +360,7 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: rgba(7, 7, 7, 0.432); }
+  background-color: rgba(7, 7, 7, 0.473); }
 
 .Login {
   float: right; }
@@ -315,15 +382,18 @@ body {
   color: #dfdede;
   text-shadow: 2px 2px #2b2c2f;
   letter-spacing: 8px;
-  font-family: 'Lobster', sans-serif; }
+  font-family: 'Lobster', sans-serif;
+  margin-bottom: 80px; }
 
 .chooseTable {
-  color: #dfdede;
-  font-size: 20px;
+  color: rgba(223, 222, 222, 0.815);
+  font-size: 24px;
   line-height: 40px;
-  margin-top: 30px;
   text-shadow: 2px 2px #2b2c2f;
-  letter-spacing: 3px; }
+  letter-spacing: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  padding: 5px 10px 5px 10px;
+  line-height: 0px; }
 
 .tableInput {
   display: flex;
@@ -332,12 +402,15 @@ body {
   flex-direction: row; }
 
 .home-input {
-  margin: 10px;
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 50px;
   outline: none;
-  background: #cac8c8;
-  font-weight: bold; }
+  background: rgba(233, 230, 230, 0);
+  font-size: 32px;
+  margin-left: 10px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  color: rgba(255, 255, 255, 0.795); }
 
 .next-btn {
   background-color: rgba(255, 255, 255, 0);
@@ -391,17 +464,18 @@ a.log {
   justify-content: stretch;
   align-items: stretch;
   width: 100%;
-  height: 100vh; }
+  height: 100vh;
+  position: relative;
+  background-color: rgba(128, 128, 128, 0.568);
+  color: #e0e0e0; }
 
-.menu-top {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center; }
+.top-border {
+  margin: 10px 8px 0px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.555); }
+
+.top-border2 {
+  margin: 10px 8px 10px 8px;
+  border: 1px solid black; }
 
 .dessert111 {
   display: grid;
@@ -463,7 +537,7 @@ a.log {
   width: 100%;
   height: 75vh;
   font-size: 55px;
-  position: absolute; }
+  position: relative; }
   .dessert1111 .dessert11 {
     display: flex;
     justify-content: center;
@@ -471,7 +545,7 @@ a.log {
     flex-direction: row;
     background-size: cover;
     margin: 7px;
-    background-color: rgba(7, 7, 7, 0.432);
+    background-color: rgba(7, 7, 7, 0.397);
     opacity: 1; }
   .dessert1111 .dessert21 {
     display: flex;
@@ -480,7 +554,7 @@ a.log {
     flex-direction: row;
     background-size: cover;
     margin: 7px;
-    background-color: rgba(7, 7, 7, 0.432);
+    background-color: rgba(7, 7, 7, 0.397);
     opacity: 1; }
   .dessert1111 .dessert31 {
     display: flex;
@@ -489,7 +563,7 @@ a.log {
     flex-direction: row;
     background-size: cover;
     margin: 7px;
-    background-color: rgba(7, 7, 7, 0.432);
+    background-color: rgba(7, 7, 7, 0.397);
     opacity: 1; }
   .dessert1111 .dessert41 {
     display: flex;
@@ -498,7 +572,7 @@ a.log {
     flex-direction: row;
     background-size: cover;
     margin: 7px;
-    background-color: rgba(7, 7, 7, 0.432);
+    background-color: rgba(7, 7, 7, 0.397);
     opacity: 1; }
   .dessert1111 .dessert51 {
     display: flex;
@@ -507,7 +581,7 @@ a.log {
     flex-direction: row;
     background-size: cover;
     margin: 7px;
-    background-color: rgba(7, 7, 7, 0.432);
+    background-color: rgba(7, 7, 7, 0.397);
     opacity: 1; }
 
 .dessert11:hover {
@@ -526,15 +600,13 @@ a.log {
   opacity: 0; }
 
 .top2 {
-  height: 80%;
-  margin-bottom: 580px; }
+  height: 80%; }
 
 .top {
   font-size: 42px;
   height: 20%; }
 
 .dev {
-  margin: 15px;
   font-family: 'Lobster', sans-serif;
   margin-left: 25px; }
 
@@ -546,10 +618,11 @@ a.log {
 
 .Link-menu {
   text-decoration: none;
-  color: #dfdede;
-  text-shadow: 2px 2px #2b2c2f;
-  width: 100%;
-  height: 100%;
+  color: #d6d6d6;
+  width: 85%;
+  height: 90%;
+  border: 1px solid rgba(255, 255, 255, 0.555);
+  margin-bottom: 25px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -579,10 +652,11 @@ a.log {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row; }
+  flex-direction: row;
+  position: absolute; }
   .nav-container .drinks {
     height: 50px;
-    width: 50px;
+    width: 53px;
     background-image: url("https://imgur.com/bMd7UxS.jpg");
     background-size: cover; }
   .nav-container .linkk {
@@ -604,8 +678,8 @@ a.log {
     background-image: url("https://imgur.com/kVSPSQi.jpg");
     background-size: cover; }
   .nav-container .apps {
-    height: 48px;
-    width: 48px;
+    height: 47px;
+    width: 47px;
     background-image: url("https://imgur.com/X5t9qBa.jpg");
     background-size: cover; }
   .nav-container .entrees {
@@ -614,11 +688,102 @@ a.log {
     background-image: url("https://imgur.com/w2NxWDv.jpg");
     background-size: cover; }
 
+.nav-container1 {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: absolute; }
+  .nav-container1 .drinks1 {
+    height: 43px;
+    width: 45px;
+    background-color: rgba(0, 0, 0, 0.342);
+    background-size: cover;
+    opacity: 0;
+    border-radius: 100px;
+    margin-bottom: 1px; }
+  .nav-container1 .salads1 {
+    height: 46px;
+    width: 46px;
+    background-color: rgba(0, 0, 0, 0.342);
+    background-size: cover;
+    opacity: 0;
+    border-radius: 100px;
+    margin-right: 5px; }
+  .nav-container1 .desserts1 {
+    height: 43px;
+    width: 43px;
+    margin-left: 7px;
+    background-color: rgba(0, 0, 0, 0.342);
+    background-size: cover;
+    opacity: 0;
+    border-radius: 100px; }
+  .nav-container1 .apps1 {
+    height: 45px;
+    width: 45px;
+    background-color: rgba(0, 0, 0, 0.342);
+    background-size: cover;
+    opacity: 0;
+    border-radius: 100px;
+    margin-left: 5px; }
+  .nav-container1 .entrees1 {
+    height: 44px;
+    width: 44px;
+    background-color: rgba(0, 0, 0, 0.342);
+    background-size: cover;
+    opacity: 0;
+    margin-left: 3px;
+    border-radius: 100px; }
+
+.drinks1:hover {
+  opacity: 1; }
+
+.salads1:hover {
+  opacity: 1; }
+
+.entrees1:hover {
+  opacity: 1; }
+
+.desserts1:hover {
+  opacity: 1; }
+
+.apps1:hover {
+  opacity: 1; }
+
+.linkk1 {
+  width: 51px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  text-decoration: none;
+  color: white;
+  font-size: 7px;
+  letter-spacing: 3px; }
+
+.linkk11 {
+  width: 51px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  text-decoration: none;
+  color: white;
+  font-size: 6px;
+  letter-spacing: 3px; }
+
+.checkoutbutton {
+  position: absolute;
+  width: 100%; }
+
 .food-container {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(10px, auto);
-  grid-gap: 1em;
   justify-content: stretch;
   align-items: stretch;
   width: 100%; }
@@ -679,4 +844,10 @@ a.log {
   width: 100%; }
 
 .space {
-  padding: 20px; }
+  padding-left: 120px;
+  padding-right: 120px;
+  padding-top: 50px; }
+
+img.foodItems-img {
+  width: 300px;
+  height: 300px; }
