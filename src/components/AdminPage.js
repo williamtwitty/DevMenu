@@ -37,55 +37,21 @@ class Admin extends Component {
                              }
                          }).map((order) => {
                            return <div key={order.id} className="item">{order.name}</div>
-                })
-                }</div>Messages for table: {table}
-                <div>{this.props.adminMessages.filter(message => {
-                    if (message.table_number === table) {
-                        return message
-                    }
-                }).map((message)=> {
-                    return <div key={message.id}>{message.message}</div>
-                }) 
-                }</div>
-            </div>
+                            })
+                            }</div>Messages for table: {table}
+                                <div>{this.props.adminMessages.filter(message => {
+                                    if (message.table_number === table) {
+                                        return message
+                                        }
+                             }).map((message)=> {
+                                return <div key={message.id}>{message.message}</div>
+                                }) 
+                                }</div>
+                    </div>
         })
 
 
         console.log('test messages admin', eachTable);
-
-
-
-
-
-
-        // const orders = myOrders.map((order, i) => {
-
-        //     return( 
-        //         <div key={i} >
-        //             <div className='Orders-container'>
-        //                 <div className='Orders'>
-        //                     <div className='table flex'>TableNumber: { parseInt(order.group, 10) }</div>
-        //                     <div className='orders'>
-        //                         {
-        //                             order.name.map((item, i) => {
-        //                                 return (
-        //                                     <div  key={i} className="item">{item}</div>
-        //                                 )
-        //                             })
-        //                         }     
-        //                     </div>
-
-        //                     <div className='btn-totalbox'>
-        //                     <button className='btn'
-        //                         onClick={() => this.props.completedOrder(parseInt(order.group, 10) )}> 
-        //                         Delete </button>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     )
-        // })
-        
 
         return (
             <div>

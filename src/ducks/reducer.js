@@ -68,7 +68,7 @@ export function newOrder(id, tableNumber) {
      socket.emit('completed tables order', tableNumber)
     // console.log('completedReducer', {tableNumber} )
     const completedOrder = axios.patch(`/api/completed/`, {tableNumber}).then( response => {
-        //console.log('completedOrder response', response.data);
+        console.log('completedOrder response', response.data);
         return response.data
      })
      return {
