@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import ChatBox from './ChatBox'
+import util from '../util/util'
 // import swal from 'sweetalert2';
 class CheckOut extends Component {
     constructor(props) {
@@ -14,7 +15,9 @@ class CheckOut extends Component {
         this.state = {
             checkByTable: [],
             code : 'DEV',
-            input: ''
+            input: '',
+            coupon: false,
+            email: ''
 
         }
         this.onToken=this.onToken.bind(this);
@@ -31,14 +34,38 @@ class CheckOut extends Component {
     }
 
     coupon(e){
-        if(e !== this.state.code){
-            alert('invalid coupon code')
+        
+        if(util.coupon(e, this.state.code)){
+            
+            this.setState({
+                input: '',
+                coupon : true
+            })
         } else {
-            alert ('congrats')
+            alert ('invalid code')
         }
-    this.setState({
-        input: ''
-    })
+    }
+
+    handleEmail(bob){
+        this.setState({
+            email: bob
+        })
+    }
+     
+    validateEmail(mail)   
+    {  
+     if (util.validateEmail(mail))  
+      {  
+        return (true)  
+      }  
+        alert("You have entered an invalid email address!")  
+        return (false)  
+    } 
+
+    
+        
+   
+
  
     // sendEmail() {
     //     axios.post('/api/sendEmail', {
@@ -50,7 +77,7 @@ class CheckOut extends Component {
     //     })
     //   }
 
-    }
+    
   
  
     onToken(token) {
@@ -68,6 +95,7 @@ class CheckOut extends Component {
       }
     
     render() {
+        console.log(this.state.coupon)
         let orderList = []
         if (this.props.checkByTable[1]) {
              orderList = this.props.checkByTable[1].map((item, i)=>{
@@ -83,6 +111,7 @@ class CheckOut extends Component {
                   </div>
                  ) 
               })
+           
         } else{
              orderList = []
         }
@@ -153,8 +182,9 @@ class CheckOut extends Component {
                             </div>
                             <div className='btn-totalbox'>
                                 <div className="email-box">
-                                    <div className="email">Email your receipt</div>
-                                    <input className="email" placeholder="enter email"/>
+                                    <div className="email" onClick={()=>{this.validateEmail(this.state.email)}}>Email your receipt</div>
+                                    <input className="email" placeholder="enter email"  value = {this.state.email}
+                        onChange={(e)=>{this.handleEmail(e.target.value)}}/>
                                 </div>
 
                                 <StripeCheckout

@@ -1,23 +1,19 @@
-// test('addToCart() should add a car object to the cart array.', function() {
-//     cart.addToCart( cars[0] );
-//     cart.addToCart( cars[1] );
+const func = require('./util')
 
-//     expect( cart.cart.length ).toEqual( 2 );
-//     expect( cart.cart[0] ).toEqual( cars[0] );
-//     expect( cart.cart[1] ).toEqual( cars[1] );
-//   });
+describe('Checkout Methods:', function(){
+  test('coupon() should return true if DEV is inputed', function(){
+   
+    
 
-// test('removeFromCart() should remove a car object from the cart array.', function() {
-//     cart.addToCart( cars[0] );
-//     cart.addToCart( cars[1] );
-//     cart.addToCart( cars[2] );
-  
-//     cart.removeFromCart( 1, cars[1].price );
-  
-//     expect( cart.cart.length ).toEqual( 2 );
-//     expect( cart.cart[0] ).toEqual( cars[0] );
-//     expect( cart.cart[1] ).toEqual( cars[2] );
-//   });
+    expect(func.coupon('DEV', 'DEV')).toEqual(true)
+    expect(func.coupon('DE', 'DEV')).toEqual(false)
+   
+  })
 
-testing: coupon, sum total, adding up items in cart - frontend, 
-email length testing, chat box input text length
+  test('validateEmail should return true if email is correct', function(){
+   
+    expect(func.validateEmail('haley@haley.com')).toEqual(true)
+    expect(func.validateEmail('adsf')).toEqual(false)
+  })
+
+})
