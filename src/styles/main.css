@@ -176,7 +176,7 @@
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        justify-content: flex-end;
+        justify-content: flex-start;
         align-items: flex-start;
         align-content: stretch;
         border-bottom: none; }
@@ -274,6 +274,66 @@ button.stripe {
   .receipt {
     font-size: 10px; } }
 
+.container {
+  width: 40%;
+  margin-top: 80px; }
+
+.container-contained {
+  position: relative;
+  background: #ffffff;
+  border-radius: .4em;
+  border: 1px solid black; }
+
+.container-contained:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 17px solid transparent;
+  border-top-color: black;
+  border-bottom: 0;
+  margin-left: -17px;
+  margin-bottom: -17px; }
+
+.chatbox {
+  width: 100%;
+  overflow: scroll; }
+
+.chat-input {
+  width: 80.6%;
+  height: 30px;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  background-color: transparent;
+  outline: none; }
+
+.chat-btn {
+  height: 36px;
+  letter-spacing: 3px;
+  border-right: none;
+  border-bottom: none;
+  background-color: transparent;
+  border-radius: 2px;
+  border-top: 1px solid black;
+  outline: none; }
+
+.chat-btn:hover {
+  color: tan; }
+
+.chat-messages {
+  width: 100%;
+  height: 205px;
+  overflow: scroll;
+  font-size: 16px;
+  line-height: 30px; }
+
+.enter-message {
+  width: 100%;
+  height: 20%; }
+
 .footer-container {
   width: 100%;
   height: 100px;
@@ -290,7 +350,6 @@ body {
 .HomePage-container {
   width: 100%;
   height: 100vh;
-  background: url("https://i.imgur.com/gmaqcSX.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -301,7 +360,7 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: rgba(7, 7, 7, 0.432); }
+  background-color: rgba(7, 7, 7, 0.473); }
 
 .Login {
   float: right; }
@@ -347,7 +406,6 @@ body {
   height: 50px;
   outline: none;
   background: rgba(233, 230, 230, 0);
-  font-weight: bold;
   font-size: 32px;
   margin-left: 10px;
   border: 1px solid transparent;
@@ -407,17 +465,17 @@ a.log {
   align-items: stretch;
   width: 100%;
   height: 100vh;
-  position: absolute; }
+  position: relative;
+  background-color: rgba(128, 128, 128, 0.568);
+  color: #e0e0e0; }
 
-.menu-top {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center; }
+.top-border {
+  margin: 10px 8px 0px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.555); }
+
+.top-border2 {
+  margin: 10px 8px 10px 8px;
+  border: 1px solid black; }
 
 .dessert111 {
   display: grid;
@@ -479,7 +537,7 @@ a.log {
   width: 100%;
   height: 75vh;
   font-size: 55px;
-  position: absolute; }
+  position: relative; }
   .dessert1111 .dessert11 {
     display: flex;
     justify-content: center;
@@ -542,15 +600,13 @@ a.log {
   opacity: 0; }
 
 .top2 {
-  height: 80%;
-  margin-bottom: 580px; }
+  height: 80%; }
 
 .top {
   font-size: 42px;
   height: 20%; }
 
 .dev {
-  margin: 15px;
   font-family: 'Lobster', sans-serif;
   margin-left: 25px; }
 
@@ -562,10 +618,11 @@ a.log {
 
 .Link-menu {
   text-decoration: none;
-  color: #dfdede;
-  text-shadow: 2px 2px #2b2c2f;
-  width: 100%;
-  height: 100%;
+  color: #d6d6d6;
+  width: 85%;
+  height: 90%;
+  border: 1px solid rgba(255, 255, 255, 0.555);
+  margin-bottom: 25px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
