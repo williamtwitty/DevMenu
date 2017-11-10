@@ -18,7 +18,9 @@ class CheckOut extends Component {
         this.state = {
             checkByTable: [],
             email: '',
-            list: []
+            list: [],
+            code : 'DEV',
+            input: ''
         }
         this.onToken=this.onToken.bind(this);
     }
@@ -36,6 +38,12 @@ class CheckOut extends Component {
           console.log(err);
           alert('Email Sent!', err);
         })
+      }
+
+      handleEmail(bob) {
+          this.setState({
+              email: bob
+          })
       }
 
     onToken(token) {
@@ -139,9 +147,7 @@ class CheckOut extends Component {
                                 <div className='formContainer'>
                                     Email Receipt
                                     <input type='text' placeholder='Email' onChange={(e)=>{
-                                        this.setState({
-                                            email: e.target.value
-                                        })}}/>
+                                        this.handleEmail(e.target.value)}}/>
 
                                     <button className='submit' onClick={()=>{
                                         this.sendEmail()
