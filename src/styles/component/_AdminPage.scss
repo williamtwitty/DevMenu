@@ -6,60 +6,78 @@
     float: right;
 }
 
-.Orders-container {
-    border: 1px solid yellow;
-    width: 30%;
-    height: 100%;
+.orderChat {
+    width: 90%;
+    height: 40vh;
+    font-size: 20px;
+    border: 1px solid black;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: minmax(100px, auto);
-    justify-content: stretch;
-    align-items: stretch;
+    grid-auto-rows: minmax(300px, auto);
+    // justify-content: stretch;
+    // align-items: stretch;
+    margin: 30px;
+}
 
-    @include flexSetUp(center,center);
+.Orders-container {
+    //border: 1px solid red;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    // @include flexSetUp(center,center);
     
     .Orders {
-        border: 1px solid blue;
+        // border: 3px solid blue;
         width: 100%;
-        height: 100%;
+        height: 75%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
-        align-content: center;
+        // margin: 5px;
+        align-items: stretch;
+        align-content: stretch;
 
         .order-title {
             width: 100%;
             height: 10%;
-            font-size: 24px;   
+            font-size: 24px; 
         }
         
         .table {
             width: 100%;
-            height: 10%;
-            border: 1px solid red;
-            border-bottom: none;
-            
+            height: 13%;
+            border-bottom: 1px solid black;
         }
 
         .orders {
+            // border: solid red 1px;
             width: 100%;
-            height: 42%;
+            height: 100%;
             overflow: scroll;
-            border: 1px solid green;
-            border-bottom: none;
+            // border-top: 2px solid black;
+            // border-bottom: none;
             text-align: left;
         }
 
         .btn-totalbox {
             width: 100%;
-            height: 15%;
-            border: 1px solid black;
+            height: 25%;
+            float: bottom;
+            // border: 1px solid black;
+            // border-right: 1px solid black;
             @include flexSetUp(center, center);
             .btn {
                 width: 25%;
                 height: 50%;
             }
         }     
+    }
+    .pushy {
+        // display: flex;
+
+    }
+    .newChat {
+        // text-align: right;
+        // overflow: scroll;
     }
 }
