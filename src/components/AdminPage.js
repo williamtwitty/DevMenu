@@ -19,14 +19,54 @@ class Admin extends Component {
         adminSocket.on('new item ordered', this.props.getAdminOrders)
     }
 
+    markedAsRead(e) {
+
+    }
 
 
 
     render() {
-        console.log('test messages admin', this.props.adminMessages);
-        // adminSocket.on('new customer admin', function(table){
-        //   //  console.log('new customer sat down at table:', table);
-        // })
+        console.log('test messages admin', this.props.adminOrders);
+
+        let table1 = []
+        let table2 = []
+        let table3 = []
+        let table4 = []
+        let table5 = []
+        let table6 = []
+        let table7 = []
+        let table8 = []
+
+        const tests = this.props.adminMessages.map(test => {
+            if (test.table_number === 1) {
+                return table1.push(test)
+            } else if (test.table_number === 2) {
+                return table2.push(test)
+            } else if (test.table_number === 3) {
+                return table3.push(test)
+            } else if (test.table_number === 4) {
+                return table4.push(test)
+            } else if (test.table_number === 5) {
+                return table5.push(test)
+            } else if (test.table_number === 6) {
+                return table6.push(test)
+            } else if (test.table_number === 7) {
+                return table7.push(test)
+            } else if (test.table_number === 8) {
+                return table8.push(test)
+            }
+            return console.log('hi');
+        })
+
+        console.log('table1', table1);
+        console.log('table2', table2);
+        console.log('table3', table3);
+        console.log('table4', table4);
+        console.log('table5', table5);
+
+
+
+
         var tables = {}
         for (var i = 0; i < this.props.adminMessages.length; i++) {
             var tableNum = this.props.adminMessages[i].table_number
@@ -48,7 +88,10 @@ class Admin extends Component {
                                     <div className='orders'> {
                                     message.message.map((item, i) =>{
                                         return(
-                                            <div key={i}className="item">{item}</div>
+                                            <div key={i}className="item">{item}
+                                            <button>Read</button>
+                                            <button>Completed</button>
+                                            </div>
                                         )
                                     })
                                 })
@@ -76,6 +119,7 @@ class Admin extends Component {
 
 
         const orders = myOrders.map((order, i) => {
+
             return( 
                 <div key={i} >
                     <div className='Orders-container'>
@@ -101,6 +145,7 @@ class Admin extends Component {
                 </div>
             )
         })
+        
 
         return (
             <div>
@@ -109,8 +154,10 @@ class Admin extends Component {
                     <a href='http://localhost:3030/auth/logout'><button>LOGOUT</button></a>
                     </div>
                 </div>
-                <div className='newOrders'> {orders} </div>
-                <div className='newOrders'>{messages}</div>
+                <div>
+                     <div className='newOrders'> {orders} </div>
+                    <div className='newOrders'>{messages}</div>
+                </div>
             </div>
         );
     }
