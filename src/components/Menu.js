@@ -12,10 +12,16 @@ class Menu extends Component {
         }
     }    
 
+
+
+
     render() {
+          
         return (
             <div className='Wrap-Menu'>
                 <div className= 'top'>
+                    <div className='top-border'>
+                    <div className='top-border2'> 
                         <div className='dev'>Fullstack Co.</div>
                    <div className='fork'>
                     <img src='http://renewecoblasting.com/wp-content/uploads/2016/05/blackline.png' width='15%' height='3%'alt=""/> 
@@ -23,6 +29,8 @@ class Menu extends Component {
                     <img src ='http://www.clker.com/cliparts/A/D/6/r/B/X/gray-silverware-hi.png' width='3%' height='5%'alt=""/>
                     &nbsp; &nbsp;
                     <img src='http://renewecoblasting.com/wp-content/uploads/2016/05/blackline.png' width='15%' height='3%' alt=""/>
+                    </div>
+                    </div>
                     </div>
                 </div>
                 <div className='top2'>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { selectTableNumber } from '../ducks/reducer'
+import video from '../video/624065871.mp4'
 
 
 class HomePage extends Component {
@@ -33,7 +34,11 @@ class HomePage extends Component {
     render() {
         return (
             <div className='div'>
-            <div className='HomePage-container'></div>
+            <div className='HomePage-container'>  
+                <video className='vid' loop muted preload='auto' autoPlay>
+                <source src={video} type="video/mp4"/>
+                </video>
+            </div>
                 <div className='HomePage-img'>
                     <div className='login'><a className='log'href={process.env.REACT_APP_LOGIN}>Log In</a></div>
                 <div className='HomePage'>
