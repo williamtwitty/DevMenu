@@ -92,10 +92,23 @@ class CheckOut extends Component {
         } else{
              receiptList = []
         }
+
+        // var forEach = function (array, callback, scope) {
+        //     for (var i = 0; i < array.length; i++) {
+        //       callback.call(scope, i, array[i]);
+        //     }
+        //   };
+          
+        //   var containers = document.querySelectorAll(".container");
+          
+        //   forEach(containers, function(index, value) {
+        //     value.addEventListener("click", function() {
+        //       this.classList.toggle("alert-is-shown");
+        //     });
+        //   });
       
         return (
             <div className='Checkout'>
-                <ChatBox table={this.props.match.params.table}/>
                 <div className='cart-title'> <button className='back'><Link className='back-link' to ='/menu'>Back to menu</Link></button> Cart <div></div></div>
                 <div className='cart-container'>
                     <div className='cart-titles'>
@@ -130,6 +143,15 @@ class CheckOut extends Component {
                                 stripeKey={ process.env.REACT_APP_STRIPE_SECRETKEY }
                                 amount={+this.props.checkByTable[0] * 100}
                                 />
+                            </div>
+                        </div>
+                        <div className='CHATBOX'>
+                        <div className="container">
+                            <div className="container-contained">
+                                <div className='chatbox'>
+                            <ChatBox table={this.props.match.params.table}/>
+                            </div>
+                            </div>
                             </div>
                         </div>
                     </div>
