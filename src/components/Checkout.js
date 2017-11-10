@@ -17,8 +17,9 @@ class CheckOut extends Component {
             code : 'DEV',
             input: '',
             coupon: false,
-            email: ''
-
+            email: '',
+            list: [],
+          
         }
         this.onToken=this.onToken.bind(this);
     }
@@ -30,6 +31,14 @@ class CheckOut extends Component {
     handleCoupon(e){
         this.setState({
             input: e
+        })}
+    sendEmail() {
+        axios.post('/api/sendEmail', {
+          'email': this.state.email,
+          'receipt': this.props.checkByTable
+        }).catch((err) => {
+          console.log(err);
+          alert('Email Sent!', err);
         })
     }
 
@@ -185,6 +194,17 @@ class CheckOut extends Component {
                                     <div className="email" onClick={()=>{this.validateEmail(this.state.email)}}>Email your receipt</div>
                                     <input className="email" placeholder="enter email"  value = {this.state.email}
                         onChange={(e)=>{this.handleEmail(e.target.value)}}/>
+                                {/* <Mailer/> */}
+                                <div className='formContainer'>
+                                    Email Receipt
+                                    <input type='text' placeholder='Email' onChange={(e)=>{
+                                        this.handleEmail(e.target.value)}}/>
+
+                                    <button className='submit' onClick={()=>{
+                                        this.sendEmail()
+                                    }}>send receipt</button>
+                                </div>
+                                    
                                 </div>
 
                                 <StripeCheckout
