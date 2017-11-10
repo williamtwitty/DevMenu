@@ -36,8 +36,14 @@ class Admin extends Component {
         let table6 = []
         let table7 = []
         let table8 = []
-
-        const tests = this.props.adminMessages.map(test => {
+        const order = this.props.adminOrders.filter((elem) => {
+            console.log(elem, 'ekekd');
+            if (elem.table_number === 1) {
+                return table2.push(elem)
+            
+            }
+        })
+        const tests = this.props.adminOrders.map(test => {
             if (test.table_number === 1) {
                 return table1.push(test)
             } else if (test.table_number === 2) {
@@ -58,11 +64,11 @@ class Admin extends Component {
             return console.log('hi');
         })
 
-        console.log('table1', table1);
-        console.log('table2', table2);
-        console.log('table3', table3);
-        console.log('table4', table4);
-        console.log('table5', table5);
+        // console.log('table1', table1);
+        // console.log('table2', table2);
+        // console.log('table3', table3);
+        // console.log('table4', table4);
+        // console.log('table5', table5);
 
 
 
@@ -94,7 +100,7 @@ class Admin extends Component {
                                             </div>
                                         )
                                     })
-                                })
+                                }
                                     </div>
                                 </div>
                             </div>
