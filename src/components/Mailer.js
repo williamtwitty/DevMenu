@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import axios from 'axios'
 export default class Mailer extends Component{
     constructor(){
@@ -8,14 +8,13 @@ export default class Mailer extends Component{
             email:''
         }
     }
-    componentDidMount(){
-      
+    componentDidMount(){ 
     }
 
     sendEmail() {
         axios.post('/api/sendEmail', {
           'email': this.state.email,
-          'message': this.state.message
+          'message': this.state.
         }).catch((err) => {
           console.log(err);
           alert('Email Sent!', err);
@@ -31,15 +30,15 @@ export default class Mailer extends Component{
         return(
             <div>
                  <div className='formContainer'>
-       
+                    Email Receipt
                     <input type='text' placeholder='Email' onChange={(e)=>{
                         this.setState({
                             email: e.target.value
                         })}}/>
 
                     <button className='submit' onClick={()=>{
-                        this.formSubmit()
-                    }}>Submit</button>
+                        this.sendEmail()
+                    }}>send receipt</button>
                 </div>
             </div>
         )

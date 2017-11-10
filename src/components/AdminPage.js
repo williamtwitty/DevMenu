@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAdminOrders, completedOrder, getAdminMessages } from '../ducks/reducer';
 import io from 'socket.io-client';
- const adminSocket = io('/admin');
+const adminSocket = io('/admin');
 
 class Admin extends Component {
     constructor(props) {

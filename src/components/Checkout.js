@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
-import ChatBox from './ChatBox'
+import ChatBox from './ChatBox';
+// import Mailer from './Mailer';
 // import swal from 'sweetalert2';
 
 
@@ -15,11 +16,11 @@ class CheckOut extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            checkByTable: []
+            checkByTable: [],
+            email: '',
+            list: []
         }
-
         this.onToken=this.onToken.bind(this);
-
     }
 
    
@@ -30,7 +31,7 @@ class CheckOut extends Component {
     sendEmail() {
         axios.post('/api/sendEmail', {
           'email': this.state.email,
-          'message': this.state.message
+          'receipt': this.props.checkByTable
         }).catch((err) => {
           console.log(err);
           alert('Email Sent!', err);
@@ -134,8 +135,19 @@ class CheckOut extends Component {
                             </div>
                             <div className='btn-totalbox'>
                                 <div className="email-box">
-                                    <div className="email">Email your receipt</div>
-                                    <input className="email" placeholder="enter email"/>
+                                {/* <Mailer/> */}
+                                <div className='formContainer'>
+                                    Email Receipt
+                                    <input type='text' placeholder='Email' onChange={(e)=>{
+                                        this.setState({
+                                            email: e.target.value
+                                        })}}/>
+
+                                    <button className='submit' onClick={()=>{
+                                        this.sendEmail()
+                                    }}>send receipt</button>
+                                </div>
+                                    
                                 </div>
 
                                 <StripeCheckout
