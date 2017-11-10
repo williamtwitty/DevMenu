@@ -40,15 +40,15 @@ class CheckOut extends Component {
         input: ''
     })
  
-    sendEmail() {
-        axios.post('/api/sendEmail', {
-          'email': this.state.email,
-          'message': this.state.message
-        }).catch((err) => {
-          console.log(err);
-          alert('Email Sent!', err);
-        })
-      }
+    // sendEmail() {
+    //     axios.post('/api/sendEmail', {
+    //       'email': this.state.email,
+    //       'message': this.state.message
+    //     }).catch((err) => {
+    //       console.log(err);
+    //       alert('Email Sent!', err);
+    //     })
+    //   }
 
     }
   
