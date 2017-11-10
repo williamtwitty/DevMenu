@@ -4,30 +4,45 @@ import { getCheckByTable } from '../ducks/reducer';
 import {deleteItem} from '../ducks/reducer'
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
-import ChatBox from '../components/ChatBox'
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import ChatBox from './ChatBox'
 // import swal from 'sweetalert2';
-
 class CheckOut extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            checkByTable: []
+            checkByTable: [],
+            code : 'DEV',
+            input: ''
+
         }
-
         this.onToken=this.onToken.bind(this);
-
     }
-
    
     componentDidMount() {
         this.props.getCheckByTable(this.props.match.params.table)
     }
+
+    handleCoupon(e){
+        this.setState({
+            input: e
+        })
+    }
+
+    coupon(e){
+        if(e !== this.state.code){
+            alert('invalid coupon code')
+        } else {
+            alert ('congrats')
+        }
+    this.setState({
+        input: ''
+    })
+
+    }
+  
  
-
-
     onToken(token) {
         token.card = void 0;
         // console.log('token', this.state);
@@ -55,8 +70,6 @@ class CheckOut extends Component {
                           <div> {item.name} </div>
                       </div>
                       <div className='cart-price'>{item.price} </div>
-                      <div className='cart-quantity'> <input></input> </div>
-                      <div className='cart-total'> </div>
                   </div>
                  ) 
               })
@@ -64,33 +77,68 @@ class CheckOut extends Component {
              orderList = []
         }
         // console.log("url", this.props.match.params.table);
-        console.log("checkbytable", this.props.checkByTable)
+        // console.log("checkbytable", this.props.checkByTable)
+        let receiptList = []
+        if (this.props.checkByTable[1]) {
+             receiptList = this.props.checkByTable[1].map((item, i)=>{
+                return  (
+                      
+                      <div className='receipt-item' key={i}>
+                        
+                        <div className='receipt-product'> 
+                            <div> {item.name} </div>
+                        </div>
+    
+                      <div className='receipt-price'>{item.price} </div>
+                  </div>
+                 ) 
+              })
+        } else{
+             receiptList = []
+        }
+
+        let total = 0
+        if (this.props.checkByTable[1]){
+            
+            total = this.props.checkByTable[1].reduce((sum, item)=>{
+                 return sum + (parseFloat (item.price,10))
+                 
+             },0)
+             
+            console.log(total)          
+        } 
+      
       
         return (
             
             <div>
-
-
+                <ChatBox table={this.props.match.params.table}/>
                 <div className='cart-title'> <button className='back'><Link className='back-link' to ='/menu'>Back to menu</Link></button> Cart <div></div></div>
                 <div className='cart-container'>
                     <div className='cart-titles'>
                         <div className='Product'>Product</div>
                         <div className='Price'>Price</div>
-                        <div className='Quantity'>Quantity</div>
-                        <div className='Total'>Total</div>
                     </div>
                  {orderList}
                     <div className='cart-coupon'>
                       
-                        <input className='coupon-code' placeholder='&nbsp; Coupon code'></input>
-                        <button className='apply-coupon'>Apply Coupon</button>
+                        <input className='coupon-code' placeholder='&nbsp; Coupon code' 
+                        value = {this.state.input}
+                        onChange={(e)=>{this.handleCoupon(e.target.value)}}></input>
+                        <button onClick={()=>{this.coupon(this.state.input)}} className='apply-coupon'>Apply Coupon</button>
                     </div>
                     <div className='Totals-container'>
                         <div className='TOTALS'>
                             <div className='cart-total-title flex'>Cart Totals</div>
-                            <div className='subtotal flex'>Subtotal</div>
-                            <div className='receipt'>Receipt</div>
-                            <div className='total flex'>{this.props.checkByTable[0]}
+                            <div className='subtotal flex'>
+                                <div className="sub">Subtotal</div>
+                            </div>
+                            <div className='receipt'>{receiptList}</div>
+                            <div className='total'>
+                                <div className="sub">
+                                {total}
+                                {/* {this.props.checkByTable[0]} */}
+                                </div>
                           
                             </div>
                             <div className='btn-totalbox'>
@@ -103,11 +151,8 @@ class CheckOut extends Component {
                         </div>
                     </div>
                     <div className='empty-space'> </div>
-
-                 
                 </div>
                 <Footer/>
-                <ChatBox table={this.props.match.params.table}/>
             </div>
         );
     }
@@ -119,5 +164,4 @@ function mapStateToProps(state){
         newOrder: state.newOrder
     }
 }
-
 export default connect(mapStateToProps, {getCheckByTable, deleteItem})(CheckOut);

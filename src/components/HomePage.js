@@ -16,14 +16,14 @@ class HomePage extends Component {
      return this.props.selectTableNumber(e); 
     }
 
-    handleOnClick(e) {
-        if (e === undefined) {
-            return alert('please select a table first...');
-        } 
+    // handleOnClick(e) {
+    //     if (e === undefined) {
+    //         return alert('please select a table first...');
+    //     } 
         // else {
         //     return this.props.selectTableNumber(e);
         // }
-    }
+    // }
 
     render() {
         return (
@@ -65,7 +65,8 @@ class HomePage extends Component {
                         // this.handleOnClick(e.target.value)}}> 
                         // <Link to = '/menu'>  orders</Link> </button>
                         
-                         this.handleOnClick(e.target.value)}}> 
+                        //  this.handleOnClick(e.target.value)
+                         }}> 
                             <img src='https://imgur.com/KdSyY3c.jpg'width='19px'height='19px'/>
                             <img className='hover-arrow' src='https://imgur.com/KdSyY3c.jpg'width='15px'height='15px'/>
                             <img className='hover-arrow2' src='https://imgur.com/KdSyY3c.jpg'width='12.5px'height='12.5px'/>

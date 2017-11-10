@@ -9,10 +9,11 @@ module.exports = {
 
     newOrderPlaced(req, res) {
         const db = req.app.get('db')
-        //console.log('newOrderPlaced req.body',req.body)
+        console.log('newOrderPlaced req.body',req.body)
         const {id, tableNumber} = req.body
     db.new_order([id, tableNumber]).then(response => {
        // console.log('new order', response);
+       res.status(200).end()
     }).catch(err => console.log(err))
     },
 
