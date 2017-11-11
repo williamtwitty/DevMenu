@@ -11,6 +11,8 @@ const express = require('express'),
     stripe = require('stripe')(process.env.STRIPE_SECRETKEY),
     nodemailer = require('nodemailer');
 
+
+
 const app = express();
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
@@ -221,3 +223,16 @@ var customer = io.of('/customer')
         console.log('we disconnected');
     })
 })
+
+// app.post('/api/email', (req,res) => {
+//     const transporter = nodemailer.createTransport({
+//         service: ‘gmail’,
+//         auth: {
+//             user: ‘fullstackco@gmail.com’,
+//             pass: process.env.EMAIL_PASS
+//         }
+//      });
+
+//      const
+// })
+

@@ -6,30 +6,32 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
-import ChatBox from './ChatBox';
-// import Mailer from './Mailer';
+import ChatBox from './ChatBox'
+import util from '../util/util'
 // import swal from 'sweetalert2';
-
-
-
 class CheckOut extends Component {
     constructor(props) {
         super(props)
         this.state = {
             checkByTable: [],
+            code : 'DEV',
+            input: '',
+            coupon: false,
             email: '',
             list: [],
-            code : 'DEV',
-            input: ''
+          
         }
         this.onToken=this.onToken.bind(this);
     }
-
    
     componentDidMount() {
         this.props.getCheckByTable(this.props.match.params.table)
     }
- 
+
+    handleCoupon(e){
+        this.setState({
+            input: e
+        })}
     sendEmail() {
         axios.post('/api/sendEmail', {
           'email': this.state.email,
@@ -38,14 +40,55 @@ class CheckOut extends Component {
           console.log(err);
           alert('Email Sent!', err);
         })
-      }
+    }
 
-      handleEmail(bob) {
-          this.setState({
-              email: bob
-          })
-      }
+    coupon(e){
+        
+        if(util.coupon(e, this.state.code)){
+            
+            this.setState({
+                input: '',
+                coupon : true
+            })
+        } else {
+            alert ('invalid code')
+        }
+    }
 
+    handleEmail(bob){
+        this.setState({
+            email: bob
+        })
+    }
+     
+    validateEmail(mail)   
+    {  
+     if (util.validateEmail(mail))  
+      {  
+        return (true)  
+      }  
+        alert("You have entered an invalid email address!")  
+        return (false)  
+    } 
+
+    
+        
+   
+
+ 
+    // sendEmail() {
+    //     axios.post('/api/sendEmail', {
+    //       'email': this.state.email,
+    //       'message': this.state.message
+    //     }).catch((err) => {
+    //       console.log(err);
+    //       alert('Email Sent!', err);
+    //     })
+    //   }
+
+    
+  
+ 
     onToken(token) {
         token.card = void 0;
         // console.log('token', this.state);
@@ -61,6 +104,7 @@ class CheckOut extends Component {
       }
     
     render() {
+        console.log(this.state.coupon)
         let orderList = []
         if (this.props.checkByTable[1]) {
              orderList = this.props.checkByTable[1].map((item, i)=>{
@@ -76,13 +120,12 @@ class CheckOut extends Component {
                   </div>
                  ) 
               })
+           
         } else{
              orderList = []
         }
         // console.log("url", this.props.match.params.table);
         // console.log("checkbytable", this.props.checkByTable)
-
-
         let receiptList = []
         if (this.props.checkByTable[1]) {
              receiptList = this.props.checkByTable[1].map((item, i)=>{
@@ -102,22 +145,22 @@ class CheckOut extends Component {
              receiptList = []
         }
 
-        // var forEach = function (array, callback, scope) {
-        //     for (var i = 0; i < array.length; i++) {
-        //       callback.call(scope, i, array[i]);
-        //     }
-        //   };
-          
-        //   var containers = document.querySelectorAll(".container");
-          
-        //   forEach(containers, function(index, value) {
-        //     value.addEventListener("click", function() {
-        //       this.classList.toggle("alert-is-shown");
-        //     });
-        //   });
+        let total = 0
+        if (this.props.checkByTable[1]){
+            
+            total = this.props.checkByTable[1].reduce((sum, item)=>{
+                 return sum + (parseFloat (item.price,10))
+                 
+             },0).toFixed(2)
+             
+            console.log(total)          
+        } 
+      
       
         return (
-            <div className='Checkout'>
+            
+            <div>
+                <ChatBox table={this.props.match.params.table}/>
                 <div className='cart-title'> <button className='back'><Link className='back-link' to ='/menu'>Back to menu</Link></button> Cart <div></div></div>
                 <div className='cart-container'>
                     <div className='cart-titles'>
@@ -127,8 +170,10 @@ class CheckOut extends Component {
                  {orderList}
                     <div className='cart-coupon'>
                       
-                        <input className='coupon-code' placeholder='&nbsp; Coupon code'></input>
-                        <button className='apply-coupon'>Apply Coupon</button>
+                        <input className='coupon-code' placeholder='&nbsp; Coupon code' 
+                        value = {this.state.input}
+                        onChange={(e)=>{this.handleCoupon(e.target.value)}}></input>
+                        <button onClick={()=>{this.coupon(this.state.input)}} className='apply-coupon'>Apply Coupon</button>
                     </div>
                     <div className='Totals-container'>
                         <div className='TOTALS'>
@@ -138,11 +183,17 @@ class CheckOut extends Component {
                             </div>
                             <div className='receipt'>{receiptList}</div>
                             <div className='total'>
-                                <div className="sub">{this.props.checkByTable[0]}</div>
+                                <div className="sub">
+                                {total}
+                                {/* {this.props.checkByTable[0]} */}
+                                </div>
                           
                             </div>
                             <div className='btn-totalbox'>
                                 <div className="email-box">
+                                    <div className="email" onClick={()=>{this.validateEmail(this.state.email)}}>Email your receipt</div>
+                                    <input className="email" placeholder="enter email"  value = {this.state.email}
+                        onChange={(e)=>{this.handleEmail(e.target.value)}}/>
                                 {/* <Mailer/> */}
                                 <div className='formContainer'>
                                     Email Receipt
@@ -187,5 +238,4 @@ function mapStateToProps(state){
         newOrder: state.newOrder
     }
 }
-
 export default connect(mapStateToProps, {getCheckByTable, deleteItem})(CheckOut);
