@@ -8,7 +8,8 @@ const express = require('express'),
     passport = require('passport'),
     Auth0Strategy = require('passport-auth0');
     ctrl = require('./controller/controller');
-    stripe = require('stripe')(process.env.STRIPE_SECRETKEY);
+    stripe = require('stripe')(process.env.STRIPE_SECRETKEY),
+    nodemailer = require('nodemailer');
 
 const app = express();
 const server = require('http').Server(app)
@@ -124,10 +125,20 @@ app.post('/api/payment', function (req, res, next) {
 )
 
 app.post('/api/sendEmail', (req, res) => {
+    const foodName = req.body.receipt[1].map((item, i) => {
+        return  (
+           '<li>' +  item.name + ' $' + item.price + '</li>'
+       )
+    }).join(' ');
+    const foodPrice = req.body.receipt[1].map((item, i) => {
+        return  (
+            item.price
+       ) 
+    })
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'rachel.noble77@gmail.com',
+        user: 'fullstackco@gmail.com',
         pass: process.env.EMAIL_PASSWORD
       }
     })
@@ -135,18 +146,18 @@ app.post('/api/sendEmail', (req, res) => {
     var mailOptions = {
       from: 'fullstackco@gmail.com',
       to: req.body.email,
-      subject: receipt,
-      html:`
-            <h1>Receipt from Fullstack Co.</h1>
-            <p>req.body.receipt</p>
-            <br/>
+      subject: 'receipt from Fullstack',
+      html: 
+            `<h1>Receipt from Fullstack Co.</h1>
+            <p>Items you ordered:</p>
+            <ul>${foodName}</ul>
+            <p>Total: ${req.body.receipt[0]}</p>
             <p>Thank you,</p>
             <p>Fullstack Co.</p>
             <br/>
             <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
             <p>Copyright © 2017 Fullstack Co., All rights reserved.</p>`
-    };
-    console.log(mailOptions)
+    }
     transporter.sendMail(mailOptions, function (error, response) {
       if (error) {
         console.log(error);
