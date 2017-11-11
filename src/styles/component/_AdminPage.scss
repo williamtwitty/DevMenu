@@ -70,6 +70,12 @@
                 width: 25%;
                 height: 50%;
             }
+        }
+        .item {
+            display: flex;
+            border-bottom: 1px solid lightgray;
+            justify-content: space-between;
+
         }     
     }
     .pushy {
