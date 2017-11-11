@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAdminOrders, completedOrder, getAdminMessages } from '../ducks/reducer';
+import { getAdminOrders, completedOrder, getAdminMessages, adminMessageRead, adminMessageCompleted } from '../ducks/reducer';
 import io from 'socket.io-client';
 
- const adminSocket = io('/admin');
+ const adminSocket = io('/admin', {forceNew: true});
 
 class Admin extends Component {
     constructor(props) {
@@ -19,36 +19,52 @@ class Admin extends Component {
         this.props.getAdminMessages()
         adminSocket.on('new customer message', this.props.getAdminMessages)
         adminSocket.on('new item ordered', this.props.getAdminOrders)
+        adminSocket.on('marked as read', this.props.getAdminMessages)
+        adminSocket.on('message completed', this.props.getAdminMessages)
     }
 
-    markedAsRead(e) {
+render() {
 
-    }
-
-    
-
-    render() {
-
-        const eachTable = this.state.tables.map((table) => {
-            return <div key={table} className="Orders-container">{table}
-                        <div>{this.props.adminOrders.filter(order=>{
-                             if (order.table_number === table) {
-                                 return order
-                             }
-                         }).map((order) => {
-                           return <div key={order.id} className="item">{order.name}</div>
-                            })
-                            }</div>Messages for table: {table}
-                                <div>{this.props.adminMessages.filter(message => {
-                                    if (message.table_number === table) {
-                                        return message
-                                        }
-                             }).map((message)=> {
-                                return <div key={message.id}>{message.message}</div>
-                                }) 
-                                }</div>
+const eachTable = this.state.tables.map((table) => {
+    return( <div key={table} className="orderChat">
+        <div className="Orders-container">
+            <div className="Orders">
+                <div className="table"> Table Number: {table}</div>
+                <div className="orders">{this.props.adminOrders.filter(order=>{
+                    if (order.table_number === table) {
+                        return order
+                        }
+                        }).map((order) => {
+                            return(<div key={order.id} className="item">{order.name}</div>
+                            
+                        )})
+                    }</div>
+                    <div className="btn-totalbox"> 
+                        <button className="btn" onClick={() => this.props.completedOrder(table)}>Complete Order</button> 
                     </div>
-        })
+            </div>
+        </div> 
+        <div className="Orders-container">
+            <div className="Orders">
+              <div className="table">Messages for table: {table}</div> 
+                <div className="orders">{this.props.adminMessages.filter(message => {
+                    if (message.table_number === table) {
+                        return message
+                    }
+                }).map((message)=> {
+                    return <div key={message.id} className="item">
+                    {message.has_been_read ? <div style={{color: 'green'}}>{message.message}</div> : <div style={{color: 'red'}}>{message.message}</div>}
+                                <div>
+                                    <button onClick={() => this.props.adminMessageRead(message.id, message.table_number)}>Read</button>
+                                    <button onClick={() => this.props.adminMessageCompleted(message.id, message.table_number)}>Completed</button>
+                                </div>
+                            </div>
+                    }) 
+                }</div>
+            </div>
+        </div>
+    </div>
+)})
 
 
         console.log('test messages admin', eachTable);
@@ -60,8 +76,8 @@ class Admin extends Component {
                     <a href='http://localhost:3030/auth/logout'><button>LOGOUT</button></a>
                     </div>
                 </div>
-                    <div className='newOrders'>{eachTable}</div>
-                </div>
+                    <div>{eachTable}</div>
+            </div>
           
         );
     }
@@ -73,4 +89,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {getAdminOrders, completedOrder, getAdminMessages})(Admin);
+export default connect(mapStateToProps, {getAdminOrders, completedOrder, getAdminMessages, adminMessageRead, adminMessageCompleted})(Admin);
