@@ -151,7 +151,7 @@ class CheckOut extends Component {
             total = this.props.checkByTable[1].reduce((sum, item)=>{
                  return sum + (parseFloat (item.price,10))
                  
-             },0)
+             },0).toFixed(2)
              
             console.log(total)          
         } 
