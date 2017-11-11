@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import io from 'socket.io-client'
+import io from 'socket.io-client'
 import { sendNewMessage, getTableMessages } from '../ducks/reducer';
-// const customerSocket = io('/customer')
+const customerSocket = io('http://localhost:3030')
 class ChatBox extends Component {
     constructor(props) {
         super(props);
         this.state ={
             text: ''
         }
-        
+        this.updateMessageData = this.updateMessageData.bind(this)
     }
     // componentDidMount() {
     //     this.props.newMessage(this.props.match.params.table)
@@ -17,6 +17,12 @@ class ChatBox extends Component {
 
     componentDidMount() {
         this.props.getTableMessages(this.props.table)
+        customerSocket.on('marked as read', (table) => {
+            this.updateMessageData(table)
+        })
+        customerSocket.on('message completed', (table) =>{
+            this.updateMessageData(table)
+        })
     }
     
 
@@ -32,11 +38,15 @@ class ChatBox extends Component {
         })
     }
 
-    
+    updateMessageData(table) {
+        console.log('workingonit', this.props.table);
+        this.props.getTableMessages(table)
+    }
+
     render() {
         // console.log('chat msgs', this.props.tableMessages);
         const messages = this.props.tableMessages.map(msg => {
-           return <div>{msg.message} {msg.has_been_read ? 'read': 'unread'}</div>
+           return <div>{msg.message} {msg.has_been_read ? 'Working on it': 'unread'}</div>
         })
 
         return (

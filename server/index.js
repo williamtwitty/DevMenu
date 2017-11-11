@@ -88,6 +88,8 @@ app.get('/adminmessages', ctrl.getAdminMessages)
 app.post('/api/newmessage', ctrl.sendNewMessage)
 app.post('/api/neworder', ctrl.newOrderPlaced)
 app.patch('/api/completed', ctrl.patchCompleted)
+app.patch('/adminMessageRead', ctrl.adminMessageRead)
+app.patch('/adminmessagecompleted', ctrl.adminMessageCompleted)
 app.delete('/api/delete/:id/:table', ctrl.deleteItem)
 
 app.post('/api/payment', function (req, res, next) {
@@ -173,14 +175,15 @@ var admin = io.of('/admin')
     admin.on('connection', function(socket){
        // console.log('Admin has connected');
     })
+
     admin.on('disconnect', function(socket){
         //console.log('Admin is outta here');
     })
 
-        var customer = io.of('/customer')
+var customer = io.of('/customer')
 
-        customer.on('connection', function(socket){
-           // console.log('Customer has connected');
+     customer.on('connection', function(socket){
+           
         })
 
     io.on('connection', function(socket) {
@@ -199,6 +202,17 @@ var admin = io.of('/admin')
     socket.on('new message', function(data) {
         //console.log('Table:', table, 'has requested', msg);
         io.of('/admin').emit('new customer message', data)
+    })
+
+    socket.on('admin marked as read', function(data) {
+        console.log(data);
+        io.of('/admin').emit('marked as read', data)
+        io.emit('marked as read', data)
+    })
+
+    socket.on('admin completed message', function(data) {
+        io.of('/admin').emit('message completed', data)
+        io.emit('message completed', data)
     })
 
 
