@@ -1,3 +1,9 @@
+.menu-page {
+    background-color: rgba(0, 0, 0, 0.89);
+    width: 100%;
+    height: 100vh;
+}
+
 .Wrap-Menu{
     display: grid;
     grid-template-columns: 1fr;
@@ -6,8 +12,7 @@
     justify-content: stretch;
     align-items: stretch;
     width: 100%;
-    height: 100vh;
-    position: relative;
+    height:auto;
     background-color: rgba(128, 128, 128, 0.568);
     color: rgb(224, 224, 224);
 }
@@ -49,7 +54,7 @@
 
     .dessert3 {
         @include flexSetUp(center, flex-end);
-        background-image: url('https://i.imgur.com/d7wVdrD.jpg?1');
+        background-image: url('https://i.imgur.com/d7wVdrD.jpg');
         background-size: cover;
         margin: 7px;
     }
@@ -141,7 +146,9 @@ height: 80%;
 
 .dev {
     font-family: 'Lobster', sans-serif;
-    margin-left: 25px;
+    color: rgb(224, 222, 222);
+    font-size: 62px;
+    padding-top: 10px;
 }
 
 .fork {
@@ -158,7 +165,342 @@ height: 80%;
     @include flexSetUp(center,flex-end);
 }
 
+#container {
+    width: 100%;
+    background-color: black;
+}
+ 
+/*photobanner*/
+ 
+.first {
+	-webkit-animation: bannermove 40s linear infinite;
+	   -moz-animation: bannermove 40s linear infinite;
+	    -ms-animation: bannermove 40s linear infinite;
+	     -o-animation: bannermove 40s linear infinite;
+	        animation: bannermove 40s linear infinite;
+}
+ 
+@keyframes bannermove {
+ 0% {
+    margin-left: 400px;
+ }
+ 100% {
+    margin-left: -2125px;
+ }
+ 
+}
+ 
+@-moz-keyframes bannermove {
+ 0% {
+   margin-left: 400px;
+ }
+ 100% {
+   margin-left: -2125px;
+ }
+ 
+}
+ 
+@-webkit-keyframes bannermove {
+ 0% {
+   margin-left: 400px;
+ }
+ 100% {
+   margin-left: -2125px;
+ }
+ 
+}
+ 
+@-ms-keyframes bannermove {
+ 0% {
+   margin-left: 400px;
+ }
+ 100% {
+   margin-left: -2125px;
+ }
+ 
+}
+ 
+@-o-keyframes bannermove {
+ 0% {
+   margin-left: 400px;
+ }
+ 100% {
+   margin-left: -2125px;
+ }
+ 
+}
+
+.photobanner {
+    overflow: scroll;
+    display: flex;
+}
+ 
+.photobanner img:hover {
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+	cursor: pointer;
+ 
+	-webkit-box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
+	box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
+}
+
+.MenuDrinks {
+    width:50%;
+    height: 50%;
+    float: left;
+    background-image: url('https://imgur.com/Mo40cTn.jpg');
+    background-size: cover;
+    color: white;
+    @include flexSetUp(center,center);
+    text-decoration: none;
+    outline: none;
+}
+
+.MenuAppetizers {
+    width: 50%;
+    height: 50%;
+    float: right;
+    background-image: url('https://imgur.com/ovZbjgd.jpg');
+    background-size: cover;
+    color: white;
+    @include flexSetUp(center,center);
+    text-decoration: none;
+    outline: none;
+}
+
+.MenuEntrees {
+    width: 50%;
+    height: 50%;
+    float: left;
+    background-image: url('https://imgur.com/apTHTx5.jpg');
+    background-size: cover;
+    color: white;
+    @include flexSetUp(center,center);
+    text-decoration: none;
+    outline: none;
+}
+
+.MenuDesserts {
+    width: 50%;
+    height: 50%;
+    float: right;
+    background-image: url('https://imgur.com/V3733e8.jpg');
+    background-size: cover;
+    color: white;
+    @include flexSetUp(center,center);
+    text-decoration: none;
+    outline: none;
+}
+
+.MenuSpecials {
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    top: 50%;  
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    @include flexSetUp(center,center);
+    background-color: rgb(32, 32, 32);
+    border-radius: 100px;
+    font-size: 30px;
+    letter-spacing: 5px;
+    border: 1px solid white;
+    text-decoration: none;
+    outline: none;
+}
+
+.bottom-Menu {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    font-size: 42px;
+    letter-spacing: 7px;
+}
+
+.top-Menu{
+    width: 100%;
+    height: 100vh;
+    position:absolute;
+    font-size: 42px;
+    letter-spacing: 7px;
+}
+
+.MenuDrinks1 {
+    width:50%;
+    height: 50%;
+    float: left;
+    background-color: rgba(0, 0, 0, 0.637);
+    color: white;
+    @include flexSetUp(center,center);
+    opacity: 1px;
+    text-decoration: none;
+    outline: none;
+}
+
+.MenuDrinks1:hover {
+   background-color:transparent;
+}
+
+.MenuAppetizers1 {
+    width: 50%;
+    height: 50%;
+    float: right;
+    background-color: rgba(0, 0, 0, 0.637);
+    color: white;
+    @include flexSetUp(center,center);
+    text-decoration: none;
+    outline: none;
+}
+
+.MenuAppetizers1:hover {
+    background-color:transparent;
+ }
+
+.MenuEntrees1 {
+    width: 50%;
+    height: 50%;
+    float: left;
+    background-color: rgba(0, 0, 0, 0.637);
+    color: white;
+    @include flexSetUp(center,center);
+    text-decoration: none;
+    outline: none;
+}
+.MenuEntrees1:hover {
+    background-color:transparent;
+ }
+
+.MenuDesserts1 {
+    width: 50%;
+    height: 50%;
+    float: right;
+    background-color: rgba(0, 0, 0, 0.637);
+    color: white;
+    @include flexSetUp(center,center);
+    text-decoration: none;
+    outline: none;
+}
+.MenuDesserts1:hover {
+    background-color:transparent;
+ }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+.Menu-Appetizers {
+    width: 100%;
+    height: 550px;
+    background-image:url('https://imgur.com/ksN47Xd.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+    align-content: center;
+    
+    
+    .appetizers-container {
+        width: 40%;
+        height: 70%;
+        float: left;
+        background-color: rgba(255, 255, 255, 0.534);
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        box-shadow: 2px 4px 4px 4px rgba(0, 0, 0, 0.459);
+    }
+    
+    .appetizers-container2 {
+        width: 30%;
+        height: 30%;
+        background-color:rgba(34, 33, 33, 0.575);
+        float: right;
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        color: white;
+        font-size: 55px;
+        letter-spacing: 7px;
+        font-weight: lighter;
+    }
+}
+
+.appetizers-div{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    color: rgba(255, 255, 255, 0.63);
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.container-shadow {
+    width: 100%;
+    height: 260px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.432);
+}
+
+.bottom-div {
+    height: 10px;
+}
+
+.Specials {
+    background-color: rgba(0, 0, 0, 0.89);
+}
+
+.threecourse {
+    margin-top: 10px;
+    font-size: 34px;
+    letter-spacing: 4px;
+}
+
+.appentdes {
+    margin-top: 10px;
+    margin-bottom: 60px;
+    font-size: 18px;
+}
+
+.orderNow {
+    border: 1px solid rgba(0, 0, 0, 0.411);
+    padding: 10px 14px 10px 14px;
+    font-size: 24px;
+    letter-spacing: 3px;
+    background-color: rgba(255, 255, 255, 0.490);
+    color: rgba(0, 0, 0, 0.781);
+    text-decoration: none;
+}
 
