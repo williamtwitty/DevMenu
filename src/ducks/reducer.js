@@ -23,6 +23,8 @@ const DELETE_ITEM = 'DELETE_ITEM'
 const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE'
 const GET_ADMIN_MESSAGES = 'GET_ADMIN_MESSAGES'
 const GET_TABLE_MESSAGES = 'GET_TABLE_MESSAGES'
+const ADMIN_MESSAGE_READ = 'ADMIN_MESSAGE_READ'
+const ADMIN_MESSAGE_COMPLETED = 'ADMIN_MESSAGE_COMPLETED'
 
 export function getMenuType(type) {
    const menu = axios.get(`/api/${type}`).then( response => {
@@ -65,9 +67,10 @@ export function newOrder(id, tableNumber) {
  }
 
  export function completedOrder(tableNumber) {
+     socket.emit('completed tables order', tableNumber)
     // console.log('completedReducer', {tableNumber} )
     const completedOrder = axios.patch(`/api/completed/`, {tableNumber}).then( response => {
-        //console.log('completedOrder response', response.data);
+        console.log('completedOrder response', response.data);
         return response.data
      })
      return {
@@ -98,7 +101,7 @@ export function newOrder(id, tableNumber) {
  }
 
  export function sendNewMessage(msg, tableNumber) {
-    // socket.emit('new message',tableNumber, msg)
+
 const tableMessages = axios.post(`/api/newMessage/`, {tableNumber, msg}).then( response => {
     socket.emit('new message', response.data)
     return response.data
@@ -129,6 +132,27 @@ export function getAdminMessages() {
      }
  }
 
+ export function adminMessageRead(messageId, table) {
+     const adminMessages = axios.patch('/adminMessageRead', {messageId}).then(response => {
+        socket.emit('admin marked as read', table)
+         return response.data
+     })
+     return {
+         type: ADMIN_MESSAGE_READ,
+         payload: adminMessages
+     }
+ }
+
+ export function adminMessageCompleted(messageId, table) {
+     const adminMessages = axios.patch('/adminmessagecompleted', {messageId}).then(response => {
+        socket.emit('admin completed message', table)
+        return response.data
+    })
+    return {
+        type: ADMIN_MESSAGE_COMPLETED,
+        payload: adminMessages
+    }
+}
 
 export default function reducer(state=initialState, action) {
     switch (action.type) {
@@ -152,6 +176,10 @@ export default function reducer(state=initialState, action) {
             return Object.assign({}, state, {adminMessages: action.payload})
         case GET_TABLE_MESSAGES + '_FULFILLED':
             return Object.assign({}, state, {tableMessages: action.payload})
+        case ADMIN_MESSAGE_READ + '_FULFILED':
+            return Object.assign({}, state, {adminMessages: action.payload})
+        case ADMIN_MESSAGE_COMPLETED + '_FULFILED':
+            return Object.assign({}, state, {adminMessages: action.payload})
 
         default:
             return state;

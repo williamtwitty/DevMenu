@@ -8,7 +8,10 @@ const express = require('express'),
     passport = require('passport'),
     Auth0Strategy = require('passport-auth0');
     ctrl = require('./controller/controller');
-    stripe = require('stripe')(process.env.STRIPE_SECRETKEY);
+    stripe = require('stripe')(process.env.STRIPE_SECRETKEY),
+    nodemailer = require('nodemailer');
+
+
 
 const app = express();
 const server = require('http').Server(app)
@@ -87,6 +90,8 @@ app.get('/adminmessages', ctrl.getAdminMessages)
 app.post('/api/newmessage', ctrl.sendNewMessage)
 app.post('/api/neworder', ctrl.newOrderPlaced)
 app.patch('/api/completed', ctrl.patchCompleted)
+app.patch('/adminMessageRead', ctrl.adminMessageRead)
+app.patch('/adminmessagecompleted', ctrl.adminMessageCompleted)
 app.delete('/api/delete/:id/:table', ctrl.deleteItem)
 
 app.post('/api/payment', function (req, res, next) {
@@ -122,10 +127,20 @@ app.post('/api/payment', function (req, res, next) {
 )
 
 app.post('/api/sendEmail', (req, res) => {
+    const foodName = req.body.receipt[1].map((item, i) => {
+        return  (
+           '<li>' +  item.name + ' $' + item.price + '</li>'
+       )
+    }).join(' ');
+    const foodPrice = req.body.receipt[1].map((item, i) => {
+        return  (
+            item.price
+       ) 
+    })
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'rachel.noble77@gmail.com',
+        user: 'fullstackco@gmail.com',
         pass: process.env.EMAIL_PASSWORD
       }
     })
@@ -133,18 +148,18 @@ app.post('/api/sendEmail', (req, res) => {
     var mailOptions = {
       from: 'fullstackco@gmail.com',
       to: req.body.email,
-      subject: receipt,
-      html:`
-            <h1>Receipt from Fullstack Co.</h1>
-            <p>req.body.receipt</p>
-            <br/>
+      subject: 'receipt from Fullstack',
+      html: 
+            `<h1>Receipt from Fullstack Co.</h1>
+            <p>Items you ordered:</p>
+            <ul>${foodName}</ul>
+            <p>Total: ${req.body.receipt[0]}</p>
             <p>Thank you,</p>
             <p>Fullstack Co.</p>
             <br/>
             <p>If you have any questions or concerns, please do not hesitate to contact us.</p>
             <p>Copyright © 2017 Fullstack Co., All rights reserved.</p>`
-    };
-    console.log(mailOptions)
+    }
     transporter.sendMail(mailOptions, function (error, response) {
       if (error) {
         console.log(error);
@@ -162,14 +177,15 @@ var admin = io.of('/admin')
     admin.on('connection', function(socket){
        // console.log('Admin has connected');
     })
+
     admin.on('disconnect', function(socket){
         //console.log('Admin is outta here');
     })
 
-        var customer = io.of('/customer')
+var customer = io.of('/customer')
 
-        customer.on('connection', function(socket){
-           // console.log('Customer has connected');
+     customer.on('connection', function(socket){
+           
         })
 
     io.on('connection', function(socket) {
@@ -190,9 +206,33 @@ var admin = io.of('/admin')
         io.of('/admin').emit('new customer message', data)
     })
 
+    socket.on('admin marked as read', function(data) {
+        console.log(data);
+        io.of('/admin').emit('marked as read', data)
+        io.emit('marked as read', data)
+    })
+
+    socket.on('admin completed message', function(data) {
+        io.of('/admin').emit('message completed', data)
+        io.emit('message completed', data)
+    })
+
 
 
     socket.on('disconnect', function(socket){
         console.log('we disconnected');
     })
 })
+
+// app.post('/api/email', (req,res) => {
+//     const transporter = nodemailer.createTransport({
+//         service: ‘gmail’,
+//         auth: {
+//             user: ‘fullstackco@gmail.com’,
+//             pass: process.env.EMAIL_PASS
+//         }
+//      });
+
+//      const
+// })
+

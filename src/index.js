@@ -9,9 +9,8 @@ import registerServiceWorker from './registerServiceWorker';
 import { HashRouter } from "react-router-dom";
 
 ReactDOM.render(
-    <HashRouter>
+        <HashRouter>
     <Provider store={store}>
-      
             <App />
     </Provider>
         </HashRouter>

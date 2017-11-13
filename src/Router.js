@@ -8,6 +8,7 @@ import MenuItems from './components/MenuItems';
 import Checkout from './components/Checkout';
 import Specials from './components/Specials';
 
+
 export default (
     <Switch>
         <Route exact path='/' component={ HomePage }/>

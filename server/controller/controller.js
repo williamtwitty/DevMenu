@@ -9,10 +9,11 @@ module.exports = {
 
     newOrderPlaced(req, res) {
         const db = req.app.get('db')
-        //console.log('newOrderPlaced req.body',req.body)
+        console.log('newOrderPlaced req.body',req.body)
         const {id, tableNumber} = req.body
     db.new_order([id, tableNumber]).then(response => {
        // console.log('new order', response);
+       res.status(200).end()
     }).catch(err => console.log(err))
     },
 
@@ -89,6 +90,22 @@ module.exports = {
             db.get_admin_messages().then(response => {
                     res.status(200).json(response)
         }).catch(err => console.log(err))
+    },
+
+    adminMessageRead(req, res) {
+        const db = req.app.get('db') 
+            const {messageId} = req.body
+            db.update_admin_read(messageId).then(response => {
+                res.status(200).json(response)
+            }).catch(err => console.log(err))
+    },
+
+    adminMessageCompleted(req, res) {
+        const db = req.app.get('db') 
+            const {messageId} = req.body
+            db.update_admin_completed(messageId).then(response => {
+                res.status(200).json(response)
+            }).catch(err => console.log(err))
     }
 
 
