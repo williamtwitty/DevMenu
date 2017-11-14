@@ -27,6 +27,7 @@ render() {
 
 const eachTable = this.state.tables.map((table) => {
     return( <div key={table} className="orderChat">
+    <div>
         <div className="Orders-container">
             <div className="Orders">
                 <div className="table"> Table Number: {table}</div>
@@ -44,6 +45,7 @@ const eachTable = this.state.tables.map((table) => {
                     </div>
             </div>
         </div> 
+        </div>
         <div className="Orders-container">
             <div className="Orders">
               <div className="table">Messages for table: {table}</div> 

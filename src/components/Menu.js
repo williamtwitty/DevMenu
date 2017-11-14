@@ -29,7 +29,7 @@ class Menu extends Component {
                     <Link to='/drinks' className='MenuDrinks1'>DRINKS</Link>
                     <Link to ='/appetizers'className='MenuAppetizers1'>APPETIZERS</Link>
                     <Link to ='/salads' className='MenuEntrees1'>ENTREES</Link>
-                    <Link to ='/desserts' className='MenuDesserts1' to ='/desserts'>DESSERTS</Link>
+                    <Link to ='/desserts' className='MenuDesserts1' >DESSERTS</Link>
                     <Link to='/specials' className='MenuSpecials'>OUR SPECIALS</Link>
                 </div>
             <div className='Wrap-Menu'>
