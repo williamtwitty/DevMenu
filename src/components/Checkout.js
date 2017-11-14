@@ -160,7 +160,7 @@ class CheckOut extends Component {
         return (
             
             <div>
-                <ChatBox table={this.props.match.params.table}/>
+                {/* <ChatBox table={this.props.match.params.table}/> */}
                 <div className='cart-title'> <button className='back'><Link className='back-link' to ='/menu'>Back to menu</Link></button> Cart <div></div></div>
                 <div className='cart-container'>
                     <div className='cart-titles'>
@@ -192,14 +192,12 @@ class CheckOut extends Component {
                             <div className='btn-totalbox'>
                                 <div className="email-box">
                                     <div className="email" onClick={()=>{this.validateEmail(this.state.email)}}>Email your receipt</div>
-                                    <input className="email" placeholder="enter email"  value = {this.state.email}
-                        onChange={(e)=>{this.handleEmail(e.target.value)}}/>
-                                {/* <Mailer/> */}
+                                    {/* <input className="email" placeholder="enter email"  value = {this.state.email}
+                        onChange={(e)=>{this.handleEmail(e.target.value)}}/> */}
+        
                                 <div className='formContainer'>
-                                    Email Receipt
-                                    <input type='text' placeholder='Email' onChange={(e)=>{
+                                    <input className="email-input" type='text' placeholder='Email' onChange={(e)=>{
                                         this.handleEmail(e.target.value)}}/>
-
                                     <button className='submit' onClick={()=>{
                                         this.sendEmail()
                                     }}>send receipt</button>
@@ -207,7 +205,7 @@ class CheckOut extends Component {
                                     
                                 </div>
 
-                                <StripeCheckout
+                                <StripeCheckout className="stripe"
                                 token={this.onToken}
                                 stripeKey={ process.env.REACT_APP_STRIPE_SECRETKEY }
                                 amount={+this.props.checkByTable[0] * 100}

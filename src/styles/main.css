@@ -12,7 +12,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: minmax(300px, auto);
-  margin: 30px; }
+  margin: 60px; }
 
 .Orders-container {
   width: 100%;
@@ -43,6 +43,7 @@
       width: 100%;
       height: 25%;
       float: bottom;
+      margin-bottom: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -209,15 +210,20 @@
         justify-content: flex-end; }
       .cart-container .Totals-container .TOTALS .btn-totalbox {
         width: 100%;
-        height: 15%;
+        height: 17%;
         border: 1px solid black;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: row; }
-        .cart-container .Totals-container .TOTALS .btn-totalbox .stripe-btn {
-          width: 25%;
-          height: 50%; }
+        .cart-container .Totals-container .TOTALS .btn-totalbox .formContainer {
+          margin-bottom: 10px;
+          margin-left: 5px; }
+          .cart-container .Totals-container .TOTALS .btn-totalbox .formContainer .email-input {
+            margin-right: 5px;
+            border-radius: 3px; }
+        .cart-container .Totals-container .TOTALS .btn-totalbox .stripe {
+          margin-left: 20px; }
 
 .empty-space {
   width: 100%;
@@ -275,6 +281,9 @@ button.stripe {
   .receipt {
     font-size: 10px; } }
 
+.email {
+  padding: 5px; }
+
 .container {
   width: 40%;
   margin-top: 80px; }
@@ -330,6 +339,16 @@ button.stripe {
   overflow: scroll;
   font-size: 16px;
   line-height: 30px; }
+
+.Chat {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(300px, auto); }
+  .Chat .chat-read {
+    color: #d1b183; }
+
+.chat-read {
+  color: #d1b183; }
 
 .enter-message {
   width: 100%;
