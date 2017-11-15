@@ -18,7 +18,7 @@ class CheckOut extends Component {
             input: '',
             coupon: false,
             email: '',
-            list: [],
+            
           
         }
         this.onToken=this.onToken.bind(this);
@@ -148,15 +148,13 @@ class CheckOut extends Component {
         let total = 0
         if (this.props.checkByTable[1]){
             
-            total = this.props.checkByTable[1].reduce((sum, item)=>{
-                 return sum + (parseFloat (item.price,10))
-                 
-             },0).toFixed(2)
-             
-            console.log(total)          
-        } 
-      
-      
+            total = util.reduceArr(this.props.checkByTable[1])
+            util.checkArr(this.props.checkByTable[1])
+            console.log(total ,"first")
+            // console.log(typeof(total), "total")        
+        } if(this.state.coupon === true){
+           total= util.discount(total)
+        }
         return (
             
             <div>
@@ -191,12 +189,12 @@ class CheckOut extends Component {
                             </div>
                             <div className='btn-totalbox'>
                                 <div className="email-box">
-                                    <div className="email" onClick={()=>{this.validateEmail(this.state.email)}}>Email your receipt</div>
-                                    {/* <input className="email" placeholder="enter email"  value = {this.state.email}
-                        onChange={(e)=>{this.handleEmail(e.target.value)}}/> */}
-        
-                                <div className='formContainer'>
-                                    <input className="email-input" type='text' placeholder='Email' onChange={(e)=>{
+                                    
+                                    
+                                {/* <Mailer/> */}
+                                <div className='formContainer' >
+                                   <div className='formContainer' onClick={()=>{this.validateEmail(this.state.email)}}>Email Receipt</div> 
+                                    <input type='text' placeholder='Email' onChange={(e)=>{
                                         this.handleEmail(e.target.value)}}/>
                                     <button className='submit' onClick={()=>{
                                         this.sendEmail()
