@@ -18,9 +18,24 @@ class Menu extends Component {
     render() {
           
         return (
+            <div className='menu-page'>
+                <div className='bottom-Menu'>
+                    <Link to='/drinks' className='MenuDrinks'>DRINKS</Link>
+                    <Link to ='/appetizers'className='MenuAppetizers'>APPETIZERS</Link>
+                    <Link to ='/salads' className='MenuEntrees'>ENTREES</Link>
+                    <Link to ='/desserts' className='MenuDesserts'>DESSERTS</Link>
+                </div>
+                <div className='top-Menu'>
+                    <Link to='/drinks' className='MenuDrinks1'>DRINKS</Link>
+                    <Link to ='/appetizers'className='MenuAppetizers1'>APPETIZERS</Link>
+                    <Link to ='/salads' className='MenuEntrees1'>ENTREES</Link>
+                    <Link to ='/desserts' className='MenuDesserts1' >DESSERTS</Link>
+                    <Link to='/specials' className='MenuSpecials'>OUR SPECIALS</Link>
+                </div>
             <div className='Wrap-Menu'>
-                <div className= 'top'>
+                {/* <div className= 'top'>
                     <div className='top-border'>
+                    <img src="https://imgur.com/0McTeHf.jpg	" alt="" width='300px' height='300px'/>
                     <div className='top-border2'> 
                         <div className='dev'>Fullstack Co.</div>
                    <div className='fork'>
@@ -32,8 +47,8 @@ class Menu extends Component {
                     </div>
                     </div>
                     </div>
-                </div>
-                <div className='top2'>
+                </div> */}
+                {/* <div className='top2'>
                <div className='dessert111'>
                     <div className='dessert1'><Link className='Link-menu' to='/drinks'>Drinks</Link></div>
                     <div className='dessert2'><Link className='Link-menu' to ='/appetizers'>Appetizers</Link></div>
@@ -48,7 +63,8 @@ class Menu extends Component {
                     <div className='dessert41'><Link className='Link-menu' to ='/entrees'>Entrees</Link></div>
                     <div className='dessert51'><Link className='Link-menu' to ='/desserts'>Desserts</Link></div>
                </div>
-               </div>
+               </div> */}
+            </div>
             </div>
         );
     }

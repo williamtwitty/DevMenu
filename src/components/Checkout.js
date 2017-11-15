@@ -158,7 +158,7 @@ class CheckOut extends Component {
         return (
             
             <div>
-                <ChatBox table={this.props.match.params.table}/>
+                {/* <ChatBox table={this.props.match.params.table}/> */}
                 <div className='cart-title'> <button className='back'><Link className='back-link' to ='/menu'>Back to menu</Link></button> Cart <div></div></div>
                 <div className='cart-container'>
                     <div className='cart-titles'>
@@ -196,7 +196,6 @@ class CheckOut extends Component {
                                    <div className='formContainer' onClick={()=>{this.validateEmail(this.state.email)}}>Email Receipt</div> 
                                     <input type='text' placeholder='Email' onChange={(e)=>{
                                         this.handleEmail(e.target.value)}}/>
-
                                     <button className='submit' onClick={()=>{
                                         this.sendEmail()
                                     }}>send receipt</button>
@@ -204,7 +203,7 @@ class CheckOut extends Component {
                                     
                                 </div>
 
-                                <StripeCheckout
+                                <StripeCheckout className="stripe"
                                 token={this.onToken}
                                 stripeKey={ process.env.REACT_APP_STRIPE_SECRETKEY }
                                 amount={+this.props.checkByTable[0] * 100}

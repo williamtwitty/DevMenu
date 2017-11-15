@@ -46,7 +46,12 @@ class ChatBox extends Component {
     render() {
         // console.log('chat msgs', this.props.tableMessages);
         const messages = this.props.tableMessages.map(msg => {
-           return <div>{msg.message} {msg.has_been_read ? 'Working on it': 'unread'}</div>
+           return (
+           <div className="Chat">
+                <div className="chat-ques">{msg.message}</div> 
+                <div className="chat-read">{msg.has_been_read ? 'Working on it': 'unread'}</div>
+            </div>
+           )
         })
 
         return (

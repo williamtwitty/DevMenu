@@ -14,9 +14,9 @@ class FoodItems extends Component {
                   </div>
                   <div className="food-info">
                     <div className="food-title">{type.name}</div>
-                    <div className="food-desc">{type.details}</div>
+                    <div className="food-desc">{type.details}&nbsp; &nbsp;{type.price}</div>
                     <div className="food-to-cart">
-                      <button className="btn-cart" onClick={()=>this.props.newOrder(type.id, this.props.tableNumber)}>ORDER </button> &nbsp; &nbsp; {type.price}
+                      <button className="btn-cart" onClick={()=>this.props.newOrder(type.id, this.props.tableNumber)}>ORDER </button> &nbsp; &nbsp;
                     </div>
                   </div>
                 </div>
