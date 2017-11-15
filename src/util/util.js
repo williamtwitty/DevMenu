@@ -1,16 +1,5 @@
 module.exports={
-  
-         checkByTable: [],
-         code : '',
-         input: '',
-         coup: false,
-         email: '',
-   
-     
-   
-   
-   
-   coupon(e, coupon){
+  coupon(e, coupon){
      if(e === coupon){
          return true
          }
@@ -24,10 +13,31 @@ module.exports={
    {  
      return (true)  
    }  
-     alert("You have entered an invalid email address!")  
+      
      return (false)  
    },
    
+   reduceArr(arr){
+     console.log(arr, "arr")
+  var bob= arr.reduce((sum, item)=>{
+    return sum + (parseFloat (item.price))
+   
+},0).toFixed(2)
+return bob
+},
+
+checkArr(arr){
+  if(Array.isArray(arr)){
+    return true
+  }else{
+    return false
+  }
+},
+
+discount(num){
+  return (num * .90).toFixed(2)
+
+}
   
 
  }
