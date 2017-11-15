@@ -1,9 +1,14 @@
+.full {
+   background-image: url('https://blacklabelbacon.com/images/shared/smoke-loop.jpg');
+}
+
 .title {
     width: 100%;
     height: 70px;
     @include flexSetUp(flex-end, center, column);
     font-size: 43px;
     font-family: 'Lobster', sans-serif;
+    color: white;
 }
 
 .Nav {
@@ -20,47 +25,42 @@
     @include flexSetUp(center, center, row);
     position: absolute;
 
-    .drinks {
-        height: 50px;
-        width: 53px;
-        background-image: url('https://imgur.com/bMd7UxS.jpg');
-        background-size: cover;
-    }
+    // .drinks {
+    //     height: 50px;
+    //     width: 53px;
+    //     background-size: cover;
+    // }
 
-    .linkk {
-        width:50px;
-        height: 50px;
-        @include flexSetUp(center, center);
-        text-decoration: none;
-    }
+    // .linkk {
+    //     width:50px;
+    //     height: 50px;
+    //     @include flexSetUp(center, center);
+    //     text-decoration: none;
+    // }
 
-    .salads {
-        height: 50px;
-        width: 50px;
-        background-image: url('https://imgur.com/3qaZgsE.jpg');
-        background-size: cover;
-    }
+    // .salads {
+    //     height: 50px;
+    //     width: 50px;
+    //     background-size: cover;
+    // }
 
-    .desserts {
-        height: 50px;
-        width: 50px;
-        background-image: url('https://imgur.com/kVSPSQi.jpg');
-        background-size: cover;
-    }
+    // .desserts {
+    //     height: 50px;
+    //     width: 50px;
+    //     background-size: cover;
+    // }
 
-    .apps {
-        height: 47px;
-        width: 47px;
-        background-image: url('https://imgur.com/X5t9qBa.jpg');
-        background-size: cover;
-    }
+    // .apps {
+    //     height: 47px;
+    //     width: 47px;
+    //     background-size: cover;
+    // }
 
-    .entrees {
-        height: 50px;
-        width: 50px;
-        background-image: url('https://imgur.com/w2NxWDv.jpg');
-        background-size: cover;
-    }
+    // .entrees {
+    //     height: 50px;
+    //     width: 50px;
+    //     background-size: cover;
+    // }
 }
 
 .nav-container1 {
