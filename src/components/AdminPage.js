@@ -13,6 +13,7 @@ class Admin extends Component {
             adminMessages: [],
             tables: [1,2,3,4,5,6,7,8]
         }
+        this.handleOnClick=this.handleOnClick.bind(this);
     }
     componentDidMount() {
         this.props.getAdminOrders()
@@ -21,6 +22,10 @@ class Admin extends Component {
         adminSocket.on('new item ordered', this.props.getAdminOrders)
         adminSocket.on('marked as read', this.props.getAdminMessages)
         adminSocket.on('message completed', this.props.getAdminMessages)
+    }
+
+    handleOnClick() {
+        this.props.getAdminOrders()
     }
 
 render() {
@@ -41,7 +46,7 @@ const eachTable = this.state.tables.map((table) => {
                         )})
                     }</div>
                     <div className="btn-totalbox"> 
-                        <button className="btn" onClick={() => this.props.completedOrder(table)}>Complete Order</button> 
+                        <button className="btn" onClick={() => {this.props.completedOrder(table), this.handleOnClick()}}>Complete Order</button> 
                     </div>
             </div>
         </div> 
