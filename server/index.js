@@ -63,7 +63,7 @@ passport.deserializeUser(function(userId, done) {
 app.get('/auth', passport.authenticate('auth0'))
 
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/admin',  
+    successRedirect: `${process.env.SERVERHOST}/#/admin`,  
     failureRedirect: '/auth'
 }))
 
@@ -77,7 +77,7 @@ app.get('/auth/user', passport.authenticate('auth0'), (req, res) => {
 
 app.get('/auth/logout', (req, res) => {
     req.logOut()
-    res.redirect(302, 'https://dev-menu.auth0.com/v2/logout?returnTo=http%3A%2F%2Flocalhost%3A3000%2F&client_id=RO5VKD0VU0JRf2br77hOxEmyWokY6D2N')
+    res.redirect(302, `https:${process.env.AUTH_DOMAIN}/v2/logout?returnTo=${process.env.SERVERHOST}`)
 })
 
 
