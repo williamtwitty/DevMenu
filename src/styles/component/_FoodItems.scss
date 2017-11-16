@@ -47,8 +47,12 @@
         height: 100px;
         padding: 10px 40px 10px 40px;
         box-sizing: border-box;
-        overflow: scroll;
-    }
+        overflow: scroll; }
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent; /* make scrollbar transparent */
+         }
+    
     
     .food-to-cart {
         width: 100%;
