@@ -1,7 +1,7 @@
 import axios from 'axios'
 import io from 'socket.io-client';
 import util from '../util/util'
-const socket = io(`${process.env.SERVERHOST}`);
+const socket = io(process.env.SERVERHOST);
 
 const initialState = {
     menu: [],
