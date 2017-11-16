@@ -45,8 +45,10 @@ module.exports = {
         // console.log('patch', req.body)
         const db = req.app.get('db')
             const {tableNumber} = req.body
-        db.clear_menu(tableNumber).then(response => {
-            res.status(200).send(response)
+        db.clear_menu(tableNumber).then(clear => {
+            db.get_admin_orders().then(response => {
+                res.status(200).send(response)
+            })
         })
     },
 

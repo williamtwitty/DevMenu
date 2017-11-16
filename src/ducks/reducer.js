@@ -9,7 +9,6 @@ const initialState = {
     tableNumber: 0,
     adminOrders: [],
     newOrder: [],
-    completeOrder: [],
     adminMessages: [],
     tableMessages: []
 }
@@ -70,13 +69,13 @@ export function newOrder(id, tableNumber) {
  export function completedOrder(tableNumber) {
      socket.emit('completed tables order', tableNumber)
     // console.log('completedReducer', {tableNumber} )
-    const completedOrder = axios.patch(`/api/completed/`, {tableNumber}).then( response => {
+    const adminOrders = axios.patch(`/api/completed/`, {tableNumber}).then( response => {
         console.log('completedOrder response', response.data);
         return response.data
      })
      return {
          type: COMPLETED_ORDER,
-         payload: completedOrder
+         payload: adminOrders
      }
  }
  
@@ -168,7 +167,7 @@ export default function reducer(state=initialState, action) {
         case NEW_ORDER + '_FULFILLED':
             return Object.assign({}, state, { newOrder: action.payload})
         case COMPLETED_ORDER + '_FULFILLED':
-            return Object.assign({}, state, {completedOrder: action.payload})
+            return Object.assign({}, state, {adminOrders: action.payload})
         case DELETE_ITEM + '_FULFILLED':
             return Object.assign({}, state, {checkByTable: action.payload})
         case SEND_NEW_MESSAGE + '_FULFILLED':
