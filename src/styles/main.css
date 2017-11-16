@@ -283,7 +283,9 @@ button.stripe {
   height: 25%;
   border: none;
   background-color: transparent;
-  font-size: 16px; }
+  font-size: 16px;
+  color: white;
+  text-decoration: none; }
 
 .back-link {
   text-decoration: none;
@@ -496,9 +498,6 @@ video {
 a.log {
   color: rgba(255, 255, 255, 0.514);
   text-decoration: none; }
-
-option {
-  background-color: red; }
 
 .home-input {
   -webkit-appearance: none;
@@ -1038,6 +1037,10 @@ option {
   justify-content: flex-end;
   align-items: center;
   flex-direction: row; }
+
+.checkout-btn {
+  color: white;
+  text-decoration: none; }
 
 .food-container {
   display: grid;

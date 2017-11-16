@@ -37,7 +37,7 @@ class MenuItems extends Component {
         })
         return (
             <div className='full'>
-                <div className='checkoutbutton'><Link to ={`/checkout/${this.props.tableNumber}`}>Checkout</Link></div>            
+                <div className='checkoutbutton'><Link className='checkout-btn' to ={`/checkout/${this.props.tableNumber}`}>Checkout</Link></div>            
                 <div className='title'>Fullstack Co.</div>
                     <div className='Nav'>
                         <div className='nav-container'>
