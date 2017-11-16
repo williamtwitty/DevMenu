@@ -75,8 +75,8 @@ const eachTable = this.state.tables.map((table) => {
             <div>
                 <div className="admin-title"> Orders
                     <div className="top">
-                    <a href='http://localhost:3030/auth/logout'><button>LOGOUT</button></a>
-                    </div>
+                    <a href={process.env.SERVERHOST_LOGOUT}><button>LOGOUT</button></a>
+                    </div> 
                 </div>
                     <div>{eachTable}</div>
             </div>
