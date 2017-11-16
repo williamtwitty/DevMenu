@@ -56,6 +56,10 @@
       border-bottom: 1px solid lightgray;
       justify-content: space-between; }
 
+.CART {
+  background-image: url("https://imgur.com/zkVHaGv.jpg");
+  background-size: cover; }
+
 .cart-title {
   width: 100%;
   height: 100px;
@@ -67,7 +71,8 @@
   padding-left: 162px;
   align-content: center;
   font-size: 40px;
-  letter-spacing: 3px; }
+  letter-spacing: 3px;
+  color: white; }
 
 .cart-container {
   width: 100%;
@@ -85,7 +90,8 @@
     flex-direction: row;
     border: 1px solid black;
     height: 50px;
-    width: 80%; }
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.911); }
     .cart-container .cart-titles .Product {
       width: 45%;
       height: 100%; }
@@ -100,7 +106,8 @@
     align-items: center;
     flex-direction: row;
     border-left: 1px solid black;
-    border-right: 1px solid black; }
+    border-right: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.548); }
     .cart-container .cart-item .cart-delete {
       width: 4%;
       height: auto; }
@@ -133,19 +140,20 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
-    align-items: center; }
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.37); }
     .cart-container .cart-coupon .coupon-code {
       height: 65%;
       width: 20%;
       margin-left: 10px;
       font-size: 16px;
       letter-spacing: 1px;
-      outline: none; }
+      background-color: rgba(255, 255, 255, 0.63); }
     .cart-container .cart-coupon .apply-coupon {
       margin-left: 20px;
       height: 65%;
       width: 10%;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.63);
       border: 1px solid #2b2c2f;
       font-size: 11px;
       letter-spacing: 2px;
@@ -168,7 +176,8 @@
         border: 1px solid black;
         border-bottom: none;
         display: flex;
-        justify-content: flex-end; }
+        justify-content: flex-end;
+        background-color: rgba(255, 255, 255, 0.37); }
       .cart-container .Totals-container .TOTALS .sub {
         padding-right: 20px; }
       .cart-container .Totals-container .TOTALS .receipt {
@@ -181,7 +190,8 @@
         justify-content: flex-start;
         align-items: flex-start;
         align-content: stretch;
-        border-bottom: none; }
+        border-bottom: none;
+        background-color: rgba(255, 255, 255, 0.63); }
       .cart-container .Totals-container .TOTALS .receipt-item {
         width: 100%;
         height: auto;
@@ -207,7 +217,8 @@
         border: 1px solid black;
         border-bottom: none;
         display: flex;
-        justify-content: flex-end; }
+        justify-content: flex-end;
+        background-color: rgba(255, 255, 255, 0.63); }
       .cart-container .Totals-container .TOTALS .btn-totalbox {
         width: 100%;
         height: 17%;
@@ -215,7 +226,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: row; }
+        flex-direction: row;
+        background-color: rgba(255, 255, 255, 0.37); }
         .cart-container .Totals-container .TOTALS .btn-totalbox .formContainer {
           margin-bottom: 10px;
           margin-left: 5px; }
@@ -327,7 +339,7 @@ button.stripe {
   border-bottom: none;
   background-color: transparent;
   border-radius: 2px;
-  border-top: 1px solid black;
+  border-top: 1px solid white;
   outline: none; }
 
 .chat-btn:hover {
@@ -975,7 +987,9 @@ option {
   text-decoration: none; }
 
 .full {
-  background-image: url("https://blacklabelbacon.com/images/shared/smoke-loop.jpg"); }
+  background-image: url("https://imgur.com/jpeFZWm.jpg");
+  background-size: cover;
+  padding-bottom: 100px; }
 
 .title {
   width: 100%;
@@ -986,116 +1000,44 @@ option {
   flex-direction: column;
   font-size: 43px;
   font-family: 'Lobster', sans-serif;
-  color: white; }
+  color: white;
+  padding-top: 30px;
+  padding-bottom: 30px; }
 
 .Nav {
   width: 100%;
-  height: 100px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; }
+  flex-direction: row; }
 
 .nav-container {
-  width: 100%;
-  height: 50%;
+  width: 50%;
+  height: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.425);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.425);
+  padding: 5px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
-  position: absolute; }
-
-.nav-container1 {
-  width: 100%;
-  height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  position: absolute; }
-  .nav-container1 .drinks1 {
-    height: 43px;
-    width: 45px;
-    background-color: rgba(0, 0, 0, 0.342);
-    background-size: cover;
-    opacity: 0;
-    border-radius: 100px;
-    margin-bottom: 1px; }
-  .nav-container1 .salads1 {
-    height: 46px;
-    width: 46px;
-    background-color: rgba(0, 0, 0, 0.342);
-    background-size: cover;
-    opacity: 0;
-    border-radius: 100px;
-    margin-right: 5px; }
-  .nav-container1 .desserts1 {
-    height: 43px;
-    width: 43px;
-    margin-left: 7px;
-    background-color: rgba(0, 0, 0, 0.342);
-    background-size: cover;
-    opacity: 0;
-    border-radius: 100px; }
-  .nav-container1 .apps1 {
-    height: 45px;
-    width: 45px;
-    background-color: rgba(0, 0, 0, 0.342);
-    background-size: cover;
-    opacity: 0;
-    border-radius: 100px;
-    margin-left: 5px; }
-  .nav-container1 .entrees1 {
-    height: 44px;
-    width: 44px;
-    background-color: rgba(0, 0, 0, 0.342);
-    background-size: cover;
-    opacity: 0;
-    margin-left: 3px;
-    border-radius: 100px; }
-
-.drinks1:hover {
-  opacity: 1; }
-
-.salads1:hover {
-  opacity: 1; }
-
-.entrees1:hover {
-  opacity: 1; }
-
-.desserts1:hover {
-  opacity: 1; }
-
-.apps1:hover {
-  opacity: 1; }
-
-.linkk1 {
-  width: 51px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  text-decoration: none;
-  color: white;
-  font-size: 7px;
-  letter-spacing: 3px; }
-
-.linkk11 {
-  width: 51px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  text-decoration: none;
-  color: white;
-  font-size: 6px;
-  letter-spacing: 3px; }
+  flex-direction: row; }
+  .nav-container .linkk {
+    width: 30px;
+    height: 40px;
+    text-decoration: none;
+    color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+    letter-spacing: 3px; }
 
 .checkoutbutton {
-  position: absolute;
-  width: 100%; }
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row; }
 
 .food-container {
   display: grid;
@@ -1137,14 +1079,15 @@ option {
   .food-info .food-desc {
     font-size: 15px;
     width: 100%;
-    height: 75px;
-    padding: 10px 40px 0 40px;
+    height: 100px;
+    padding: 10px 40px 10px 40px;
     box-sizing: border-box;
     overflow: scroll; }
   .food-info .food-to-cart {
     width: 100%;
     height: 20%;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    padding-left: 14px; }
   .food-info .food-price {
     width: 100%;
     display: flex;
@@ -1153,10 +1096,16 @@ option {
     flex-direction: row;
     padding: 10px 0 10px 0; }
   .food-info .btn-cart {
-    width: 100%;
+    width: 90%;
     height: 100%;
     outline: none;
-    letter-spacing: 5px; }
+    letter-spacing: 5px;
+    border: none;
+    background-color: white;
+    border-top: 1px solid rgba(131, 129, 129, 0.247);
+    font-size: 8px;
+    padding-top: 15px;
+    padding-bottom: 20px; }
 
 .foods {
   display: grid;
@@ -1168,8 +1117,8 @@ option {
   width: 100%; }
 
 .space {
-  padding-left: 70px;
-  padding-right: 70px;
+  padding-left: 200px;
+  padding-right: 200px;
   padding-top: 50px; }
 
 img.foodItems-img {
