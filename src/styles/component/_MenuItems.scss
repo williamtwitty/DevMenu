@@ -172,3 +172,8 @@
     width: 100%;
     @include flexSetUp(flex-end, center);
 }
+
+.checkout-btn {
+    color: white;
+    text-decoration: none;
+}
