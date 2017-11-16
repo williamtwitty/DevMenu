@@ -1083,6 +1083,10 @@ option {
     padding: 10px 40px 10px 40px;
     box-sizing: border-box;
     overflow: scroll; }
+  .food-info ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+    /* make scrollbar transparent */ }
   .food-info .food-to-cart {
     width: 100%;
     height: 20%;
