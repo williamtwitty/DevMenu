@@ -79,6 +79,16 @@
         padding-top: 15px;
         padding-bottom: 20px;
     }
+
+    .btn-cart:hover {
+        border-top: 1px solid tan;
+        color: tan;
+    }
+
+    .btn-cart:active {
+        border-top: 1px solid  rgb(158, 134, 104);
+        color: rgb(158, 134, 104);
+    }
 }
 .foods {
     display: grid;

@@ -47,6 +47,14 @@
         letter-spacing: 3px;
     }
 
+    .linkk:hover {
+        color: tan;
+    }
+
+    .linkk:active {
+        color: rgb(158, 134, 104);
+    }
+
     // .desserts {
     //     height: 50px;
     //     width: 50px;
@@ -176,4 +184,5 @@
 .checkout-btn {
     color: white;
     text-decoration: none;
+    margin: 30px;
 }
