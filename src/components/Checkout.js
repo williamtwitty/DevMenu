@@ -108,10 +108,9 @@ class CheckOut extends Component {
         let orderList = []
         if (this.props.checkByTable[1]) {
              orderList = this.props.checkByTable[1].map((item, i)=>{
-                return  (
-                      
-                      <div className='cart-item' key={i}>
-                      <div className='cart-delete' onClick={()=> this.props.deleteItem(item.id, this.props.match.params.table)} > X </div>
+                return  ( 
+                 <div className='cart-item' key={i}>
+                      <div className='cart-delete' onClick={()=> this.props.deleteItem(item.id, this.props.match.params.table)} > <img src='https://imgur.com/6X17pRk.jpg' width='20px' height='20px' alt='delete'/> </div>
                       <div className='cart-img-box'><img src={item.image} alt="punk" className="punks"/> </div>
                       <div className='cart-product'> 
                           <div> {item.name} </div>
@@ -130,7 +129,7 @@ class CheckOut extends Component {
         if (this.props.checkByTable[1]) {
              receiptList = this.props.checkByTable[1].map((item, i)=>{
                 return  (
-                      
+                
                       <div className='receipt-item' key={i}>
                         
                         <div className='receipt-product'> 
@@ -139,6 +138,7 @@ class CheckOut extends Component {
     
                       <div className='receipt-price'>{item.price} </div>
                   </div>
+    
                  ) 
               })
         } else{
@@ -158,14 +158,17 @@ class CheckOut extends Component {
         return (
             
             <div className='CART'>
-                {/* <ChatBox table={this.props.match.params.table}/> */}
-                <div className='cart-title'> <button className='back'><Link className='back-link' to ='/menu'>Back to menu</Link></button> Cart <div></div></div>
+            
+                <div className='cart-title'>  Cart <div></div></div>
+                <div className='cartandreceipt'>
                 <div className='cart-container'>
                     <div className='cart-titles'>
                         <div className='Product'>Product</div>
                         <div className='Price'>Price</div>
                     </div>
+
                  {orderList}
+
                     <div className='cart-coupon'>
                       
                         <input className='coupon-code' placeholder='&nbsp; Coupon code' 
@@ -221,6 +224,8 @@ class CheckOut extends Component {
                         </div>
                     </div>
                     <div className='empty-space'> </div>
+                </div>
+                <div className='secondreceiptbox'>receipt box</div>
                 </div>
                 <Footer/>
             </div>
