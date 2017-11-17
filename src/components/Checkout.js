@@ -225,7 +225,7 @@ class CheckOut extends Component {
                     </div>
                     <div className='empty-space'> </div>
                 </div>
-                <div className='secondreceiptbox'>receipt box</div>
+                <div className='secondreceiptbox'> &nbsp;</div>
                 </div>
                 <Footer/>
             </div>
