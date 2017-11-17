@@ -5,8 +5,12 @@ class Footer extends Component {
         return (
             <div>
                 <div className='footer-container'>
-                    <div className='Contact-Info'> </div>
-                    <div className='Follow-Us'></div>
+                    <div className='Contact-Info'>
+                        CONTACT US
+                    </div>
+                    <div className='Follow-Us'>
+                        FOLLOW US
+                    </div>
                 </div>
             </div>
         );
