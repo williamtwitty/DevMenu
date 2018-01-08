@@ -4,7 +4,7 @@
 
 ## What this app is:
 
-This app was designed to make ordering more efficient by eliminating server/customer interaction
+This app was designed to make ordering more efficient by eliminating server/customer interaction. The project took two weeks and was created by four people. 
 
 ## What this app can do:
 
