@@ -14,7 +14,7 @@ This app was designed to make ordering more efficient by eliminating server/cust
 * Admin can update status of the order when finished
 * Customer can use chat box on check out page to make requests
 * Messages are updated live on admin page and admin can update progress to "Working on it" or "complete"
-* Customer can pay on checkout page and get receipt emailed to them
+* Customer can pay on checkout page and get their receipt emailed to them
 
 ## Tech Stack:
 * React
