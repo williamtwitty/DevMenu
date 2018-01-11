@@ -18,18 +18,13 @@ class MenuItems extends Component {
         this.props.getMenuType(this.props.match.params.type)
    } 
 
-
-   componentWillUpdate() {
+    componentWillUpdate() {
     this.props.getMenuType(this.props.match.params.type)
    }
 
     render() {
-        // console.log("menu bladgfoSIJD",this.props.menu);
         const item = this.props.menu.map((type)=>{
-                   // console.log(type);
-            //this.props.newOrder(item.id, this.props.tableNumber)
-            return(
-                //<div>{type.name}</div>
+           return(
                <div className='fooditemsbox'>
                 <FoodItems key={type.name} type={type}/>     
                 </div>     
