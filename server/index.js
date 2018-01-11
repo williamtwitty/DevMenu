@@ -31,6 +31,8 @@ massive(process.env.CONNECTION_STRING).then( db => {
     app.set('db', db);
 }).catch(err => console.log(err))
 
+//=====================Auth0=======================//
+
 passport.use(new Auth0Strategy({
     domain: process.env.AUTH_DOMAIN,
     clientID: process.env.AUTH_CLIENT_ID,
@@ -81,6 +83,7 @@ app.get('/auth/logout', (req, res) => {
     res.redirect(302, `https:${process.env.AUTH_DOMAIN}/v2/logout?returnTo=${process.env.SERVERHOST}`)
 })
 
+//====================Endpoints========================//
 
 app.get('/api/:type', ctrl.getMenuType)
 app.get('/checkout/:table', ctrl.getCheckByTable)
@@ -94,6 +97,8 @@ app.patch('/api/completed', ctrl.patchCompleted)
 app.patch('/adminMessageRead', ctrl.adminMessageRead)
 app.patch('/adminmessagecompleted', ctrl.adminMessageCompleted)
 app.delete('/api/delete/:id/:table', ctrl.deleteItem)
+
+//==================Stripe==================//
 
 app.post('/api/payment', function (req, res, next) {
 
@@ -126,6 +131,8 @@ app.post('/api/payment', function (req, res, next) {
     }
     )}
 )
+
+//===================Nodemailer===========================//
 
 app.post('/api/sendEmail', (req, res) => {
     const foodName = req.body.receipt[1].map((item, i) => {
@@ -173,6 +180,8 @@ app.post('/api/sendEmail', (req, res) => {
 const PORT = 3030;
 server.listen(PORT, ()=> console.log('Listening on port:' , PORT))
 
+//========================SocketIO===================//
+
 var admin = io.of('/admin')
 
     admin.on('connection', function(socket){
@@ -190,8 +199,7 @@ var customer = io.of('/customer')
         })
 
     io.on('connection', function(socket) {
-       // console.log('we are connected');
-    
+  
     socket.on('new customer', function(table) {
          console.log('New customer seated at table:', table);
         io.of('/admin').emit('new customer admin', table )
@@ -203,8 +211,7 @@ var customer = io.of('/customer')
     })
 
     socket.on('new message', function(data) {
-        //console.log('Table:', table, 'has requested', msg);
-        io.of('/admin').emit('new customer message', data)
+     io.of('/admin').emit('new customer message', data)
     })
 
     socket.on('admin marked as read', function(data) {
@@ -225,15 +232,5 @@ var customer = io.of('/customer')
     })
 })
 
-// app.post('/api/email', (req,res) => {
-//     const transporter = nodemailer.createTransport({
-//         service: ‘gmail’,
-//         auth: {
-//             user: ‘fullstackco@gmail.com’,
-//             pass: process.env.EMAIL_PASS
-//         }
-//      });
 
-//      const
-// })
 
