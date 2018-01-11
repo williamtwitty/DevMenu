@@ -26,8 +26,11 @@ class Admin extends Component {
 render() {
 
 const eachTable = this.state.tables.map((table) => {
-    return( <div key={table} className="orderChat">
-    <div>
+    return( 
+     
+//=========================================Chatbox==================================//     
+     <div key={table} className="orderChat">
+      <div>
         <div className="Orders-container">
             <div className="Orders">
                 <div className="table"> Table Number: {table}</div>
@@ -37,15 +40,16 @@ const eachTable = this.state.tables.map((table) => {
                         }
                         }).map((order) => {
                             return(<div key={order.id} className="item">{order.name}</div>
-                            
-                        )})
+                       )})
                     }</div>
                     <div className="btn-totalbox"> 
                         <button className="btn" onClick={() => this.props.completedOrder(table)}>Complete Order</button> 
                     </div>
-            </div>
-        </div> 
+              </div>
+          </div> 
         </div>
+
+//============================================orders=========================================//
         <div className="Orders-container">
             <div className="Orders">
               <div className="table">Messages for table: {table}</div> 
@@ -54,8 +58,9 @@ const eachTable = this.state.tables.map((table) => {
                         return message
                     }
                 }).map((message)=> {
-                    return <div key={message.id} className="item">
-                    {message.has_been_read ? <div style={{color: 'green'}}>{message.message}</div> : <div style={{color: 'red'}}>{message.message}</div>}
+                    return 
+                     <div key={message.id} className="item">
+                              {message.has_been_read ? <div style={{color: 'green'}}>{message.message}</div> : <div style={{color: 'red'}}>{message.message}</div>}
                                 <div>
                                     <button onClick={() => this.props.adminMessageRead(message.id, message.table_number)}>Read</button>
                                     <button onClick={() => this.props.adminMessageCompleted(message.id, message.table_number)}>Completed</button>
