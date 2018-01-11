@@ -11,10 +11,7 @@ class ChatBox extends Component {
         }
         this.updateMessageData = this.updateMessageData.bind(this)
     }
-    // componentDidMount() {
-    //     this.props.newMessage(this.props.match.params.table)
-    // }
-
+  
     componentDidMount() {
         this.props.getTableMessages(this.props.table)
         customerSocket.on('marked as read', (table) => {
@@ -24,8 +21,7 @@ class ChatBox extends Component {
             this.updateMessageData(table)
         })
     }
-    
-
+   
     updateMessage(e){
         this.setState({
             text: e.target.value
@@ -44,7 +40,7 @@ class ChatBox extends Component {
     }
 
     render() {
-        // console.log('chat msgs', this.props.tableMessages);
+     
         const messages = this.props.tableMessages.map(msg => {
            return (
            <div className="Chat">
