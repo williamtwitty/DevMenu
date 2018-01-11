@@ -18,10 +18,8 @@ class CheckOut extends Component {
             input: '',
             coupon: false,
             email: '',
-            
-          
-        }
-        this.onToken=this.onToken.bind(this);
+       }
+     this.onToken=this.onToken.bind(this);
     }
    
     componentDidMount() {
@@ -43,10 +41,8 @@ class CheckOut extends Component {
     }
 
     coupon(e){
-        
         if(util.coupon(e, this.state.code)){
-            
-            this.setState({
+           this.setState({
                 input: '',
                 coupon : true
             })
@@ -71,40 +67,16 @@ class CheckOut extends Component {
         return (false)  
     } 
 
-    
-        
-   
 
- 
-    // sendEmail() {
-    //     axios.post('/api/sendEmail', {
-    //       'email': this.state.email,
-    //       'message': this.state.message
-    //     }).catch((err) => {
-    //       console.log(err);
-    //       alert('Email Sent!', err);
-    //     })
-    //   }
-
-    
-  
- 
     onToken(token) {
-        token.card = void 0;
-        // console.log('token', this.state);
-        axios.post('/api/payment', { token, amount: this.props.checkByTable[0], options: this.state} ).then(response => {
-            // alert('thanks for your purchase!')
-            // swal({
-            //     title: null,
-            //     text: 'You order is complete!',
-            //     type: null,
-            //     confirmButtonText: 'Sweeeet!'
-            //   })
+       token.card = void 0;
+       axios.post('/api/payment', { token, amount: this.props.checkByTable[0], options: this.state} ).then(response => {
         });
       }
     
     render() {
-        console.log(this.state.coupon)
+     
+      //====================Order List===============================//  
         let orderList = []
         if (this.props.checkByTable[1]) {
              orderList = this.props.checkByTable[1].map((item, i)=>{
@@ -123,43 +95,39 @@ class CheckOut extends Component {
         } else{
              orderList = []
         }
-        // console.log("url", this.props.match.params.table);
-        // console.log("checkbytable", this.props.checkByTable)
-        let receiptList = []
+      
+ //=============================Reciept==================================//   
+    let receiptList = []
         if (this.props.checkByTable[1]) {
              receiptList = this.props.checkByTable[1].map((item, i)=>{
                 return  (
-                
-                      <div className='receipt-item' key={i}>
-                        
-                        <div className='receipt-product'> 
-                            <div> {item.name} </div>
-                        </div>
-    
+                <div className='receipt-item' key={i}>
+                     <div className='receipt-product'> 
+                        <div> {item.name} </div>
+                      </div>
                       <div className='receipt-price'>{item.price} </div>
                   </div>
-    
-                 ) 
-              })
+            ) 
+          })
         } else{
              receiptList = []
         }
+        
+  //=========================reciept total================================//
 
         let total = 0
         if (this.props.checkByTable[1]){
             
             total = util.reduceArr(this.props.checkByTable[1])
             util.checkArr(this.props.checkByTable[1])
-            console.log(total ,"first")
-            // console.log(typeof(total), "total")        
         } if(this.state.coupon === true){
            total= util.discount(total)
         }
         return (
             
-            <div className='CART'>
-            
-                <div className='cart-title'>  Cart <div></div></div>
+          <div className='CART'>
+            <div className='cart-title'>  Cart <div>
+                </div>
                 <div className='cartandreceipt'>
                 <div className='cart-container'>
                     <div className='cart-titles'>
@@ -170,42 +138,37 @@ class CheckOut extends Component {
                  {orderList}
 
                     <div className='cart-coupon'>
-                      
-                        <input className='coupon-code' placeholder='&nbsp; Coupon code' 
+                      <input className='coupon-code' placeholder='&nbsp; Coupon code' 
                         value = {this.state.input}
-                        onChange={(e)=>{this.handleCoupon(e.target.value)}}></input>
-                        <button onClick={()=>{this.coupon(this.state.input)}} className='apply-coupon'>Apply Coupon</button>
+                        onChange={(e)=>{this.handleCoupon(e.target.value)}}>
+                      </input>
+                      <button onClick={()=>{this.coupon(this.state.input)}} className='apply-coupon'>Apply Coupon</button>
                     </div>
+
                     <div className='Totals-container'>
                         <div className='TOTALS'>
                             <div className='cart-total-title flex'>Total</div>
-                            <div className='subtotal flex'>
-                                <div className="sub">Subtotal</div>
-                            </div>
+                              <div className='subtotal flex'>
+                                 <div className="sub">Subtotal</div>
+                              </div>
                             <div className='receipt'>{receiptList}</div>
-                            <div className='total'>
-                                <div className="sub">
-                                {total}
-                                {/* {this.props.checkByTable[0]} */}
-                                </div>
-                          
-                            </div>
+                          <div className='total'>
+                            <div className="sub">{total}</div>
+                          </div>
+
+//=======================================Email=========================================================//
                             <div className='btn-totalbox'>
                                 <div className="email-box">
-                                    
-                                    
-                                {/* <Mailer/> */}
                                 <div className='formContainer' >
                                    <div className='formContainer' onClick={()=>{this.validateEmail(this.state.email)}}>Email Receipt</div> 
-                                    <input type='text' placeholder='Email' onChange={(e)=>{
-                                        this.handleEmail(e.target.value)}}/>
-                                    <button className='submit' onClick={()=>{
-                                        this.sendEmail()
-                                    }}>send receipt</button>
-                                </div>
-                                    
+                                    <input type='text' 
+                                           placeholder='Email' 
+                                           onChange={(e)=>{this.handleEmail(e.target.value)}}/>
+                                    <button className='submit' onClick={()=>{this.sendEmail()}}>send receipt</button>
+                                   </div>
                                 </div>
 
+//=======================================Stripe=========================================================//
                                 <StripeCheckout className="stripe"
                                 token={this.onToken}
                                 stripeKey={ process.env.REACT_APP_STRIPE_SECRETKEY }
@@ -213,17 +176,19 @@ class CheckOut extends Component {
                                 />
                             </div>
                         </div>
+
                         <div className='CHATBOX'>
                         <div className="container">
                             <div className="container-contained">
                                 <div className='chatbox'>
-                            <ChatBox table={this.props.match.params.table}/>
-                            </div>
-                            </div>
+                                <ChatBox table={this.props.match.params.table}/>
+                                </div>
                             </div>
                         </div>
+                        </div>
                     </div>
-                    <div className='empty-space'> </div>
+                 
+                <div className='empty-space'> </div>
                 </div>
                 <div className='secondreceiptbox'> &nbsp;</div>
                 </div>
